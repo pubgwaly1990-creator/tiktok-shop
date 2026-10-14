@@ -18,19 +18,22 @@
             --whatsapp-color: #25D366;
             --instagram-color: #E1306C;
             --tiktok-color: #00f2fe;
+            --android-color: #3DDC84;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
         .top-social-bar {
-            background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem;
+            background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; flex-wrap: wrap; gap: 10px;
         }
-        .social-links { display: flex; gap: 15px; }
-        .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
+        .social-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 12px; font-weight: 600; transition: 0.3s; }
         .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); }
         .social-btn.insta { background: rgba(225, 48, 108, 0.15); color: var(--instagram-color); border: 1px solid var(--instagram-color); }
         .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
+        .social-btn.app { background: rgba(61, 220, 132, 0.15); color: var(--android-color); border: 1px solid var(--android-color); }
+        .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
         header {
             background: rgba(21, 28, 44, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
@@ -45,7 +48,12 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 5%; }
         .hero { padding: 2.5rem 5% 1rem; text-align: center; max-width: 900px; margin: 0 auto; }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--text-muted); font-size: 0.95rem; }
+        .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .hero-btn-app {
+            display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #3DDC84, #1b8a4c); color: #000; font-weight: 800; padding: 10px 24px; border-radius: 25px; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 15px rgba(61, 220, 132, 0.3); transition: 0.3s;
+        }
+        .hero-btn-app:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(61, 220, 132, 0.5); }
 
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
         .section-title i { color: var(--primary-glow); }
@@ -88,9 +96,11 @@
 </head>
 <body>
 
+    <!-- Top Social & App Bar -->
     <div class="top-social-bar">
         <span><i class="fa-solid fa-headset"></i> Official Customer Support</span>
         <div class="social-links">
+            <a href="https://tiktok-shop-bwpo.vercel.app" target="_blank" class="social-btn app"><i class="fa-brands fa-android"></i> Download App (APK)</a>
             <a href="https://www.tiktok.com" target="_blank" class="social-btn tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
             <a href="https://www.instagram.com" target="_blank" class="social-btn insta"><i class="fa-brands fa-instagram"></i> Instagram</a>
             <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
@@ -105,6 +115,9 @@
     <section class="hero">
         <h1>TikTok Shop Pakistan - Buy Viral TikTok Products & Accounts</h1>
         <p>Verified TikTok UK/USA Accounts, Monetized Pages, Followers & Ad Services.</p>
+        <a href="https://tiktok-shop-bwpo.vercel.app" target="_blank" class="hero-btn-app">
+            <i class="fa-brands fa-android" style="font-size: 1.2rem;"></i> Download TikTok Shop APK App
+        </a>
     </section>
 
     <main class="container">
@@ -144,7 +157,7 @@
             </div>
         </section>
 
-        <!-- STORE PRODUCTS (ALWAYS VISIBLE TO CUSTOMERS) -->
+        <!-- STORE PRODUCTS -->
         <h2 class="section-title"><i class="fa-solid fa-store"></i> Available Products & Services</h2>
         <div class="products-grid" id="productsDisplay"></div>
 
