@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok Shop Pakistan - Buy Viral TikTok Products & Accounts</title>
-    <meta name="description" content="Buy verified TikTok UK, USA, Monetized accounts, 10k Followers, Facebook Pages, Instagram Accounts & Ads Services in Pakistan.">
+    <meta name="description" content="Buy verified TikTok UK, USA, Monetized accounts, 10k Followers, Facebook Pages, Instagram Accounts & Ads Services in Pakistan. Developed by Usman Butt.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -12,602 +12,184 @@
             --bg-card: #151c2c;
             --bg-hover: #1e293b;
             --primary-glow: #00f2fe;
-            --secondary-glow: #4facfe;
             --accent-pink: #ff0050;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
             --whatsapp-color: #25D366;
+            --instagram-color: #E1306C;
+            --tiktok-color: #00f2fe;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header / Navbar */
-        header {
-            background: rgba(21, 28, 44, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
+        /* Top Social Nav Bar */
+        .top-social-bar {
+            background: #060911;
+            padding: 8px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .social-links { display: flex; gap: 15px; }
+        .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 12px; transition: 0.3s; font-weight: 600; }
+        .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); }
+        .social-btn.insta { background: rgba(225, 48, 108, 0.15); color: var(--instagram-color); border: 1px solid var(--instagram-color); }
+        .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
+        .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Header / Navbar */
+        header {
+            background: rgba(21, 28, 44, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 1000;
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
         }
 
-        .logo span {
-            color: var(--accent-pink);
+        .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--accent-pink); }
+
+        .search-box {
+            display: flex; align-items: center; background: #0b0f19; border: 1px solid var(--border-color); border-radius: 20px; padding: 5px 15px; width: 280px;
+        }
+        .search-box input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 0.85rem; padding: 4px; }
+        .search-box i { color: var(--text-muted); }
+
+        .nav-btns { display: flex; gap: 10px; align-items: center; }
+
+        .btn-admin {
+            background: rgba(0, 242, 254, 0.1); color: var(--primary-glow);
+            border: 1px solid var(--primary-glow); padding: 8px 16px; border-radius: 20px;
+            text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-admin:hover { background: var(--primary-glow); color: #000; }
+
+        /* Container & Layout */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 5%; }
+        .hero { padding: 2.5rem 5% 1rem; text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        .section-title i { color: var(--primary-glow); }
+
+        /* Admin Panel Styling */
+        #adminPanel {
+            display: none; background: #0f1626; border: 1px solid var(--primary-glow);
+            border-radius: 16px; padding: 2rem; margin-bottom: 3rem;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.15);
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 12px; text-align: center; }
+        .stat-card h4 { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 5px; }
+        .stat-card .value { font-size: 1.8rem; font-weight: 800; color: var(--primary-glow); }
 
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+        .admin-section-box { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; }
+        .admin-section-box h3 { margin-bottom: 1rem; color: var(--primary-glow); font-size: 1.1rem; }
 
-        nav a:hover, nav a.active {
-            color: var(--primary-glow);
+        .admin-form input, .admin-form textarea {
+            width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19;
+            border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
         }
-
-        .nav-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 5% 2rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .section-title i {
-            color: var(--primary-glow);
+        .admin-form button {
+            background: var(--primary-glow); color: #000; border: none; padding: 10px 20px;
+            font-weight: 700; border-radius: 8px; cursor: pointer; transition: 0.3s;
         }
 
         /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
+        .product-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; position: relative; }
+        .product-card:hover { transform: translateY(-5px); border-color: rgba(0, 242, 254, 0.3); }
 
-        .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+        .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; }
+        .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+        .product-details { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
+        .product-price { font-size: 1.2rem; font-weight: 800; color: var(--primary-glow); margin-bottom: 10px; }
+        .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; max-height: 150px; overflow-y: auto; }
 
-        .product-img-wrapper {
-            width: 100%;
-            height: 200px;
-            background: #111622;
-            overflow: hidden;
-            position: relative;
-        }
+        .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .admin-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .btn-edit { background: #f59e0b; color: #000; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
+        .btn-delete { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
 
-        .product-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.05);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 0, 80, 0.85);
-            backdrop-filter: blur(4px);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 12px;
-            text-transform: uppercase;
-        }
-
-        .product-details {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary-glow);
-            margin-bottom: 12px;
-        }
-
-        .product-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            white-space: pre-line;
-            flex-grow: 1;
-            max-height: 180px;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-
-        .product-desc::-webkit-scrollbar {
-            width: 4px;
-        }
-        .product-desc::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-
-        .buy-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
-
-        .buy-btn:hover {
-            opacity: 0.9;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        }
+        /* Feedback Section */
+        .feedback-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-top: 3rem; }
 
         /* Footer */
-        footer {
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem 5%;
-            margin-top: 4rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        footer p {
-            margin-bottom: 8px;
-        }
+        footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 2.5rem 5%; margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+        .creator-badge { display: inline-block; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--primary-glow); padding: 6px 16px; border-radius: 20px; color: var(--primary-glow); font-weight: 700; margin-top: 10px; }
 
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                gap: 12px;
-                font-size: 0.85rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
+            .top-social-bar { flex-direction: column; gap: 10px; text-align: center; }
+            header { flex-direction: column; text-align: center; }
+            .search-box { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Top Bar with Social Links -->
+    <div class="top-social-bar">
+        <span><i class="fa-solid fa-headset"></i> 24/7 Official Customer Support</span>
+        <div class="social-links">
+            <a href="https://www.tiktok.com" target="_blank" class="social-btn tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            <a href="https://www.instagram.com" target="_blank" class="social-btn insta"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header>
-        <a href="#" class="logo">
-            <i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#products">Our Products</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
-        <a href="https://wa.me/923028372072" target="_blank" class="nav-btn">
-            <i class="fa-brands fa-whatsapp"></i> Order On WhatsApp
-        </a>
+        <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
+        
+        <!-- Search Box -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search accounts, followers, ads..." onkeyup="handleSearch()">
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn-admin" onclick="toggleAdminPanel()"><i class="fa-solid fa-lock"></i> Admin & Analytics</button>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>TikTok Shop Pakistan - Viral Products & Accounts</h1>
-        <p>Verified TikTok UK & USA Accounts, Monetized Pages, Followers, and High-ROI Ad Services.</p>
+        <h1>TikTok Shop Pakistan - Buy Viral TikTok Products & Accounts</h1>
+        <p>Verified TikTok UK/USA Accounts, Monetized Pages, Followers & Ad Services.</p>
     </section>
 
-    <!-- Products Section -->
-    <main class="container" id="products">
-        <h2 class="section-title"><i class="fa-solid fa-store"></i> Available Products & Services</h2>
-        
-        <div class="products-grid">
+    <!-- Main Container -->
+    <main class="container">
 
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-badge">Top Selling</div>
-                <div class="product-img-wrapper">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf2-yw41KP_HS-YLnXTWq80LiksTykhPLb1TJsKczaiiilW6XM8T8lbtSJTKKjcQAk-eP3cDgYRCKo8CXe278LrOqNoU2LR1PXiVs5_mv412KZLtERZu3wbBpiLzqL4okoUgsgr1fTLVjfd1uSMEdwwg2dNoS3FTEMdO1pLeBh6KqNM7jRW08VciGkrUpH/w1200-h630-p-k-no-nu/tiktok-uk.webp" alt="TIKTOK UK ACCOUNTS" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK UK ACCOUNTS</h3>
-                    <div class="product-price">Rs. 3,500</div>
-                    <div class="product-desc">🇬🇧 FOR SALE: TikTok UK Account (Monetization & TikTok Shop Eligible!) 🚀
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Country: United Kingdom 🇬🇧 (UK Based)
-✅ Features Enabled: TikTok Shop / Beta Program / Creativity Program Ready!
-✅ High Reach & Real Organic Engagement 📈
-✅ Clean History – No Strikes / No Warnings 💯
-✅ Original Email / Full Ownership Transfer Included 🔒
-
-🎯 BEST FOR: E-Commerce, TikTok Shop Sellers, Affiliate Marketers & Creators.
-💬 Contact: WhatsApp 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TIKTOK%20UK%20ACCOUNTS%20(Rs.%203500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
+        <!-- ADMIN & CUSTOMER ANALYTICS DASHBOARD (SECURED WITH PASSWORD) -->
+        <section id="adminPanel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Analytics & Product Manager</h2>
+                <button onclick="logoutAdmin()" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-weight: 700;">Logout Admin</button>
             </div>
 
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-badge">Popular</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.I3AQlupROruLaOB7sbvU9gHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TIKTOK USA ACCOUNTS" loading="lazy">
+            <!-- Analytics Cards -->
+            <div class="analytics-grid">
+                <div class="stat-card">
+                    <h4>TOTAL PAGEVIEWS</h4>
+                    <div class="value" id="valPageviews">0</div>
                 </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK USA ACCOUNTS</h3>
-                    <div class="product-price">Rs. 2,000</div>
-                    <div class="product-desc">Authentic USA TikTok Account for dropshipping, affiliate marketing, or content creation!
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Country: United States 🇺🇸 (USA Region)
-✅ Features Enabled: TikTok Shop for Creator / Creativity Program Beta Ready!
-✅ High Reach & Organic Audience 📈
-✅ Clean History – No Strikes / No Shadowban 💯
-✅ Original Primary Email / Full Transfer Guarantee 🔒
-
-💬 Contact for Details: WhatsApp 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TIKTOK%20USA%20ACCOUNTS%20(Rs.%202000)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
+                <div class="stat-card">
+                    <h4>UNIQUE VISITORS</h4>
+                    <div class="value" id="valVisitors">0</div>
                 </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-badge">Live Ready</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.1ngOWqIJpXag6IGDXG_72AHaDt?r=0&w=2000&h=1000&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TIKTOK LIVE" loading="lazy">
+                <div class="stat-card">
+                    <h4>WHATSAPP ORDERS</h4>
+                    <div class="value" id="valClicks">0</div>
                 </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK LIVE</h3>
-                    <div class="product-price">Rs. 1,000</div>
-                    <div class="product-desc">FOR SALE: TikTok UK Account with LIVE Streaming Enabled! 🔴⚡
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Country Region: United Kingdom 🇬🇧
-✅ LIVE Option Enabled 🔴 (Direct Studio & Mobile Live Stream Ready!)
-✅ TikTok Shop / Creator Program / Affiliate Ready 🛍️
-✅ Clean Account History – No Warnings / No Strikes 💯
-✅ Primary Email + Full Ownership Transfer Guarantee 🔒
-
-💬 Contact: WhatsApp 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TIKTOK%20LIVE%20(Rs.%201000)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="product-card">
-                <div class="product-badge">Monetized</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse2.mm.bing.net/th/id/OIP.uttJO7ycF1lrbS6r9DrF5wHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TIKTOK USA ACCOUNT MONITIZATION" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK USA / UK MONETIZED ACCOUNT</h3>
-                    <div class="product-price">Rs. 7,500</div>
-                    <div class="product-desc">🔥 TikTok UK/USA Monetized Account (GBP/USD Earnings Enabled) 🇬🇧💰
-
-✨ ACCOUNT DETAILS & FEATURES:
-✅ Country Region: United Kingdom 🇬🇧 / USA 🇺🇸
-✅ Followers: 10.5K+ (Real Organic Reach)
-✅ Monetization: Creativity Program Beta Enabled 🟢
-✅ RPM Rate: High £0.40 - £0.85 RPM 📈
-✅ LIVE Streaming: Fully Enabled (Studio + Mobile) 🔴
-✅ Primary Email + Complete Ownership Transfer 🔒
-
-💬 Serious buyers WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TIKTOK%20MONETIZED%20ACCOUNT%20(Rs.%207500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="product-card">
-                <div class="product-badge">Organic</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse1.mm.bing.net/th/id/OIP.nFoq9-y5UJytIGnF-cF6YQAAAA?r=0&w=199&h=199&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TIKTOK FOLLOWERS 10K" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK FOLLOWERS 10K</h3>
-                    <div class="product-price">Rs. 7,000</div>
-                    <div class="product-desc">10K Followers TikTok Account (Monetization & Shop Ready!) 🚀
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Followers: 10,000+ Real & Active Organic Followers 👥
-✅ Monetization Eligible: Beta Program / Creativity Program Ready! 💰
-✅ Live Feature & TikTok Shop Enabled 🔴🛒
-✅ Clean Record: No Warnings, No Copyright Strikes 💯
-✅ Full Transfer: Primary Email + Phone Number Change Guarantee 🔒
-
-💬 WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TIKTOK%20FOLLOWERS%2010K%20(Rs.%207000)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="product-card">
-                <div class="product-badge">Service</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.-3wvfRM5Rh8N9DTxKZxyvQHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="TIKTOK ADD RUN" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">TIKTOK ADS MANAGEMENT</h3>
-                    <div class="product-price">Rs. 6,000</div>
-                    <div class="product-desc">🚀 SCALE YOUR BUSINESS WITH HIGH-ROI TIKTOK ADS SERVICES! 🚀
-
-✨ WHAT WE OFFER:
-✅ Agency TikTok Ads Accounts (No Spending Limits) 💳
-✅ TikTok Ads Setup & Campaign Management 🎯
-✅ Highly Targeted Audience Setup (UK / USA / Pakistan / GCC) 🌐
-✅ Low CPC & High Conversion Campaigns 📈
-✅ TikTok Pixel Integration & Custom Tracking Setup 🔗
-
-💬 Contact for Consultation: WhatsApp 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20inquire%20about%20TIKTOK%20ADS%20MANAGEMENT%20(Rs.%206000)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="product-card">
-                <div class="product-badge">Earning Ready</div>
-                <div class="product-img-wrapper">
-                    <img src="https://socialmediawidget.home.blog/wp-content/uploads/2025/09/give-me-a-feature-image-for-the-blog_-facebook-monetization.jpg?w=1024" alt="Facebook Account Monitization" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Facebook Page Monetization</h3>
-                    <div class="product-price">Rs. 5,500</div>
-                    <div class="product-desc">🔥 Fully Monetized Facebook Page / Profile (Earning Ready!) 🚀
-
-✨ HIGHLIGHTS:
-✅ Monetization Enabled: In-Stream Ads / Reels Play Bonus / Stars 💰
-✅ Page Quality: Green Clean (No Copyright / No Policy Violations) 🟢
-✅ Reach & Engagement: Organic & Real Active Audience 📈
-✅ Bank Setup: Easy Bank / Payout Setup & Country Change Support 🏦
-✅ Primary Admin Access / Complete Ownership Handover 🔒
-
-💬 WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20Facebook%20Page%20Monetization%20(Rs.%205500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="product-card">
-                <div class="product-badge">Service</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse2.mm.bing.net/th/id/OIP.bkheNVKeiPkH0m4LEDNTIQHaFH?r=0&pid=ImgDet&w=178&h=123&c=7&dpr=1.5&o=7&rm=3" alt="Facebook Ads Management" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Facebook Ads Management</h3>
-                    <div class="product-price">Rs. 4,500</div>
-                    <div class="product-desc">🚀 SCALE YOUR BUSINESS WITH HIGH-ROI FACEBOOK & INSTAGRAM ADS! 🚀
-
-✨ OUR SERVICES INCLUDE:
-✅ Complete Facebook Pixel & Conversions API (CAPI) Setup 🔗
-✅ Advanced Audience Research & Laser-Targeted Campaigns 🎯
-✅ A/B Testing & ROAS Optimization 📈
-✅ High-Converting Ad Copywriting & Creative Guidance ✍️
-✅ Weekly Analytics Reporting 📊
-
-💬 Contact for Free Consultation: WhatsApp 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20inquire%20about%20Facebook%20Ads%20Management%20(Rs.%204500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Inquire via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 9 -->
-            <div class="product-card">
-                <div class="product-badge">Organic</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.-CZUTAJx9XAR7LU11VPIIAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Facebook 10K Followers" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Facebook 10K Followers Page</h3>
-                    <div class="product-price">Rs. 3,500</div>
-                    <div class="product-desc">🚀 FOR SALE: 10K Followers Facebook Page (Clean Quality & Ready to Grow!) 🟢
-
-✨ HIGHLIGHTS:
-✅ Followers: 10,000+ Real & Active Organic Followers 👥
-✅ Page Quality: 100% Green (No Violations / No Copyright Strikes) 🟢
-✅ Monetization Eligible: Criteria Warmed-Up & Ready 💰
-✅ Name Change Option Available ✏️
-✅ Complete & Safe Ownership Handover 🔒
-
-💬 WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20Facebook%2010K%20Followers%20Page%20(Rs.%203500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 10 -->
-            <div class="product-card">
-                <div class="product-badge">Monetized</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.J_4GZ2DEf_8aRGbCiXfsGAHaGw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Instagram Account Monetization" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Instagram Account Monetization</h3>
-                    <div class="product-price">Rs. 6,500</div>
-                    <div class="product-desc">🚀 Fully Warmed-up Instagram Account (Monetization & Brand Deals Ready!) 💰✨
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Monetization / Subscriptions / Bonuses Enabled 💰
-✅ High Organic Reach & Viral Reels Impression Potential 📈
-✅ Account Quality: 100% Green 🟢
-✅ Professional Dashboard Activated 📊
-✅ Original OG Email Included (100% Safe Transfer Guarantee) 🔒
-
-💬 WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20Instagram%20Account%20Monetization%20(Rs.%206500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 11 -->
-            <div class="product-card">
-                <div class="product-badge">Organic</div>
-                <div class="product-img-wrapper">
-                    <img src="https://tse3.mm.bing.net/th/id/OIP.J_4GZ2DEf_8aRGbCiXfsGAHaGw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Instagram 10K Followers" loading="lazy">
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Instagram 10K Followers</h3>
-                    <div class="product-price">Rs. 6,500</div>
-                    <div class="product-desc">🚀 FOR SALE: 10K Followers Instagram Account (High Reach & Brand Ready!) ✨
-
-✨ ACCOUNT HIGHLIGHTS:
-✅ Followers: 10,000+ Real & Active Organic Followers 👥
-✅ Professional Dashboard Enabled with High Reels Reach 📈
-✅ Account Status: 100% Green 🟢
-✅ Brand Deals & Affiliate Link In Bio Ready 🔗
-✅ Complete Ownership: Original Primary (OG) Email Included 🔒
-
-💬 WhatsApp: 0302-8372072</div>
-                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20Instagram%2010K%20Followers%20Account%20(Rs.%206500)" target="_blank" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <p>&copy; 2026 TikTok Shop Pakistan. All Rights Reserved.</p>
-        <p>Contact us via WhatsApp: <strong>0302-8372072</strong> | Email: <strong>usmanbutt295@gmail.com</strong></p>
-    </footer>
-
-</body>
-</html>
+                <div class="stat-card">
