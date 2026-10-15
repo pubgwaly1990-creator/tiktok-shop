@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok Shop PK - Buy Viral TikTok Products & Accounts</title>
-    <meta name="description" content="Buy verified TikTok UK, USA, Monetized accounts, 10k Followers, Facebook Pages, Instagram Accounts & Ads Services in Pakistan. Developed for Muhammad Irshad Khan.">
+    <meta name="description" content="Buy verified TikTok UK, USA, Monetized accounts, 10k Followers, Facebook Pages, Instagram Accounts & Ads Services in Pakistan. Developed by Usman Amjad.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -175,7 +175,7 @@
                 <form class="admin-form" id="bankForm" onsubmit="saveBank(event)">
                     <input type="hidden" id="editBankId" value="">
                     <input type="text" id="bName" placeholder="Bank / Wallet Name (e.g. EasyPaisa / JazzCash / SadaPay)" required>
-                    <input type="text" id="bTitle" placeholder="Account Title (e.g. Muhammad Irshad Khan)" required>
+                    <input type="text" id="bTitle" placeholder="Account Title (e.g. Usman Amjad)" required>
                     <input type="text" id="bNumber" placeholder="Account Number (e.g. 0302-8372072)" required>
                     <button type="submit" id="saveBankBtn">Save Bank to Cloud</button>
                 </form>
@@ -205,10 +205,10 @@
 
     <footer>
         <p>&copy; 2026 TikTok Shop Pakistan. All Rights Reserved.</p>
-        <p>Founder & Owner: <strong>Muhammad Irshad Khan</strong> | WhatsApp: <strong>0302-8372072</strong></p>
-        <p>Email: <strong>irshad@sunnyshoes.pk</strong> | Address: Main Boulevard, Gulberg III, Lahore, Pakistan</p>
+        <p>Founder & Owner: <strong>Usman Amjad (Usman Butt)</strong> | WhatsApp: <strong>0302-8372072</strong></p>
+        <p>Email: <strong>usmanbutt295@gmail.com</strong> | Address: Main Boulevard, Gulberg III, Lahore, Pakistan</p>
         <div style="margin-top: 15px;">
-            <span class="creator-badge"><i class="fa-solid fa-shield-halved"></i> Verified Business Portal</span>
+            <span class="creator-badge"><i class="fa-solid fa-code"></i> Developed & Managed by Usman Butt</span>
         </div>
     </footer>
 
@@ -259,7 +259,22 @@
             grid.innerHTML = '';
 
             if (banksData.length === 0) {
-                grid.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem;">No bank accounts added yet. Add from Admin Panel.</p>';
+                grid.innerHTML = `
+                    <div class="bank-card">
+                        <div>
+                            <h4><i class="fa-solid fa-mobile-screen-button"></i> EasyPaisa</h4>
+                            <p><strong>Title:</strong> Usman Amjad</p>
+                            <p><strong>Account #:</strong> 0302-8372072</p>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div>
+                            <h4><i class="fa-solid fa-mobile-screen-button"></i> JazzCash</h4>
+                            <p><strong>Title:</strong> Usman Amjad</p>
+                            <p><strong>Account #:</strong> 0302-8372072</p>
+                        </div>
+                    </div>
+                `;
                 return;
             }
 
