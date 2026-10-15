@@ -16,9 +16,7 @@
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
             --whatsapp-color: #25D366;
-            --instagram-color: #E1306C;
             --tiktok-color: #00f2fe;
-            --android-color: #3DDC84;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -70,8 +68,12 @@
         .bank-card {
             background: #0b0f19;
             border: 1px solid var(--border-color);
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 10px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .bank-card h4 { color: var(--primary-glow); font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
         .bank-card p { font-size: 0.9rem; color: var(--text-main); margin-bottom: 4px; }
@@ -144,30 +146,8 @@
             </h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Direct payment karne ke liye niche diye gaye accounts par payment send kar ke WhatsApp par screenshot share karein.</p>
             
-            <div class="bank-grid">
-                <!-- EasyPaisa -->
-                <div class="bank-card">
-                    <h4><i class="fa-solid fa-mobile-screen-button"></i> EasyPaisa Account</h4>
-                    <p><strong>Title:</strong> Muhammad Irshad Khan</p>
-                    <p><strong>Account #:</strong> 0302-8372072</p>
-                    <span>Instant Verification</span>
-                </div>
-
-                <!-- JazzCash -->
-                <div class="bank-card">
-                    <h4><i class="fa-solid fa-mobile-screen-button"></i> JazzCash Account</h4>
-                    <p><strong>Title:</strong> Muhammad Irshad Khan</p>
-                    <p><strong>Account #:</strong> 0302-8372072</p>
-                    <span>Instant Verification</span>
-                </div>
-
-                <!-- Bank Transfer / SadaPay / Nayapay -->
-                <div class="bank-card">
-                    <h4><i class="fa-solid fa-building-columns"></i> Bank / SadaPay / Nayapay</h4>
-                    <p><strong>Title:</strong> Muhammad Irshad Khan</p>
-                    <p><strong>Account #:</strong> 0302-8372072</p>
-                    <span>All Pakistani Banks Supported</span>
-                </div>
+            <div class="bank-grid" id="bankDisplayGrid">
+                <div class="loading-text" style="padding:1rem;">Loading Bank Accounts...</div>
             </div>
         </div>
 
@@ -189,6 +169,19 @@
                 </div>
             </div>
 
+            <!-- Manage Bank Accounts Box -->
+            <div class="admin-section-box">
+                <h3 id="bankFormTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Bank or Wallet Account</h3>
+                <form class="admin-form" id="bankForm" onsubmit="saveBank(event)">
+                    <input type="hidden" id="editBankId" value="">
+                    <input type="text" id="bName" placeholder="Bank / Wallet Name (e.g. EasyPaisa / JazzCash / SadaPay)" required>
+                    <input type="text" id="bTitle" placeholder="Account Title (e.g. Muhammad Irshad Khan)" required>
+                    <input type="text" id="bNumber" placeholder="Account Number (e.g. 0302-8372072)" required>
+                    <button type="submit" id="saveBankBtn">Save Bank to Cloud</button>
+                </form>
+            </div>
+
+            <!-- Manage Products Box -->
             <div class="admin-section-box">
                 <h3 id="formTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Product (Live Sync)</h3>
                 <form class="admin-form" id="productForm" onsubmit="saveProduct(event)">
@@ -236,11 +229,14 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const productsCol = collection(db, "products");
+        const banksCol = collection(db, "banks");
 
         const ADMIN_PASS = "6459";
         let isAdmin = false;
         let productsData = [];
+        let banksData = [];
 
+        // Realtime Products Listener
         onSnapshot(productsCol, (snapshot) => {
             productsData = [];
             snapshot.forEach((docSnapshot) => {
@@ -248,6 +244,42 @@
             });
             displayProducts();
         });
+
+        // Realtime Banks Listener
+        onSnapshot(banksCol, (snapshot) => {
+            banksData = [];
+            snapshot.forEach((docSnapshot) => {
+                banksData.push({ id: docSnapshot.id, ...docSnapshot.data() });
+            });
+            displayBanks();
+        });
+
+        function displayBanks() {
+            const grid = document.getElementById('bankDisplayGrid');
+            grid.innerHTML = '';
+
+            if (banksData.length === 0) {
+                grid.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem;">No bank accounts added yet. Add from Admin Panel.</p>';
+                return;
+            }
+
+            banksData.forEach((b) => {
+                const card = document.createElement('div');
+                card.className = 'bank-card';
+                card.innerHTML = `
+                    <div>
+                        <h4><i class="fa-solid fa-building-columns"></i> ${b.name}</h4>
+                        <p><strong>Title:</strong> ${b.title}</p>
+                        <p><strong>Account #:</strong> ${b.number}</p>
+                    </div>
+                    <div class="admin-actions" style="display:${isAdmin ? 'flex' : 'none'}; margin-top: 10px;">
+                        <button class="btn-edit" onclick="editBank('${b.id}')">Edit</button>
+                        <button class="btn-delete" onclick="deleteBank('${b.id}')">Delete</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
         function displayProducts() {
             const grid = document.getElementById('productsDisplay');
@@ -288,6 +320,7 @@
                 isAdmin = true;
                 document.getElementById('adminPanel').style.display = 'block';
                 displayProducts();
+                displayBanks();
             } else if (input !== null) {
                 alert("Incorrect Password!");
             }
@@ -297,8 +330,55 @@
             isAdmin = false;
             document.getElementById('adminPanel').style.display = 'none';
             displayProducts();
+            displayBanks();
         };
 
+        // Save / Update Bank Account
+        window.saveBank = async function(e) {
+            e.preventDefault();
+            if (!isAdmin) return;
+
+            const id = document.getElementById('editBankId').value;
+            const name = document.getElementById('bName').value;
+            const title = document.getElementById('bTitle').value;
+            const number = document.getElementById('bNumber').value;
+
+            try {
+                if (id === "") {
+                    await addDoc(banksCol, { name, title, number });
+                } else {
+                    await updateDoc(doc(db, "banks", id), { name, title, number });
+                }
+                document.getElementById('bankForm').reset();
+                document.getElementById('editBankId').value = "";
+                alert("Bank account saved successfully!");
+            } catch (err) {
+                alert("Error: " + err.message);
+            }
+        };
+
+        window.editBank = function(id) {
+            const b = banksData.find(item => item.id === id);
+            if (b) {
+                document.getElementById('editBankId').value = b.id;
+                document.getElementById('bName').value = b.name;
+                document.getElementById('bTitle').value = b.title;
+                document.getElementById('bNumber').value = b.number;
+                window.scrollTo({ top: 300, behavior: 'smooth' });
+            }
+        };
+
+        window.deleteBank = async function(id) {
+            if (confirm("Kya aap yeh bank account delete karna chahte hain?")) {
+                try {
+                    await deleteDoc(doc(db, "banks", id));
+                } catch(err) {
+                    alert("Error: " + err.message);
+                }
+            }
+        };
+
+        // Save / Update Product
         window.saveProduct = async function(e) {
             e.preventDefault();
             if (!isAdmin) return;
@@ -338,7 +418,7 @@
                 document.getElementById('pPrice').value = p.price;
                 document.getElementById('pImg').value = p.img || '';
                 document.getElementById('pDesc').value = p.desc;
-                window.scrollTo({ top: 100, behavior: 'smooth' });
+                window.scrollTo({ top: 500, behavior: 'smooth' });
             }
         };
 
