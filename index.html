@@ -117,7 +117,94 @@
         .loading-text { text-align: center; width: 100%; color: var(--primary-glow); font-weight: bold; padding: 2rem; }
     </style>
 </head>
-<body>
+<!-- ======================================================== -->
+<!-- 1. PROMOTIONAL VIDEOS SECTION -->
+<!-- ======================================================== -->
+<div style="max-width: 1000px; margin: 40px auto; padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+  <h2 style="color: #fe2c55; font-size: 24px; margin-bottom: 8px;">🔥 TikTok Shop PK Promo & Live Proofs</h2>
+  <p style="color: #888; font-size: 14px; margin-bottom: 25px;">Buy Viral TikTok Products, Accounts & Monetization Services</p>
+  
+  <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+    
+    <!-- Video 1: Promo Video -->
+    <div style="flex: 1; min-width: 280px; max-width: 450px; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+      <video autoplay loop muted playsinline controls style="width: 100%; height: 260px; object-fit: cover; display: block;">
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div style="padding: 12px; background: #111; color: #fff; font-size: 14px; font-weight: bold;">
+        🎬 Viral TikTok Products & Shop Setup
+      </div>
+    </div>
+
+    <!-- Video 2: Proof Video -->
+    <div style="flex: 1; min-width: 280px; max-width: 450px; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+      <video autoplay loop muted playsinline controls style="width: 100%; height: 260px; object-fit: cover; display: block;">
+        <source src="video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div style="padding: 12px; background: #111; color: #fff; font-size: 14px; font-weight: bold;">
+        📈 UK & USA Monetized Accounts Earnings Proof
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- 2. LIVE ORDER SALES POPUP (PAKISTAN + USA MIX) -->
+<!-- ======================================================== -->
+<div id="sales-popup" style="position: fixed; bottom: 20px; left: 20px; background: #ffffff; color: #333333; padding: 12px 18px; border-radius: 10px; box-shadow: 0px 4px 20px rgba(0,0,0,0.25); font-family: Arial, sans-serif; font-size: 13px; z-index: 9999; display: flex; align-items: center; gap: 12px; border-left: 5px solid #fe2c55; transition: transform 0.5s ease, opacity 0.5s ease; transform: translateY(100px); opacity: 0; max-width: 340px;">
+  <span style="font-size: 24px;">🛍️</span>
+  <div>
+    <strong id="popup-user" style="display: block; color: #111; font-size: 13px;">John from USA</strong>
+    <span id="popup-product" style="color: #fe2c55; font-weight: bold; font-size: 12px; display: block; margin: 2px 0;">UK TikTok Shop Account</span>
+    <span style="color: #666; font-size: 11px;">Just placed an order • <span style="color: #25d366; font-weight: bold;">Verified</span></span>
+  </div>
+</div>
+
+<script>
+  // Customer Names + Mixed Products (Pakistan & Global)
+  const popupOrders = [
+    { name: "Muhammad from Lahore, Pakistan", product: "UK TikTok Shop Account" },
+    { name: "John from New York, USA", product: "Facebook Monetization Page" },
+    { name: "Fatima from Karachi, Pakistan", product: "USA TikTok Monetized Account" },
+    { name: "Sarah from London, UK", product: "TikTok Creator Rewards Account" },
+    { name: "Ali from Islamabad, Pakistan", product: "Facebook Reels Bonus Page" },
+    { name: "Michael from California, USA", product: "UK Business Account" },
+    { name: "Usman from Faisalabad, Pakistan", product: "YouTube Monetized Channel" },
+    { name: "Emma from Florida, USA", product: "USA TikTok Shop Seller Account" },
+    { name: "Zainab from Rawalpindi, Pakistan", product: "UK TikTok Account (Beta Program)" },
+    { name: "David from Texas, USA", product: "Facebook Monetization Setup" }
+  ];
+
+  let popupIndex = 0;
+
+  function showSalesPopup() {
+    const popup = document.getElementById("sales-popup");
+    const popupUser = document.getElementById("popup-user");
+    const popupProduct = document.getElementById("popup-product");
+
+    if (!popup || !popupUser || !popupProduct) return;
+
+    popupUser.innerText = popupOrders[popupIndex].name;
+    popupProduct.innerText = "⚡ " + popupOrders[popupIndex].product;
+
+    popup.style.transform = "translateY(0)";
+    popup.style.opacity = "1";
+
+    setTimeout(() => {
+      popup.style.transform = "translateY(100px)";
+      popup.style.opacity = "0";
+    }, 4000);
+
+    popupIndex = (popupIndex + 1) % popupOrders.length;
+  }
+
+  setInterval(showSalesPopup, 7000);
+  setTimeout(showSalesPopup, 2000);
+</script>
+    </body>
 
     <div class="top-social-bar">
         <span><i class="fa-solid fa-headset"></i> Official Customer Support: <strong>0302-8372072</strong></span>
