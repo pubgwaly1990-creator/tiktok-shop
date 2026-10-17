@@ -353,7 +353,7 @@
                 <form class="admin-form" id="productForm" onsubmit="saveProduct(event)">
                     <input type="hidden" id="editDocId" value="">
                     <input type="text" id="pName" placeholder="Product Name" required>
-                    <input type="text" id="pPrice" placeholder="Price (e.g. Rs. 3500)" required>
+                    <input type="text" id="pPrice" placeholder="Original Price (e.g. 3500 or Rs. 3500)" required>
                     <input type="url" id="pImg" placeholder="Image Link URL">
                     <textarea id="pDesc" rows="3" placeholder="Description & Details..." required></textarea>
                     <button type="submit" id="saveBtn">Save Product to Cloud</button>
@@ -446,7 +446,7 @@
         // LIVE ORDERS POPUP SIMULATOR LOGIC
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account (50% OFF)" },
-            { name: "Hamza from Karachi", item: "10k TikTok Followers (50% OFF)" },
+            { name: "Hamza from Karachi", item: "Facebook 10k Followers (50% OFF)" },
             { name: "Bilal from Islamabad", item: "TikTok USA Account (50% OFF)" },
             { name: "Zubair from Faisalabad", item: "Monetized Account Flash Deal" },
             { name: "Saad from Rawalpindi", item: "Monetized TikTok Account" },
@@ -547,6 +547,19 @@
             });
         }
 
+        // Price Formatter Helper for 50% OFF Calculation
+        function formatPriceWithDiscount(rawPrice) {
+            let numericStr = String(rawPrice).replace(/[^0-9]/g, '');
+            let num = parseInt(numericStr, 10);
+
+            if (isNaN(num) || num <= 0) {
+                return `<span style="color: var(--primary-glow); font-weight: 800;">${rawPrice}</span>`;
+            }
+
+            let discounted = Math.round(num / 2);
+            return `<span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. ${num.toLocaleString()}</span> Rs. ${discounted.toLocaleString()}`;
+        }
+
         function displayProducts() {
             const grid = document.getElementById('productsDisplay');
             const totalCount = productsData.length > 0 ? productsData.length + 2 : 2;
@@ -585,13 +598,14 @@
             `;
 
             productsData.forEach((p) => {
+                const formattedPrice = formatPriceWithDiscount(p.price);
                 htmlContent += `
-                    <div class="product-card">
+                    <div class="product-card" style="border: 1px solid var(--border-color);">
                         <div class="product-img-wrapper"><img src="${p.img || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500'}" alt="${p.name}"></div>
                         <div class="product-details">
                             <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF OFFER</div>
                             <h3 class="product-title">${p.name}</h3>
-                            <div class="product-price">${p.price}</div>
+                            <div class="product-price">${formattedPrice}</div>
                             <div class="product-desc">${p.desc}</div>
                             <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(p.name)}%20at%2050%25%20OFF" target="_blank" class="buy-btn">
                                 <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp (50% OFF)
