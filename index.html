@@ -554,7 +554,7 @@
         function displayProducts() {
             const grid = document.getElementById('productsDisplay');
             
-            // Fixed 6 Discounted Products Array
+            // Fixed 6 Discounted Products Array with exact correct image URLs
             const staticDiscountedProducts = [
                 {
                     name: "TikTok UK Monetized Account",
@@ -594,7 +594,6 @@
                 }
             ];
 
-            // Separate Firebase products into discounted (if any match) and normal products
             let firebaseDiscounted = [];
             let firebaseNormal = [];
 
@@ -606,7 +605,6 @@
                 }
             });
 
-            // Combine all discounted products to show at the TOP
             let allDiscounted = [...staticDiscountedProducts, ...firebaseDiscounted];
             let allNormal = [...firebaseNormal];
 
@@ -617,9 +615,10 @@
             // 1. Render Discounted Products First (TOP)
             allDiscounted.forEach((p) => {
                 const formattedPrice = formatProductPrice(p.name, p.price);
+                const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
                 htmlContent += `
                     <div class="product-card" style="border: 2px solid #ff0050;">
-                        <div class="product-img-wrapper"><img src="${p.img || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500'}" alt="${p.name}"></div>
+                        <div class="product-img-wrapper"><img src="${imgSrc}" alt="${p.name}"></div>
                         <div class="product-details">
                             <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF DEAL</div>
                             <h3 class="product-title">${p.name}</h3>
@@ -641,9 +640,10 @@
             // 2. Render Normal Price Products Next (BOTTOM)
             allNormal.forEach((p) => {
                 const formattedPrice = formatProductPrice(p.name, p.price);
+                const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
                 htmlContent += `
                     <div class="product-card" style="border: 1px solid var(--border-color);">
-                        <div class="product-img-wrapper"><img src="${p.img || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500'}" alt="${p.name}"></div>
+                        <div class="product-img-wrapper"><img src="${imgSrc}" alt="${p.name}"></div>
                         <div class="product-details">
                             <h3 class="product-title">${p.name}</h3>
                             <div class="product-price">${formattedPrice}</div>
