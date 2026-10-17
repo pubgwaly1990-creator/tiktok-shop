@@ -52,7 +52,7 @@
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
-        /* 10-DAY FLASH SALE BANNER */
+        /* 10-DAY FLASH SALE BANNER - ALL PRODUCTS 50% OFF */
         .flash-sale-banner {
             background: linear-gradient(135deg, #ff0050, #7928ca);
             border-radius: 20px;
@@ -274,16 +274,16 @@
 
     <main class="container">
 
-        <!-- 10-DAY FLASH SALE BANNER -->
+        <!-- 10-DAY MEGA FLASH SALE BANNER - FLAT 50% OFF -->
         <div class="flash-sale-banner">
-            <span class="flash-badge"><i class="fa-solid fa-bolt"></i> 10-Days Special Offer</span>
-            <h2>SPECIAL 50% DISCOUNT ON SELECTED PRODUCTS!</h2>
-            <p>Limited Time Offer on TikTok UK, USA Accounts, Live, Views & Shop Enable Services!</p>
+            <span class="flash-badge"><i class="fa-solid fa-bolt"></i> 10-Days Mega Offer</span>
+            <h2>FLAT 50% OFF ON ALL PRODUCTS & SERVICES!</h2>
+            <p>Limited Time Mega Discount Offer on All TikTok Accounts, Followers & Digital Assets!</p>
             <div class="price-tag-box">
-                <span class="new-p">UP TO 50% OFF</span>
+                <span class="new-p">FLAT 50% DISCOUNT</span>
             </div>
-            <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20claim%20the%2050%25%20discount%20offer" target="_blank" class="buy-btn" style="max-width: 280px; margin: 0 auto; background: #fff; color: #ff0050; font-size: 1.1rem;">
-                <i class="fa-brands fa-whatsapp"></i> Claim Offer on WhatsApp
+            <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20avail%2050%25%20OFF%20Discount%20Offer" target="_blank" class="buy-btn" style="max-width: 280px; margin: 0 auto; background: #fff; color: #ff0050; font-size: 1.1rem;">
+                <i class="fa-brands fa-whatsapp"></i> Claim 50% OFF on WhatsApp
             </a>
             
             <div class="timer-container">
@@ -362,9 +362,38 @@
         </section>
 
         <!-- Product Display Area -->
-        <h2 class="section-title"><i class="fa-solid fa-fire"></i> Available Products & Special Offers</h2>
+        <h2 class="section-title"><i class="fa-solid fa-fire"></i> Available Products (50% OFF Flash Offer)</h2>
         <div class="products-grid" id="productsDisplay">
-            <!-- Dynamically Sorted Rendered via JS -->
+            <!-- DEFAULT DISCOUNTED PRODUCTS -->
+            <div class="product-card" style="border: 2px solid #ff0050;">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500" alt="TikTok UK Account">
+                </div>
+                <div class="product-details">
+                    <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF FLASH DEAL</div>
+                    <h3 class="product-title">TikTok UK Monetized Account</h3>
+                    <div class="product-price"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. 3,500</span> Rs. 1,750</div>
+                    <div class="product-desc">Fresh & Verified TikTok UK Monetized Account ready for Creativity Program Beta.</div>
+                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TikTok%20UK%20Account%20at%2050%25%20OFF%20(Rs.%201750)" target="_blank" class="buy-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Buy Deal via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card" style="border: 2px solid #ff0050;">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500" alt="TikTok USA Account">
+                </div>
+                <div class="product-details">
+                    <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF FLASH DEAL</div>
+                    <h3 class="product-title">TikTok USA Agency Account</h3>
+                    <div class="product-price"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. 4,000</span> Rs. 2,000</div>
+                    <div class="product-desc">Full Monetized USA Creator Rewards Account with complete setup.</div>
+                    <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TikTok%20USA%20Account%20at%2050%25%20OFF%20(Rs.%202000)" target="_blank" class="buy-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Buy Deal via WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -414,25 +443,15 @@
         let productsData = [];
         let banksData = [];
 
-        // Specific items that should have 50% discount applied automatically
-        const discountItemsList = [
-            "tiktok uk monetized account",
-            "tiktok usa agency account",
-            "tiktok live",
-            "tiktok shope enable",
-            "tiktok uk account video views issue",
-            "tik tok views"
-        ];
-
         // LIVE ORDERS POPUP SIMULATOR LOGIC
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account (50% OFF)" },
-            { name: "Hamza from Karachi", item: "TikTok USA Account (50% OFF)" },
-            { name: "Bilal from Islamabad", item: "TIKTOK LIVE (50% OFF)" },
-            { name: "Zubair from Faisalabad", item: "TikTok Shope Enable (50% OFF)" },
-            { name: "Saad from Rawalpindi", item: "GTA Vice City4 For Android" },
-            { name: "Omer from Multan", item: "TikTok Account Unfreeze" },
-            { name: "Farhan from Peshawar", item: "TIKTOK USA ACCOUNTS BUS" }
+            { name: "Hamza from Karachi", item: "10k TikTok Followers (50% OFF)" },
+            { name: "Bilal from Islamabad", item: "TikTok USA Account (50% OFF)" },
+            { name: "Zubair from Faisalabad", item: "Monetized Account Flash Deal" },
+            { name: "Saad from Rawalpindi", item: "Monetized TikTok Account" },
+            { name: "Omer from Multan", item: "100k TikTok Views Service" },
+            { name: "Farhan from Peshawar", item: "TikTok Ads Account (50% OFF)" }
         ];
 
         function showOrderToast() {
@@ -528,128 +547,54 @@
             });
         }
 
-        // Helper to check discount status
-        function isProductDiscounted(productName) {
-            let lowerName = productName.trim().toLowerCase();
-            return discountItemsList.some(item => lowerName.includes(item));
-        }
-
-        function formatProductPrice(productName, rawPrice) {
-            let isDisc = isProductDiscounted(productName);
-            let numericStr = String(rawPrice).replace(/[^0-9]/g, '');
-            let num = parseInt(numericStr, 10);
-
-            if (isNaN(num) || num <= 0) {
-                return `<span style="color: var(--primary-glow); font-weight: 800;">${rawPrice}</span>`;
-            }
-
-            if (isDisc) {
-                let discounted = Math.round(num / 2);
-                return `<span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. ${num.toLocaleString()}</span> Rs. ${discounted.toLocaleString()}`;
-            } else {
-                return `<span style="color: var(--primary-glow); font-weight: 800;">Rs. ${num.toLocaleString()}</span>`;
-            }
-        }
-
         function displayProducts() {
             const grid = document.getElementById('productsDisplay');
-            
-            // Fixed 6 Discounted Products Array with exact correct image URLs
-            const staticDiscountedProducts = [
-                {
-                    name: "TikTok UK Monetized Account",
-                    price: "Rs. 3,500",
-                    img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500",
-                    desc: "Fresh & Verified TikTok UK Monetized Account ready for Creativity Program Beta."
-                },
-                {
-                    name: "TikTok USA Agency Account",
-                    price: "Rs. 4,000",
-                    img: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500",
-                    desc: "Full Monetized USA Creator Rewards Account with complete setup."
-                },
-                {
-                    name: "TIKTOK LIVE",
-                    price: "Rs. 2,000",
-                    img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500",
-                    desc: "TikTok Live Streaming Enabled Accounts / Live Access Setup."
-                },
-                {
-                    name: "TikTok Shope Enable",
-                    price: "Rs. 3,000",
-                    img: "https://images.unsplash.com/photo-1556742049-0a67d553c2a5?w=500",
-                    desc: "Complete TikTok Shop Seller Center Registration & Enablement Service."
-                },
-                {
-                    name: "TikTok Uk Account Video Views Issue",
-                    price: "Rs. 1,500",
-                    img: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?w=500",
-                    desc: "Fix 0 Views / Low Views Problem on UK TikTok Accounts professionally."
-                },
-                {
-                    name: "Tik Tok Views",
-                    price: "Rs. 1,000",
-                    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500",
-                    desc: "High Quality Real TikTok Video Views Booster Package."
-                }
-            ];
+            const totalCount = productsData.length > 0 ? productsData.length + 2 : 2;
+            document.getElementById('valTotalProducts').innerText = totalCount;
 
-            let firebaseDiscounted = [];
-            let firebaseNormal = [];
-
-            productsData.forEach(p => {
-                if (isProductDiscounted(p.name)) {
-                    firebaseDiscounted.push(p);
-                } else {
-                    firebaseNormal.push(p);
-                }
-            });
-
-            let allDiscounted = [...staticDiscountedProducts, ...firebaseDiscounted];
-            let allNormal = [...firebaseNormal];
-
-            document.getElementById('valTotalProducts').innerText = allDiscounted.length + allNormal.length;
-
-            let htmlContent = '';
-
-            // 1. Render Discounted Products First (TOP)
-            allDiscounted.forEach((p) => {
-                const formattedPrice = formatProductPrice(p.name, p.price);
-                const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
-                htmlContent += `
-                    <div class="product-card" style="border: 2px solid #ff0050;">
-                        <div class="product-img-wrapper"><img src="${imgSrc}" alt="${p.name}"></div>
-                        <div class="product-details">
-                            <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF DEAL</div>
-                            <h3 class="product-title">${p.name}</h3>
-                            <div class="product-price">${formattedPrice}</div>
-                            <div class="product-desc">${p.desc}</div>
-                            <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20${encodeURIComponent(p.name)}%20at%2050%25%20OFF" target="_blank" class="buy-btn">
-                                <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
-                            </a>
-                            ${p.id ? `
-                            <div class="admin-actions" style="display:${isAdmin ? 'flex' : 'none'}">
-                                <button class="btn-edit" onclick="editProduct('${p.id}')">Edit</button>
-                                <button class="btn-delete" onclick="deleteProduct('${p.id}')">Delete</button>
-                            </div>` : ''}
-                        </div>
+            let htmlContent = `
+                <div class="product-card" style="border: 2px solid #ff0050;">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500" alt="TikTok UK Account">
                     </div>
-                `;
-            });
+                    <div class="product-details">
+                        <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF FLASH DEAL</div>
+                        <h3 class="product-title">TikTok UK Monetized Account</h3>
+                        <div class="product-price"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. 3,500</span> Rs. 1,750</div>
+                        <div class="product-desc">Fresh & Verified TikTok UK Monetized Account ready for Creativity Program Beta.</div>
+                        <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TikTok%20UK%20Account%20at%2050%25%20OFF%20(Rs.%201750)" target="_blank" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Buy Deal via WhatsApp
+                        </a>
+                    </div>
+                </div>
 
-            // 2. Render Normal Price Products Next (BOTTOM)
-            allNormal.forEach((p) => {
-                const formattedPrice = formatProductPrice(p.name, p.price);
-                const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
+                <div class="product-card" style="border: 2px solid #ff0050;">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500" alt="TikTok USA Account">
+                    </div>
+                    <div class="product-details">
+                        <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF FLASH DEAL</div>
+                        <h3 class="product-title">TikTok USA Agency Account</h3>
+                        <div class="product-price"><span style="text-decoration: line-through; color: var(--text-muted); font-size: 0.9rem; margin-right: 6px;">Rs. 4,000</span> Rs. 2,000</div>
+                        <div class="product-desc">Full Monetized USA Creator Rewards Account with complete setup.</div>
+                        <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20buy%20TikTok%20USA%20Account%20at%2050%25%20OFF%20(Rs.%202000)" target="_blank" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Buy Deal via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            productsData.forEach((p) => {
                 htmlContent += `
-                    <div class="product-card" style="border: 1px solid var(--border-color);">
-                        <div class="product-img-wrapper"><img src="${imgSrc}" alt="${p.name}"></div>
+                    <div class="product-card">
+                        <div class="product-img-wrapper"><img src="${p.img || 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500'}" alt="${p.name}"></div>
                         <div class="product-details">
+                            <div style="background:#ff0050; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; width:fit-content; margin-bottom:6px;">50% OFF OFFER</div>
                             <h3 class="product-title">${p.name}</h3>
-                            <div class="product-price">${formattedPrice}</div>
+                            <div class="product-price">${p.price}</div>
                             <div class="product-desc">${p.desc}</div>
-                            <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(p.name)}" target="_blank" class="buy-btn">
-                                <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
+                            <a href="https://wa.me/923028372072?text=Hi,%20I%20want%20to%20order%20${encodeURIComponent(p.name)}%20at%2050%25%20OFF" target="_blank" class="buy-btn">
+                                <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp (50% OFF)
                             </a>
                             <div class="admin-actions" style="display:${isAdmin ? 'flex' : 'none'}">
                                 <button class="btn-edit" onclick="editProduct('${p.id}')">Edit</button>
