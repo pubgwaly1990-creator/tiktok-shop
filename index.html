@@ -105,6 +105,56 @@
         .timer-num { font-size: 1.4rem; font-weight: 800; color: #fff; display: block; }
         .timer-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
 
+        /* LIVE ORDER NOTIFICATION POPUP STYLES */
+        .order-toast {
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            background: rgba(21, 28, 44, 0.95);
+            border: 1px solid var(--primary-glow);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            transform: translateY(120%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 320px;
+            backdrop-filter: blur(8px);
+        }
+        .order-toast.show {
+            transform: translateY(0);
+        }
+        .toast-icon {
+            background: rgba(37, 211, 102, 0.15);
+            color: var(--whatsapp-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .toast-info h5 {
+            color: #fff;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+        .toast-info p {
+            color: var(--primary-glow);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .toast-info span {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            display: block;
+        }
+
         /* Daraz Official Store Box */
         .daraz-banner-box {
             background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(21, 28, 44, 0.9));
@@ -335,6 +385,18 @@
 
     </main>
 
+    <!-- LIVE POPUP ORDER TOAST CONTAINER -->
+    <div id="orderToast" class="order-toast">
+        <div class="toast-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="toast-info">
+            <h5 id="toastUser">Ali from Lahore</h5>
+            <p id="toastProduct">Purchased TikTok UK Account</p>
+            <span id="toastTime">Just now • Verified Order</span>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 TikTok Shop Pakistan. All Rights Reserved.</p>
         <p>Founder & Owner: <strong>Usman Amjad (Usman Butt)</strong> | WhatsApp: <strong>0302-8372072</strong></p>
@@ -367,6 +429,39 @@
         let isAdmin = false;
         let productsData = [];
         let banksData = [];
+
+        // LIVE ORDERS POPUP SIMULATOR LOGIC
+        const sampleOrders = [
+            { name: "Usman from Lahore", item: "TikTok UK Monetized Account (Rs. 1000)" },
+            { name: "Hamza from Karachi", item: "10k TikTok Followers Package" },
+            { name: "Bilal from Islamabad", item: "TikTok USA Agency Account" },
+            { name: "Zubair from Faisalabad", item: "TikTok UK Account Flash Deal" },
+            { name: "Saad from Rawalpindi", item: "Monetized TikTok Account" },
+            { name: "Omer from Multan", item: "100k TikTok Views Service" },
+            { name: "Farhan from Peshawar", item: "TikTok Ads Manager Account" },
+            { name: "Ahsan from Gujranwala", item: "TikTok UK Monetized Account" }
+        ];
+
+        function showOrderToast() {
+            const toast = document.getElementById('orderToast');
+            const randomOrder = sampleOrders[Math.floor(Math.random() * sampleOrders.length)];
+            const randomMins = Math.floor(Math.random() * 8) + 1;
+
+            document.getElementById('toastUser').innerText = randomOrder.name;
+            document.getElementById('toastProduct').innerText = randomOrder.item;
+            document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Order`;
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4500);
+        }
+
+        // Trigger first popup after 3s, then loop every 9 seconds
+        setTimeout(() => {
+            showOrderToast();
+            setInterval(showOrderToast, 9000);
+        }, 3000);
 
         // Countdown Timer Logic
         let targetTime = new Date().getTime() + (10 * 24 * 60 * 60 * 1000);
