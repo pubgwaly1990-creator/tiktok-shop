@@ -52,6 +52,41 @@
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
+        /* PROMOTIONAL VIDEO CONTAINER */
+        .promo-video-container {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-glow);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+            text-align: center;
+        }
+        .promo-video-container h3 {
+            color: var(--primary-glow);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* 10-DAY FLASH SALE BANNER */
         .flash-sale-banner {
             background: linear-gradient(135deg, #ff0050, #7928ca);
@@ -273,6 +308,17 @@
     </section>
 
     <main class="container">
+
+        <!-- CONTINUOUS PROMOTIONAL VIDEO SECTION -->
+        <div class="promo-video-container">
+            <h3><i class="fa-solid fa-circle-play"></i> Official TikTok Shop PK Promotional Video</h3>
+            <div class="video-wrapper">
+                <video autoplay loop muted playsinline controls>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-41221-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
 
         <!-- 10-DAY FLASH SALE BANNER -->
         <div class="flash-sale-banner">
@@ -554,7 +600,6 @@
         function displayProducts() {
             const grid = document.getElementById('productsDisplay');
             
-            // Default 6 Discounted Products (Ab inka aik unique ID hoga taake yeh Firestore mein save/edit ho sakein)
             const defaultDiscounted = [
                 {
                     id: "default_1",
@@ -600,17 +645,14 @@
                 }
             ];
 
-            // Agar Firestore database mein items hain, toh default list ko un se merge/replace kar sakte hain ya combine kar sakte hain
             let allItems = [...defaultDiscounted, ...productsData];
             let uniqueMap = new Map();
             
-            // Name ke base par duplicate prevent karne ke liye filter
             allItems.forEach(item => {
                 let key = item.name.trim().toLowerCase();
                 if (!uniqueMap.has(key)) {
                     uniqueMap.set(key, item);
                 } else if (!item.id.startsWith("default_")) {
-                    // Agar database mein same name ka product hai toh usko priority dein
                     uniqueMap.set(key, item);
                 }
             });
@@ -632,7 +674,6 @@
 
             let htmlContent = '';
 
-            // 1. Render Discounted Products First (TOP) with Edit/Delete support
             discountedList.forEach((p) => {
                 const formattedPrice = formatProductPrice(p.name, p.price);
                 const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
@@ -660,7 +701,6 @@
                 `;
             });
 
-            // 2. Render Normal Price Products Next (BOTTOM)
             normalList.forEach((p) => {
                 const formattedPrice = formatProductPrice(p.name, p.price);
                 const imgSrc = p.img && p.img.trim() !== "" ? p.img : 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500';
@@ -706,7 +746,6 @@
             displayBanks();
         };
 
-        // Helper to load default product into admin form for editing
         window.editDefaultProduct = function(name, price, img, desc) {
             document.getElementById('editDocId').value = "";
             document.getElementById('pName').value = name;
@@ -714,10 +753,9 @@
             document.getElementById('pImg').value = img;
             document.getElementById('pDesc').value = desc;
             window.scrollTo({ top: 500, behavior: 'smooth' });
-            alert("Aap is product ko edit karke 'Save Product to Cloud' button dabayen, yeh cloud database mein save ho jayegi aur phir aap isay permanently edit ya delete kar sakenge!");
+            alert("Aap is product ko edit karke 'Save Product to Cloud' button dabayen, yeh cloud database mein save ho jayegi!");
         };
 
-        // Save / Update Bank Account
         window.saveBank = async function(e) {
             e.preventDefault();
             if (!isAdmin) return;
@@ -762,7 +800,6 @@
             }
         };
 
-        // Save / Update Product
         window.saveProduct = async function(e) {
             e.preventDefault();
             if (!isAdmin) return;
