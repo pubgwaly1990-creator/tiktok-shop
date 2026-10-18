@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Auto Dialer - TikTok Shop PK</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #00f2fe;
+            --accent: #25D366;
+            --danger: #ef4444;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Login Box Styles */
+        .login-box h2 { color: var(--primary); margin-bottom: 10px; font-size: 1.5rem; }
+        .login-box p { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+        .pin-input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .pin-input:focus { border-color: var(--primary); }
+
+        /* Dialer App Styles */
+        .hidden { display: none !important; }
+        .header h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 5px; }
+        .header p { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+
+        .file-upload {
+            border: 2px dashed var(--primary);
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(0, 242, 254, 0.05);
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .file-upload input { display: none; }
+        .file-upload label { cursor: pointer; color: var(--primary); font-weight: bold; }
+
+        .contact-box {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .contact-num { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-top: 5px; }
+        .contact-name { font-size: 1.1rem; color: #fff; }
+        .counter { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+
+        .btn-group { display: flex; gap: 10px; }
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .btn-dial { background: var(--accent); color: white; }
+        .btn-dial:hover { opacity: 0.9; }
+        .btn-next { background: #334155; color: white; }
+        .btn-next:hover { background: #475569; }
+        .btn-login { background: var(--primary); color: #0f172a; width: 100%; font-weight: bold; }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .err-msg { color: var(--danger); font-size: 0.85rem; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- SECTION 1: LOGIN / PIN LOCK -->
+    <div class="card" id="loginCard">
+        <div class="login-box">
+            <h2><i class="fa-solid fa-lock"></i> Admin Access Locked</h2>
+            <p>TikTok Shop PK - Enter Admin Security Pin</p>
+            <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="6" onkeyup="checkEnterKey(event)">
+            <button class="btn btn-login" onclick="validatePin()">Unlock Dialer</button>
+            <div class="err-msg" id="loginErr">Incorrect Security Pin! Try again.</div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: DIALER APP -->
+    <div class="card hidden" id="dialerCard">
+        <div class="header">
+            <h2><i class="fa-brands fa-whatsapp"></i> TikTok Shop PK Dialer</h2>
+            <p>Direct Excel Import (Auto +92 Format)</p>
+        </div>
+
+        <div class="file-upload">
+            <input type="file" id="excelFile" accept=".xlsx, .xls, .csv" onchange="handleFile(event)">
+            <label for="excelFile" id="fileLabel"><i class="fa-solid fa-file-excel"></i> Upload Excel Sheet (.xlsx)</label>
+        </div>
+
+        <div class="contact-box">
+            <div class="counter" id="progressText">No file loaded</div>
+            <div class="contact-name" id="displayName">---</div>
+            <div class="contact-num" id="displayNum">0000-0000000</div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-dial" id="dialBtn" onclick="dialCurrent()" disabled>
+                <i class="fa-solid fa-phone"></i> Call / Open Chat
+            </button>
+            <button class="btn btn-next" id="nextBtn" onclick="nextContact()" disabled>
+                Next <i class="fa-solid fa-forward"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PIN = "6459"; // Password
+
+        function validatePin() {
+            const input = document.getElementById('pinInput').value;
+            if (input === ADMIN_PIN) {
+                document.getElementById('loginCard').classList.add('hidden');
+                document.getElementById('dialerCard').classList.remove('hidden');
+            } else {
+                document.getElementById('loginErr').style.display = 'block';
+            }
+        }
+
+        function checkEnterKey(e) {
+            if (e.key === 'Enter') validatePin();
+        }
+
+        let contacts = [];
+        let currentIndex = 0;
+
+        function handleFile(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById('fileLabel').innerText = file.name;
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const data = new Uint8Array(evt.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+
+                contacts = [];
+                jsonData.forEach(row => {
+                    let keys = Object.keys(row);
+                    let phoneKey = keys.find(k => k.toLowerCase().includes('phone') || k.toLowerCase().includes('mobile') || k.toLowerCase().includes('number') || k.toLowerCase().includes('num'));
+                    let nameKey = keys.find(k => k.toLowerCase().includes('name'));
+
+                    if (phoneKey && row[phoneKey]) {
+                        contacts.push({
+                            name: nameKey ? row[nameKey] : "Customer",
+                            rawPhone: String(row[phoneKey])
+                        });
+                    }
+                });
+
+                if (contacts.length > 0) {
+                    currentIndex = 0;
+                    document.getElementById('dialBtn').disabled = false;
+                    document.getElementById('nextBtn').disabled = false;
+                    updateUI();
+                } else {
+                    alert("Excel file mein 'Phone' ya 'Mobile' ka column nahi mila!");
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function formatPhone(numStr) {
+            let clean = String(numStr).replace(/[^0-9]/g, '');
+            if (clean.startsWith("0")) {
+                clean = "92" + clean.substring(1);
+            } else if (clean.length === 10 && clean.startsWith("3")) {
+                clean = "92" + clean;
+            }
+            return clean;
+        }
+
+        function updateUI() {
+            if (currentIndex < contacts.length) {
+                let item = contacts[currentIndex];
+                document.getElementById('progressText').innerText = `Contact ${currentIndex + 1} of ${contacts.length}`;
+                document.getElementById('displayName').innerText = item.name;
+                document.getElementById('displayNum').innerText = item.rawPhone;
+            } else {
+                document.getElementById('progressText').innerText = "Finished!";
+                document.getElementById('displayName').innerText = "🎉 All Contacts Completed";
+                document.getElementById('displayNum').innerText = "";
+                document.getElementById('dialBtn').disabled = true;
+                document.getElementById('nextBtn').disabled = true;
+            }
+        }
+
+        function dialCurrent() {
+            if (currentIndex < contacts.length) {
+                let formattedNum = formatPhone(contacts[currentIndex].rawPhone);
+                window.open(`https://wa.me/${formattedNum}`, '_blank');
+            }
+        }
+
+        function nextContact() {
+            if (currentIndex < contacts.length - 1) {
+                currentIndex++;
+                updateUI();
+            } else {
+                alert("Aap list ke aakhri contact par hain!");
+            }
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('dialerCard').classList.contains('hidden')) return;
+            if (e.key === 'Enter') dialCurrent();
+            if (e.key === 'ArrowRight') nextContact();
+        });
+    </script>
+</body>
+</html>
