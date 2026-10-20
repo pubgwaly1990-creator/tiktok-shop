@@ -851,85 +851,48 @@
                 }
             }
         };
-
-<!-- Permanent Firebase Live Comment Section -->
+    </script>
+<!-- Live Message / Comment Section -->
 <div style="background: #1e293b; padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); max-width: 500px; margin: 20px auto; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <h3 style="color: #00f2fe; margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-comments"></i> TikTok Shop PK - Public Feed</h3>
-    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px; text-align: center;">Yahan apna message ya review likhein. Sabhi customers ko show hoga!</p>
+    <h3 style="color: #00f2fe; margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-comments"></i> TikTok Shop PK - Customer Feed & Messages</h3>
+    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px; text-align: center;">Yahan apna message ya review likhein jo foran website par show ho jayega!</p>
     
     <!-- Comment Input Form -->
-    <form id="commentForm" onsubmit="postMessage(event)" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-        <input type="text" id="visitorName" placeholder="Aap Ka Naam" required style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none;">
-        <textarea id="visitorMsg" placeholder="Apna message ya review yahan likhein..." rows="3" required style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none; resize: none;"></textarea>
-        <button type="submit" style="padding: 12px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer;">Post Message</button>
-    </form>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+        <input type="text" id="visitorName" placeholder="Aap Ka Naam" style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none;">
+        <textarea id="visitorMsg" placeholder="Apna message ya review yahan likhein..." rows="3" style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none; resize: none;"></textarea>
+        <button onclick="postMessage()" style="padding: 12px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer;">Post Message</button>
+    </div>
 
-    <!-- Messages Display Area -->
-    <div id="messagesContainer" style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
-        <p id="loadingText" style="color: #94a3b8; text-align: center;">Loading comments...</p>
+    <!-- Messages Display Area (Jahan comments show honge) -->
+    <div id="messagesContainer" style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto;">
+        <div style="background: #0f172a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #00f2fe;">
+            <strong style="color: #00f2fe; font-size: 0.9rem;">Admin (TikTok Shop PK)</strong>
+            <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 4px;">Welcome! Aap yahan apne sawalat ya reviews post kar sakte hain.</p>
+        </div>
     </div>
 </div>
 
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
 <script>
-    // Apni Firebase configuration details yahan update rakhein
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "tiktok-shop-8e6b9.firebaseapp.com",
-        databaseURL: "https://tiktok-shop-8e6b9-default-rtdb.firebaseio.com",
-        projectId: "tiktok-shop-8e6b9",
-        storageBucket: "tiktok-shop-8e6b9.appspot.com",
-        messagingSenderId: "894486457728",
-        appId: "YOUR_APP_ID"
-    };
-
-    // Firebase Initialize
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }
-    const db = firebase.database();
-
-    // Messages database se Real-time read karne ka function
-    db.ref('comments').on('value', (snapshot) => {
-        const container = document.getElementById('messagesContainer');
-        container.innerHTML = ''; 
-
-        const data = snapshot.val();
-        if (data) {
-            Object.keys(data).reverse().forEach((key) => {
-                const comment = data[key];
-                let newComment = document.createElement('div');
-                newComment.style.cssText = "background: #0f172a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #25D366;";
-                newComment.innerHTML = `<strong style="color: #25D366; font-size: 0.9rem;">${comment.name}</strong><p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 4px;">${comment.msg}</p>`;
-                container.appendChild(newComment);
-            });
-        } else {
-            container.innerHTML = '<p style="color: #94a3b8; text-align: center; font-size: 0.85rem;">Abhi koi comment nahi hai. Aap pehle customer banein!</p>';
-        }
-    });
-
-    // New Message Post Function
-    function postMessage(e) {
-        e.preventDefault();
-
+    function postMessage() {
         let name = document.getElementById('visitorName').value.trim();
         let msg = document.getElementById('visitorMsg').value.trim();
 
-        if(!name || !msg) return;
+        if(!name || !msg) {
+            alert("Barah-e-karam apna naam aur message dono likhein!");
+            return;
+        }
 
-        db.ref('comments').push({
-            name: name,
-            msg: msg,
-            timestamp: Date.now()
-        }).then(() => {
-            document.getElementById('visitorName').value = '';
-            document.getElementById('visitorMsg').value = '';
-        }).catch((error) => {
-            alert("Error saving message: " + error.message);
-        });
+        let container = document.getElementById('messagesContainer');
+        
+        let newComment = document.createElement('div');
+      newComment.style.cssText = "background: #0f172a; padding: 10px 15px; border-radius: 8px; border-left: 4px solid #25D366;";
+      newComment.innerHTML = `<strong style="color: #25D366; font-size: 0.9rem;">${name}</strong><p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 4px;">${msg}</p>`;
+        container.prepend(newComment);
+
+        // Clear inputs
+        document.getElementById('visitorName').value = '';
+        document.getElementById('visitorMsg').value = '';
     }
 </script>
 </body>
