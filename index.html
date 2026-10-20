@@ -852,7 +852,23 @@
             }
         };
 
+<!-- Permanent Firebase Live Comment Section -->
+<div style="background: #1e293b; padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); max-width: 500px; margin: 20px auto; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <h3 style="color: #00f2fe; margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-comments"></i> TikTok Shop PK - Public Feed</h3>
+    <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px; text-align: center;">Yahan apna message ya review likhein. Sabhi customers ko show hoga!</p>
+    
+    <!-- Comment Input Form -->
+    <form id="commentForm" onsubmit="postMessage(event)" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+        <input type="text" id="visitorName" placeholder="Aap Ka Naam" required style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none;">
+        <textarea id="visitorMsg" placeholder="Apna message ya review yahan likhein..." rows="3" required style="padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; outline: none; resize: none;"></textarea>
+        <button type="submit" style="padding: 12px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer;">Post Message</button>
+    </form>
 
+    <!-- Messages Display Area -->
+    <div id="messagesContainer" style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
+        <p id="loadingText" style="color: #94a3b8; text-align: center;">Loading comments...</p>
+    </div>
+</div>
     // Messages database se Real-time read karein
     db.ref('comments').on('value', (snapshot) => {
         const container = document.getElementById('messagesContainer');
