@@ -316,7 +316,7 @@
             <div class="analytics-grid">
                 <div class="stat-card">
                     <h4>TOTAL PRODUCTS</h4>
-                    <div class="value" id="valTotalProducts">24</div>
+                    <div class="value" id="valTotalProducts">0</div>
                 </div>
                 <div class="stat-card">
                     <h4>DATABASE STATUS</h4>
@@ -353,7 +353,7 @@
         <!-- Product Display Area -->
         <h2 class="section-title"><i class="fa-solid fa-fire"></i> Available Products & Special Offers</h2>
         <div class="products-grid" id="productsDisplay">
-            <!-- Dynamically Sorted Rendered via JS -->
+            <div class="loading-text">Loading Products from Cloud...</div>
         </div>
 
     </main>
@@ -403,6 +403,31 @@
         let isAdmin = false;
         let productsData = [];
         let banksData = [];
+
+        // Global Admin Functions
+        window.openADMIN_PANEL = function() {
+            let pass = prompt("Enter Admin Password:");
+            if (pass === ADMIN_PASS) {
+                isAdmin = true;
+                document.getElementById('adminPanel').style.display = 'block';
+                displayProducts();
+                displayBanks();
+                alert("Admin Access Granted!");
+            } else {
+                alert("Wrong Password!");
+            }
+        };
+
+        window.openAdmin = function() {
+            window.openADMIN_PANEL();
+        };
+
+        window.closeAdmin = function() {
+            isAdmin = false;
+            document.getElementById('adminPanel').style.display = 'none';
+            displayProducts();
+            displayBanks();
+        };
 
         // LIVE COMMENTS REALTIME LISTENER
         onSnapshot(commentsCol, (snapshot) => {
@@ -485,6 +510,7 @@
             snapshot.forEach((docSnapshot) => {
                 productsData.push({ id: docSnapshot.id, ...docSnapshot.data() });
             });
+            document.getElementById('valTotalProducts').innerText = productsData.length;
             displayProducts();
         });
 
@@ -497,7 +523,95 @@
             displayBanks();
         });
 
-        function displayBanks() {
+        // Display Products Function
+        window.displayProducts = function() {
+            const grid = document.getElementById('productsDisplay');
+            grid.innerHTML = '';
+
+            if (productsData.length === 0) {
+                grid.innerHTML = '<div class="loading-text">No products found. Add products from the Admin Panel.</div>';
+                return;
+            }
+
+            productsData.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                
+                let imgSrc = p.img ? p.img : 'https://via.placeholder.com/300x180?text=TikTok+Shop';
+                let waText = encodeURIComponent(`Hi, I want to buy this product: ${p.name} - Price: ${p.price}`);
+
+                card.innerHTML = `
+                    <div class="product-img-wrapper">
+                        <img src="${imgSrc}" alt="${p.name}">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">${p.name}</h3>
+                        <div class="product-price">${p.price}</div>
+                        <p class="product-desc">${p.desc}</p>
+                        <a href="https://wa.me/923028372072?text=${waText}" target="_blank" class="buy-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
+                        </a>
+                        <div class="admin-actions" style="display: ${isAdmin ? 'flex' : 'none'};">
+                            <button class="btn-edit" onclick="editProduct('${p.id}')">Edit</button>
+                            <button class="btn-delete" onclick="deleteProduct('${p.id}')">Delete</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        };
+
+        // Save Product Function
+        window.saveProduct = async function(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editDocId').value;
+            const name = document.getElementById('pName').value.trim();
+            const price = document.getElementById('pPrice').value.trim();
+            const img = document.getElementById('pImg').value.trim();
+            const desc = document.getElementById('pDesc').value.trim();
+
+            try {
+                if (editId) {
+                    await updateDoc(doc(db, "products", editId), { name, price, img, desc });
+                    alert("Product updated successfully!");
+                } else {
+                    await addDoc(productsCol, { name, price, img, desc, timestamp: Date.now() });
+                    alert("Product added successfully!");
+                }
+                document.getElementById('productForm').reset();
+                document.getElementById('editDocId').value = '';
+                document.getElementById('formTitle').innerHTML = '<i class="fa-solid fa-plus-circle"></i> Add / Edit Product (Live Sync)';
+                document.getElementById('saveBtn').innerText = 'Save Product to Cloud';
+            } catch (err) {
+                alert("Error saving product: " + err.message);
+            }
+        };
+
+        window.editProduct = function(id) {
+            const p = productsData.find(item => item.id === id);
+            if (!p) return;
+            document.getElementById('editDocId').value = p.id;
+            document.getElementById('pName').value = p.name;
+            document.getElementById('pPrice').value = p.price;
+            document.getElementById('pImg').value = p.img || '';
+            document.getElementById('pDesc').value = p.desc;
+            document.getElementById('formTitle').innerHTML = '<i class="fa-solid fa-pen"></i> Edit Product';
+            document.getElementById('saveBtn').innerText = 'Update Product in Cloud';
+            window.scrollTo({ top: document.getElementById('adminPanel').offsetTop, behavior: 'smooth' });
+        };
+
+        window.deleteProduct = async function(id) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                try {
+                    await deleteDoc(doc(db, "products", id));
+                } catch (err) {
+                    alert("Error deleting product: " + err.message);
+                }
+            }
+        };
+
+        // Bank Management Functions
+        window.displayBanks = function() {
             const grid = document.getElementById('bankDisplayGrid');
             grid.innerHTML = '';
 
@@ -537,7 +651,52 @@
                 `;
                 grid.appendChild(card);
             });
-        }
+        };
+
+        window.saveBank = async function(e) {
+            e.preventDefault();
+            const editBankId = document.getElementById('editBankId').value;
+            const name = document.getElementById('bName').value.trim();
+            const title = document.getElementById('bTitle').value.trim();
+            const number = document.getElementById('bNumber').value.trim();
+
+            try {
+                if (editBankId) {
+                    await updateDoc(doc(db, "banks", editBankId), { name, title, number });
+                    alert("Bank updated successfully!");
+                } else {
+                    await addDoc(banksCol, { name, title, number });
+                    alert("Bank added successfully!");
+                }
+                document.getElementById('bankForm').reset();
+                document.getElementById('editBankId').value = '';
+                document.getElementById('bankFormTitle').innerHTML = '<i class="fa-solid fa-plus-circle"></i> Add / Edit Bank or Wallet Account';
+                document.getElementById('saveBankBtn').innerText = 'Save Bank to Cloud';
+            } catch (err) {
+                alert("Error saving bank: " + err.message);
+            }
+        };
+
+        window.editBank = function(id) {
+            const b = banksData.find(item => item.id === id);
+            if (!b) return;
+            document.getElementById('editBankId').value = b.id;
+            document.getElementById('bName').value = b.name;
+            document.getElementById('bTitle').value = b.title;
+            document.getElementById('bNumber').value = b.number;
+            document.getElementById('bankFormTitle').innerHTML = '<i class="fa-solid fa-pen"></i> Edit Bank Account';
+            document.getElementById('saveBankBtn').innerText = 'Update Bank in Cloud';
+        };
+
+        window.deleteBank = async function(id) {
+            if (confirm("Are you sure you want to delete this bank?")) {
+                try {
+                    await deleteDoc(doc(db, "banks", id));
+                } catch (err) {
+                    alert("Error deleting bank: " + err.message);
+                }
+            }
+        };
     </script>
 </body>
 </html>
