@@ -91,7 +91,7 @@
             box-shadow: 0 0 60px #ffd700;
         }
 
-        /* MOUSE MOVE GLOW CIRCLE EFFECT[cite: 2] */
+        /* MOUSE MOVE GLOW CIRCLE EFFECT */
         #cursorGlow {
             pointer-events: none;
             position: fixed;
@@ -104,7 +104,7 @@
             z-index: 99999;
         }
 
-        /* RIPPLE ANIMATION ON CLICK[cite: 2] */
+        /* RIPPLE ANIMATION ON CLICK */
         .ripple-btn { position: relative; overflow: hidden; }
         .ripple {
             position: absolute;
@@ -118,7 +118,7 @@
             to { transform: scale(4); opacity: 0; }
         }
 
-        /* LIGHTNING FLASH EFFECT[cite: 2] */
+        /* LIGHTNING FLASH EFFECT */
         @keyframes lightningStrike {
             0%, 90%, 94%, 98%, 100% { opacity: 0; filter: brightness(1); }
             92% { opacity: 0.15; filter: brightness(1.8); background-color: #ffffff; }
@@ -132,7 +132,7 @@
             animation: lightningStrike 7s infinite;
         }
 
-        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS[cite: 2] */
+        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
         @keyframes goldFlicker {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
             50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
@@ -160,7 +160,7 @@
             pointer-events: none;
         }
 
-        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS[cite: 2] */
+        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS */
         @keyframes fireGlow {
             0%, 100% { box-shadow: 0 0 15px #ff4500, 0 0 30px #ff8c00, inset 0 0 10px #ff0000; border-color: #ff4500; }
             50% { box-shadow: 0 0 25px #ff8c00, 0 0 50px #ff4500, inset 0 0 20px #ffe600; border-color: #ffe600; }
@@ -312,7 +312,7 @@
             margin-top: 10px;
         }
 
-        /* Bank Details Box Styling[cite: 2] */
+        /* Bank Details Box Styling */
         .bank-details-container {
             background: var(--bg-card);
             border: 1px solid var(--mcb-color);
@@ -328,11 +328,6 @@
         #adminPanel {
             display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,242,254,0.3);
         }
-        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 2rem; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 12px; text-align: center; }
-        .stat-card h4 { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 5px; }
-        .stat-card .value { font-size: 1.8rem; font-weight: 800; color: var(--primary-glow); }
-
         .admin-section-box { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; }
         .admin-form input, .admin-form textarea {
             width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
@@ -341,7 +336,7 @@
             background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES[cite: 2] */
+        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
         .product-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
         .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; position: relative; }
@@ -350,7 +345,7 @@
         .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
         .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 6px; }
 
-        /* Dynamic Product Rating Stars Box[cite: 2] */
+        /* Dynamic Product Rating Stars Box */
         .product-rating-box {
             display: flex;
             align-items: center;
@@ -366,7 +361,7 @@
         .product-rating-score { color: #fff; font-size: 0.8rem; font-weight: 800; }
         .product-rating-count { color: var(--text-muted); font-size: 0.72rem; }
 
-        /* Dynamic Product Stock Bar Box[cite: 2] */
+        /* Dynamic Product Stock Bar Box */
         .stock-tracker-box {
             background: rgba(255, 255, 255, 0.04);
             border-radius: 8px;
@@ -402,7 +397,7 @@
         .btn-edit { background: #f59e0b; color: #000; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
         .btn-delete { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
 
-        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT[cite: 2] */
+        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT */
         .order-toast {
             position: fixed;
             bottom: 25px;
@@ -437,6 +432,30 @@
         .toast-info p { color: #ffe600; font-size: 0.82rem; font-weight: 700; text-shadow: 0 0 5px rgba(255, 230, 0, 0.5); }
         .toast-info span { color: #ffd700; font-size: 0.7rem; display: block; }
 
+        /* CHECKOUT / MODAL COMMON STYLES */
+        .checkout-box {
+            background: var(--bg-card);
+            border: 2px solid var(--mcb-color);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 420px;
+            padding: 1.8rem;
+            box-shadow: 0 0 40px rgba(0, 128, 128, 0.4);
+            position: relative;
+        }
+        .checkout-form-group { margin-bottom: 12px; }
+        .checkout-form-group label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px; }
+        .checkout-form-group input {
+            width: 100%; padding: 10px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
+        }
+        .checkout-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-pay-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem;
+        }
+        .btn-skip-whatsapp {
+            background: #334155; color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
+        }
+
         footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 2.5rem 5%; margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
         .loading-text { text-align: center; width: 100%; color: var(--primary-glow); font-weight: bold; padding: 2rem; }
     </style>
@@ -453,10 +472,10 @@
         </div>
     </div>
 
-    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT[cite: 2] -->
+    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT -->
     <div id="cursorGlow"></div>
 
-    <!-- LIGHTNING FLASH OVERLAY[cite: 2] -->
+    <!-- LIGHTNING FLASH OVERLAY -->
     <div id="lightningOverlay"></div>
 
     <!-- SINGLE REWARD POPUP MODAL FOR TIKTOK -->
@@ -475,8 +494,8 @@
 
     <!-- CHECKOUT MODAL -->
     <div id="checkoutModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px;">
-        <div class="checkout-box" style="border-color: var(--mcb-color);">
-            <h3 id="checkoutModalTitle" style="color: var(--primary-glow);"><i class="fa-solid fa-credit-card"></i> Complete Your Payment</h3>
+        <div class="checkout-box">
+            <h3 id="checkoutModalTitle" style="color: var(--primary-glow); margin-bottom: 10px;"><i class="fa-solid fa-credit-card"></i> Complete Your Payment</h3>
             <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 15px;">Pehle MCB Islamic Bank par payment clear karein:</p>
             
             <div style="background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid var(--mcb-color); margin-bottom: 15px; font-size: 0.85rem;">
@@ -516,7 +535,7 @@
     <!-- SPIN WINNER MODAL -->
     <div id="spinWinnerModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px;">
         <div class="checkout-box" style="border-color: var(--gold-glow);">
-            <h3 style="color: var(--gold-glow);"><i class="fa-solid fa-trophy"></i> Mubarak Ho! Aap Jeet Gaye Hain</h3>
+            <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-trophy"></i> Mubarak Ho! Aap Jeet Gaye Hain</h3>
             <p id="wonItemText" style="color: #fff; font-size: 1rem; font-weight: bold; margin-bottom: 15px;"></p>
             
             <form onsubmit="submitSpinWinnerDetails(event)">
@@ -532,7 +551,7 @@
                     <label>Email Address</label>
                     <input type="email" id="winnerEmail" placeholder="yourmail@gmail.com" required>
                 </div>
-                <button type="submit" class="ripple-btn" style="width: 100%; background: var(--gold-glow); color: #000; border: none; padding: 12px; font-weight: bold; border-radius: 8px; cursor: pointer;">
+                <button type="submit" class="ripple-btn" style="width: 100%; background: var(--gold-glow); color: #000; border: none; padding: 12px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 5px;">
                     Claim Prize & Save Details
                 </button>
             </form>
@@ -550,7 +569,7 @@
 
     <header>
         <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
-        <div class="rating-badge">⭐ Overall Client Rating: 4.95 / 5.0</div>
+        <div class="rating-badge">Overall Client Rating: 4.95 / 5.0</div>
         <button class="btn-admin ripple-btn" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin Panel</button>
     </header>
 
@@ -596,7 +615,7 @@
 
             <!-- MANAGE BANK ACCOUNTS BOX -->
             <div class="admin-section-box">
-                <h3 id="bankFormTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Bank Account</h3>
+                <h3 id="bankFormTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Bank Account</h3>
                 <form class="admin-form" id="bankForm" onsubmit="saveBank(event)">
                     <input type="hidden" id="editBankId" value="">
                     <input type="text" id="bName" placeholder="Bank Name (e.g. MCB Islamic Bank)" required>
@@ -609,7 +628,7 @@
 
             <!-- MANAGE SPIN ITEMS BOX -->
             <div class="admin-section-box">
-                <h3 id="spinFormTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Spin Items</h3>
+                <h3 id="spinFormTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Spin Items</h3>
                 <form class="admin-form" id="spinItemForm" onsubmit="saveSpinItem(event)">
                     <input type="hidden" id="editSpinId" value="">
                     <input type="text" id="sItemName" placeholder="Prize Name (e.g. TIKTOK UK ACCOUNT)" required>
@@ -620,7 +639,7 @@
 
             <!-- Manage Products Box -->
             <div class="admin-section-box">
-                <h3 id="formTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Product</h3>
+                <h3 id="formTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Product</h3>
                 <form class="admin-form" id="productForm" onsubmit="saveProduct(event)">
                     <input type="hidden" id="editDocId" value="">
                     <input type="text" id="pName" placeholder="Product Name" required>
@@ -640,14 +659,14 @@
 
     </main>
 
-    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT[cite: 2] -->
+    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT -->
     <div id="orderToast" class="order-toast fire-card">
         <div class="toast-icon">
             <i class="fa-solid fa-fire-flame-curved"></i>
         </div>
         <div class="toast-info">
             <h5 id="toastUser">Ali from Lahore</h5>
-            <p id="toastProduct">🔥 Purchased TikTok UK Account</p>
+            <p id="toastProduct">Ordered TikTok UK Account</p>
             <span id="toastTime">Just now • Live Verified Order</span>
         </div>
     </div>
@@ -666,7 +685,7 @@
             overlay.classList.add('shutter-open');
         }
 
-        // Mouse Move Glow Follower[cite: 2]
+        // Mouse Move Glow Follower
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
@@ -675,7 +694,7 @@
             }
         });
 
-        // Click Ripple Effect Handler[cite: 2]
+        // Click Ripple Effect Handler
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.ripple-btn');
             if (target) {
@@ -720,6 +739,7 @@
         let productsData = [];
         let spinItemsData = [];
         let banksData = [];
+        let currentWonPrize = "";
         
         const TIKTOK_DIRECT_URL = "https://www.tiktok.com/@mahambutt102?is_from_webapp=1&sender_device=pc";
 
@@ -736,7 +756,44 @@
             document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' });
         };
 
-        // LIVE ORDERS POPUP SIMULATOR WITH SOUND[cite: 2]
+        // SPIN WHEEL LOGIC
+        window.startWheelSpin = function() {
+            const wheel = document.getElementById('spinWheel');
+            const items = spinItemsData.length > 0 ? spinItemsData : [
+                { name: "TIKTOK UK ACCOUNT" }, 
+                { name: "TIKTOK LIVE" }, 
+                { name: "TIKTOK USA ACCOUNT" }, 
+                { name: "INSTAGRAM 10000 VIEWS" }, 
+                { name: "TIKTOK VIEWS" }
+            ];
+
+            const randomSelectedIndex = Math.floor(Math.random() * items.length);
+            const sliceAngle = 360 / items.length;
+            const extraSpins = 5; // Full rotations
+            const targetDegree = (extraSpins * 360) + (randomSelectedIndex * sliceAngle) + (sliceAngle / 2);
+
+            wheel.style.transition = "transform 4s cubic-bezier(0.15, 0.9, 0.2, 1)";
+            wheel.style.transform = `rotate(-${targetDegree}deg)`;
+
+            currentWonPrize = items[randomSelectedIndex].name;
+
+            setTimeout(() => {
+                document.getElementById('wonItemText').innerText = `Badhaai Ho! Aapne jeeta hai: ${currentWonPrize}`;
+                document.getElementById('spinWinnerModal').style.display = 'flex';
+            }, 4200);
+        };
+
+        window.submitSpinWinnerDetails = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('winnerName').value;
+            const phone = document.getElementById('winnerPhone').value;
+            const email = document.getElementById('winnerEmail').value;
+
+            window.open(`https://wa.me/923028372072?text=Spin Winner Claim:%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AWon Prize: ${currentWonPrize}`, '_blank');
+            document.getElementById('spinWinnerModal').style.display = 'none';
+        };
+
+        // LIVE ORDERS POPUP SIMULATOR WITH SOUND
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
@@ -759,7 +816,7 @@
             const randomMins = Math.floor(Math.random() * 6) + 1;
 
             document.getElementById('toastUser').innerText = randomOrder.name;
-            document.getElementById('toastProduct').innerText = "🔥 Ordered: " + randomOrder.item;
+            document.getElementById('toastProduct').innerText = "Ordered: " + randomOrder.item;
             document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Purchase`;
 
             toast.classList.add('show');
@@ -1045,7 +1102,12 @@
             document.getElementById('checkoutModal').style.display = 'flex';
         };
         window.closeCheckoutModal = function() { document.getElementById('checkoutModal').style.display = 'none'; };
-        window.triggerSpinPayment = function() { openCheckoutModal("Spin & Win (Rs. 50)"); };
+        
+        window.triggerSpinPayment = function() { 
+            // Trigger payment popup first, or start wheel spin directly if payment is done
+            openCheckoutModal("Spin & Win (Rs. 50)");
+            // After successful checkout flow, user can also directly trigger startWheelSpin()
+        };
 
         window.submitOrderToWhatsApp = function(e) {
             e.preventDefault();
