@@ -19,7 +19,7 @@
             --border-color: rgba(255, 255, 255, 0.08);
             --whatsapp-color: #25D366;
             --tiktok-color: #00f2fe;
-            --opay-color: #00a859;
+            --mcb-color: #008080;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -91,7 +91,7 @@
             box-shadow: 0 0 60px #ffd700;
         }
 
-        /* MOUSE MOVE GLOW CIRCLE EFFECT */
+        /* MOUSE MOVE GLOW CIRCLE EFFECT[cite: 2] */
         #cursorGlow {
             pointer-events: none;
             position: fixed;
@@ -104,7 +104,7 @@
             z-index: 99999;
         }
 
-        /* RIPPLE ANIMATION ON CLICK */
+        /* RIPPLE ANIMATION ON CLICK[cite: 2] */
         .ripple-btn { position: relative; overflow: hidden; }
         .ripple {
             position: absolute;
@@ -118,7 +118,7 @@
             to { transform: scale(4); opacity: 0; }
         }
 
-        /* LIGHTNING FLASH EFFECT */
+        /* LIGHTNING FLASH EFFECT[cite: 2] */
         @keyframes lightningStrike {
             0%, 90%, 94%, 98%, 100% { opacity: 0; filter: brightness(1); }
             92% { opacity: 0.15; filter: brightness(1.8); background-color: #ffffff; }
@@ -132,7 +132,7 @@
             animation: lightningStrike 7s infinite;
         }
 
-        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
+        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS[cite: 2] */
         @keyframes goldFlicker {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
             50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
@@ -160,7 +160,7 @@
             pointer-events: none;
         }
 
-        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS */
+        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS[cite: 2] */
         @keyframes fireGlow {
             0%, 100% { box-shadow: 0 0 15px #ff4500, 0 0 30px #ff8c00, inset 0 0 10px #ff0000; border-color: #ff4500; }
             50% { box-shadow: 0 0 25px #ff8c00, 0 0 50px #ff4500, inset 0 0 20px #ffe600; border-color: #ffe600; }
@@ -312,14 +312,14 @@
             margin-top: 10px;
         }
 
-        /* Bank Details Box Styling */
+        /* Bank Details Box Styling[cite: 2] */
         .bank-details-container {
             background: var(--bg-card);
-            border: 1px solid var(--opay-color);
+            border: 1px solid var(--mcb-color);
             border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 0 20px rgba(0, 168, 89, 0.3);
+            box-shadow: 0 0 20px rgba(0, 128, 128, 0.3);
         }
 
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
@@ -328,6 +328,11 @@
         #adminPanel {
             display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,242,254,0.3);
         }
+        .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 12px; text-align: center; }
+        .stat-card h4 { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 5px; }
+        .stat-card .value { font-size: 1.8rem; font-weight: 800; color: var(--primary-glow); }
+
         .admin-section-box { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; }
         .admin-form input, .admin-form textarea {
             width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
@@ -336,7 +341,7 @@
             background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES */
+        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES[cite: 2] */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
         .product-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
         .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; position: relative; }
@@ -345,7 +350,7 @@
         .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
         .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 6px; }
 
-        /* Dynamic Product Rating Stars Box */
+        /* Dynamic Product Rating Stars Box[cite: 2] */
         .product-rating-box {
             display: flex;
             align-items: center;
@@ -361,7 +366,7 @@
         .product-rating-score { color: #fff; font-size: 0.8rem; font-weight: 800; }
         .product-rating-count { color: var(--text-muted); font-size: 0.72rem; }
 
-        /* Dynamic Product Stock Bar Box */
+        /* Dynamic Product Stock Bar Box[cite: 2] */
         .stock-tracker-box {
             background: rgba(255, 255, 255, 0.04);
             border-radius: 8px;
@@ -397,7 +402,7 @@
         .btn-edit { background: #f59e0b; color: #000; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
         .btn-delete { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
 
-        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT */
+        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT[cite: 2] */
         .order-toast {
             position: fixed;
             bottom: 25px;
@@ -448,10 +453,10 @@
         </div>
     </div>
 
-    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT -->
+    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT[cite: 2] -->
     <div id="cursorGlow"></div>
 
-    <!-- LIGHTNING FLASH OVERLAY -->
+    <!-- LIGHTNING FLASH OVERLAY[cite: 2] -->
     <div id="lightningOverlay"></div>
 
     <!-- SINGLE REWARD POPUP MODAL FOR TIKTOK -->
@@ -470,14 +475,14 @@
 
     <!-- CHECKOUT MODAL -->
     <div id="checkoutModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px;">
-        <div class="checkout-box" style="border-color: var(--opay-color);">
+        <div class="checkout-box" style="border-color: var(--mcb-color);">
             <h3 id="checkoutModalTitle" style="color: var(--primary-glow);"><i class="fa-solid fa-credit-card"></i> Complete Your Payment</h3>
-            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 15px;">Opay Bank par payment clear karein:</p>
+            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 15px;">Pehle MCB Islamic Bank par payment clear karein:</p>
             
-            <div style="background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid var(--opay-color); margin-bottom: 15px; font-size: 0.85rem;">
-                <p style="color: var(--gold-glow); font-weight: bold;"><i class="fa-solid fa-building-columns"></i> Opay Bank Details:</p>
-                <p><strong>Account Title:</strong> Usman Amjad</p>
-                <p><strong>Account Number / Phone:</strong> 03028372072</p>
+            <div style="background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid var(--mcb-color); margin-bottom: 15px; font-size: 0.85rem;">
+                <p style="color: var(--gold-glow); font-weight: bold;"><i class="fa-solid fa-building-columns"></i> MCB Islamic Bank:</p>
+                <p><strong>Title:</strong> usmanamjadsanaamanullah</p>
+                <p><strong>Account #:</strong> 1591000414530002</p>
             </div>
 
             <form id="orderCheckoutForm" onsubmit="submitOrderToWhatsApp(event)">
@@ -490,12 +495,15 @@
                     <input type="text" id="custPhone" placeholder="03028372072" required>
                 </div>
                 <div class="checkout-form-group">
-                    <label>Payment Screenshot (Required for Spin Verification)</label>
-                    <input type="file" id="custScreenshot" accept="image/*" style="padding: 6px;" required>
+                    <label>Payment Screenshot (Optional)</label>
+                    <input type="file" id="custScreenshot" accept="image/*" style="padding: 6px;">
                 </div>
-                <div class="checkout-btns" style="display: flex; gap: 10px; margin-top: 10px;">
-                    <button type="submit" class="ripple-btn" style="flex:1; background: var(--opay-color); color:#fff; border:none; padding:10px; font-weight:bold; border-radius:8px; cursor:pointer;">
-                        <i class="fa-solid fa-paper-plane"></i> Submit Request
+                <div class="checkout-btns">
+                    <button type="submit" class="btn-pay-whatsapp ripple-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Send Order & Payment
+                    </button>
+                    <button type="button" class="btn-skip-whatsapp ripple-btn" onclick="skipAndOrderWhatsApp()">
+                        Skip & Order
                     </button>
                 </div>
             </form>
@@ -535,20 +543,20 @@
         <span><i class="fa-solid fa-headset"></i> Support: <strong>0302-8372072 (Usman Amjad)</strong></span>
         <div class="social-links">
             <button onclick="openTikTokRewardModal()" class="social-btn tiktok ripple-btn"><i class="fa-brands fa-tiktok"></i> TikTok Account</button>
-            <button onclick="scrollToSpin()" class="social-btn spin-tab-btn ripple-btn"><i class="fa-solid fa-rotate"></i> Spin & Win</button>
+            <button onclick="scrollToSpin()" class="social-btn spin-tab-btn ripple-btn"><i class="fa-solid fa-rotate"></i> Spin & Win (Rs. 50)</button>
             <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa ripple-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 
     <header>
         <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
-        <div class="rating-badge">Overall Client Rating: 4.95 / 5.0</div>
+        <div class="rating-badge">⭐ Overall Client Rating: 4.95 / 5.0</div>
         <button class="btn-admin ripple-btn" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin Panel</button>
     </header>
 
     <section class="hero">
         <h1 class="glowing-title">TikTok Shop Pakistan - Buy Viral Accounts & Services</h1>
-        <p>Verified TikTok UK/USA Monetized Accounts, Opay Bank Payment System.</p>
+        <p>Verified TikTok UK/USA Monetized Accounts, MCB Islamic Bank Payment System.</p>
     </section>
 
     <main class="container">
@@ -556,53 +564,58 @@
         <!-- SPIN AND WIN SECTION -->
         <div id="spinAndWinSection" class="spin-section-box">
             <h3 style="color: var(--gold-glow); font-size: 1.5rem; margin-bottom: 5px;"><i class="fa-solid fa-rotate"></i> Daily Spin & Win Hub</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Payment ke baad request submit karein. Admin verification ke bad spin enable hoga.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Daily 2 spins for <strong>Rs. 50</strong> (MCB Islamic Bank: 1591000414530002).</p>
             
             <div class="wheel-container" id="spinWheel">
                 <div class="wheel-pointer"></div>
             </div>
 
-            <button class="spin-action-btn ripple-btn" onclick="handleSpinClick()">
-                <i class="fa-solid fa-coins"></i> Spin Now (Pay & Submit Request)
+            <button class="spin-action-btn ripple-btn" onclick="triggerSpinPayment()">
+                <i class="fa-solid fa-coins"></i> Pay Rs. 50 & Spin Now
             </button>
         </div>
 
         <!-- BANK DETAILS CONTAINER -->
         <div class="bank-details-container">
             <h3 style="color: var(--gold-glow); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                <i class="fa-solid fa-wallet"></i> Official Bank Details (Opay Bank)
+                <i class="fa-solid fa-wallet"></i> Official Bank Details (MCB Islamic Bank)
             </h3>
             <div id="bankDisplayGrid" style="font-size: 0.95rem; line-height: 1.8;">
-                <p><strong>Bank Name:</strong> Opay Bank</p>
-                <p><strong>Account Title:</strong> Usman Amjad</p>
-                <p><strong>Account Number:</strong> 03028372072</p>
+                <p><strong>Account Title:</strong> usmanamjadsanaamanullah</p>
+                <p><strong>Account Number:</strong> 1591000414530002</p>
+                <p><strong>Bank Name:</strong> MCB Islamic Bank</p>
             </div>
         </div>
 
         <!-- Admin Portal -->
         <section id="adminPanel">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Admin & Spin Manager</h2>
+                <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Admin & Bank/Spin Manager</h2>
                 <button onclick="closeAdmin()" class="ripple-btn" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer;">Logout Admin</button>
             </div>
 
-            <!-- PENDING SPIN REQUESTS FOR ADMIN VERIFICATION -->
+            <!-- MANAGE BANK ACCOUNTS BOX -->
             <div class="admin-section-box">
-                <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-users"></i> Pending Spin Payment Requests</h3>
-                <div id="adminSpinRequestsList" style="display: flex; flex-direction: column; gap: 10px;">
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">No pending requests right now.</p>
-                </div>
+                <h3 id="bankFormTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Bank Account</h3>
+                <form class="admin-form" id="bankForm" onsubmit="saveBank(event)">
+                    <input type="hidden" id="editBankId" value="">
+                    <input type="text" id="bName" placeholder="Bank Name (e.g. MCB Islamic Bank)" required>
+                    <input type="text" id="bTitle" placeholder="Account Title (e.g. usmanamjadsanaamanullah)" required>
+                    <input type="text" id="bNumber" placeholder="Account Number (e.g. 1591000414530002)" required>
+                    <button type="submit" id="saveBankBtn" class="ripple-btn">Save Bank Account</button>
+                </form>
+                <div id="bankManageList" style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
 
-            <!-- MANAGE SPIN ITEMS (ADD, EDIT, DELETE) -->
+            <!-- MANAGE SPIN ITEMS BOX -->
             <div class="admin-section-box">
-                <h3 style="color: var(--primary-glow); margin-bottom: 10px;"><i class="fa-solid fa-cog"></i> Manage Spin Items (Add / Edit / Delete)</h3>
+                <h3 id="spinFormTitle"><i class="fa-solid fa-plus-circle"></i> Add / Edit Spin Items</h3>
                 <form class="admin-form" id="spinItemForm" onsubmit="saveSpinItem(event)">
                     <input type="hidden" id="editSpinId" value="">
-                    <input type="text" id="spinItemInput" placeholder="Spin Item Name (e.g. TIKTOK UK ACCOUNT)" required>
-                    <button type="submit" id="spinSaveBtn" class="ripple-btn">Save Spin Item</button>
+                    <input type="text" id="sItemName" placeholder="Prize Name (e.g. TIKTOK UK ACCOUNT)" required>
+                    <button type="submit" id="saveSpinBtn" class="ripple-btn">Save Spin Item</button>
                 </form>
-                <div id="adminSpinItemsList" style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;"></div>
+                <div id="spinItemsManageList" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px;"></div>
             </div>
 
             <!-- Manage Products Box -->
@@ -627,14 +640,14 @@
 
     </main>
 
-    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT -->
+    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT[cite: 2] -->
     <div id="orderToast" class="order-toast fire-card">
         <div class="toast-icon">
             <i class="fa-solid fa-fire-flame-curved"></i>
         </div>
         <div class="toast-info">
             <h5 id="toastUser">Ali from Lahore</h5>
-            <p id="toastProduct">Purchased TikTok UK Account</p>
+            <p id="toastProduct">🔥 Purchased TikTok UK Account</p>
             <span id="toastTime">Just now • Live Verified Order</span>
         </div>
     </div>
@@ -653,7 +666,7 @@
             overlay.classList.add('shutter-open');
         }
 
-        // Mouse Move Glow Follower
+        // Mouse Move Glow Follower[cite: 2]
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
@@ -662,7 +675,7 @@
             }
         });
 
-        // Click Ripple Effect Handler
+        // Click Ripple Effect Handler[cite: 2]
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.ripple-btn');
             if (target) {
@@ -699,14 +712,14 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const productsCol = collection(db, "products");
-        const spinRequestsCol = collection(db, "spinRequests");
         const spinItemsCol = collection(db, "spinItems");
+        const banksCol = collection(db, "banks");
 
         const ADMIN_PASS = "6459";
         let isAdmin = false;
         let productsData = [];
-        let spinRequestsData = [];
         let spinItemsData = [];
+        let banksData = [];
         
         const TIKTOK_DIRECT_URL = "https://www.tiktok.com/@mahambutt102?is_from_webapp=1&sender_device=pc";
 
@@ -723,199 +736,14 @@
             document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' });
         };
 
-        // Fetch Spin Items from Firebase
-        onSnapshot(spinItemsCol, (snapshot) => {
-            spinItemsData = [];
-            snapshot.forEach(d => spinItemsData.push({ id: d.id, ...d.data() }));
-            
-            // Default items if empty
-            if (spinItemsData.length === 0) {
-                spinItemsData = [
-                    { id: '1', name: "TIKTOK UK ACCOUNT" },
-                    { id: '2', name: "TIKTOK USA ACCOUNT" },
-                    { id: '3', name: "INSTAGRAM 20000 VIEWS" },
-                    { id: '4', name: "FACEBOOK 1K VIEWS" },
-                    { id: '5', name: "TIKTOK LIVE" }
-                ];
-            }
-            renderWheel(spinItemsData);
-            if (isAdmin) displayAdminSpinItems();
-        });
-
-        function renderWheel(items) {
-            const wheel = document.getElementById('spinWheel');
-            wheel.innerHTML = '<div class="wheel-pointer"></div>';
-            const sliceAngle = 360 / items.length;
-            items.forEach((item, index) => {
-                const slice = document.createElement('div');
-                slice.className = 'wheel-slice';
-                slice.style.transform = `rotate(${index * sliceAngle}deg) skewY(-30deg)`;
-                slice.style.backgroundColor = index % 2 === 0 ? '#151c2c' : '#1e293b';
-                slice.innerHTML = `<span style="transform: skewY(30deg) rotate(${sliceAngle/2}deg); display:block; text-align:center;">${item.name}</span>`;
-                wheel.appendChild(slice);
-            });
-        }
-
-        // Spin Items Management (Add, Edit, Delete)
-        window.saveSpinItem = async function(e) {
-            e.preventDefault();
-            const editId = document.getElementById('editSpinId').value;
-            const name = document.getElementById('spinItemInput').value.trim();
-
-            try {
-                if (editId) {
-                    await updateDoc(doc(db, "spinItems", editId), { name });
-                    alert("Spin item updated!");
-                } else {
-                    await addDoc(spinItemsCol, { name });
-                    alert("Spin item added!");
-                }
-                document.getElementById('spinItemForm').reset();
-                document.getElementById('editSpinId').value = '';
-                document.getElementById('spinSaveBtn').innerText = "Save Spin Item";
-            } catch(err) {
-                alert("Error: " + err.message);
-            }
-        };
-
-        function displayAdminSpinItems() {
-            const container = document.getElementById('adminSpinItemsList');
-            container.innerHTML = '';
-            spinItemsData.forEach(item => {
-                const div = document.createElement('div');
-                div.style.cssText = "background: #0b0f19; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;";
-                div.innerHTML = `<span><b>${item.name}</b></span>
-                    <div>
-                        <button onclick="editSpinItem('${item.id}', '${item.name}')" style="background: #f59e0b; color: #000; border: none; padding: 3px 8px; border-radius: 4px; font-weight: bold; cursor: pointer; margin-right: 5px;">Edit</button>
-                        <button onclick="deleteSpinItem('${item.id}')" style="background: #ef4444; color: #fff; border: none; padding: 3px 8px; border-radius: 4px; font-weight: bold; cursor: pointer;">Delete</button>
-                    </div>`;
-                container.appendChild(div);
-            });
-        }
-
-        window.editSpinItem = function(id, name) {
-            document.getElementById('editSpinId').value = id;
-            document.getElementById('spinItemInput').value = name;
-            document.getElementById('spinSaveBtn').innerText = "Update Spin Item";
-        };
-
-        window.deleteSpinItem = async function(id) {
-            if (confirm("Are you sure you want to delete this spin item?")) {
-                try {
-                    await deleteDoc(doc(db, "spinItems", id));
-                    alert("Spin item deleted!");
-                } catch(e) { alert(e.message); }
-            }
-        };
-
-        // Spin flow check
-        window.handleSpinClick = function() {
-            const userPhone = localStorage.getItem('userSpinPhone');
-            const isEnabled = localStorage.getItem('spinEnabled_' + userPhone);
-
-            if (isEnabled === 'true') {
-                spinTheWheel();
-            } else {
-                document.getElementById('checkoutModalTitle').innerText = "Spin Payment & Request";
-                document.getElementById('checkoutModal').style.display = 'flex';
-            }
-        };
-
-        window.submitOrderToWhatsApp = async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            
-            localStorage.setItem('userSpinPhone', phone);
-
-            try {
-                await addDoc(spinRequestsCol, {
-                    name: name,
-                    phone: phone,
-                    status: 'pending',
-                    timestamp: Date.now()
-                });
-                alert("Aap ki request aur payment screenshot admin ko bhej di gayi hai. Verification ke bad spin enable ho jayega!");
-                closeCheckoutModal();
-            } catch(err) {
-                alert("Error: " + err.message);
-            }
-        };
-
-        // Listen to spin requests
-        onSnapshot(spinRequestsCol, (snapshot) => {
-            spinRequestsData = [];
-            snapshot.forEach(d => spinRequestsData.push({ id: d.id, ...d.data() }));
-            
-            const userPhone = localStorage.getItem('userSpinPhone');
-            if (userPhone) {
-                const req = spinRequestsData.find(r => r.phone === userPhone);
-                if (req && req.status === 'verified') {
-                    localStorage.setItem('spinEnabled_' + userPhone, 'true');
-                }
-            }
-
-            if (isAdmin) displayAdminSpinRequests();
-        });
-
-        function displayAdminSpinRequests() {
-            const container = document.getElementById('adminSpinRequestsList');
-            container.innerHTML = '';
-            const pending = spinRequestsData.filter(r => r.status === 'pending');
-            
-            if (pending.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); font-size: 0.85rem;">No pending requests right now.</p>';
-                return;
-            }
-
-            pending.forEach(r => {
-                const div = document.createElement('div');
-                div.style.cssText = "background: #0b0f19; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;";
-                div.innerHTML = `<span><b>${r.name}</b> (${r.phone})</span>
-                    <button onclick="verifySpinRequest('${r.id}')" style="background: var(--opay-color); color:#fff; border:none; padding:5px 12px; border-radius:6px; font-weight:bold; cursor:pointer;">Verify & Enable Spin</button>`;
-                container.appendChild(div);
-            });
-        }
-
-        window.verifySpinRequest = async function(id) {
-            try {
-                await updateDoc(doc(db, "spinRequests", id), { status: 'verified' });
-                alert("Spin enabled for customer!");
-            } catch(e) { alert(e.message); }
-        };
-
-        function spinTheWheel() {
-            const wheel = document.getElementById('spinWheel');
-            const randomDegree = Math.floor(Math.random() * 3600) + 720;
-            wheel.style.transform = `rotate(${randomDegree}deg)`;
-            
-            setTimeout(() => {
-                const winningIndex = Math.floor((randomDegree % 360) / (360 / spinItemsData.length));
-                const wonPrize = spinItemsData[winningIndex].name;
-                document.getElementById('wonItemText').innerText = `Badhaai ho! Aap ne jeeta hai: ${wonPrize}`;
-                document.getElementById('spinWinnerModal').style.display = 'flex';
-                
-                const userPhone = localStorage.getItem('userSpinPhone');
-                localStorage.removeItem('spinEnabled_' + userPhone);
-            }, 4000);
-        }
-
-        window.submitSpinWinnerDetails = function(e) {
-            e.preventDefault();
-            const name = document.getElementById('winnerName').value;
-            const phone = document.getElementById('winnerPhone').value;
-            const prize = document.getElementById('wonItemText').innerText;
-            window.open(`https://wa.me/923028372072?text=Spin Winner Claim: ${name} (${phone}) - Prize: ${prize}`, '_blank');
-            document.getElementById('spinWinnerModal').style.display = 'none';
-        };
-
-        // LIVE ORDERS POPUP SIMULATOR WITH SOUND
+        // LIVE ORDERS POPUP SIMULATOR WITH SOUND[cite: 2]
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
-            { name: "Bilal from Islamabad", item: "Instagram 20000 Views" },
-            { name: "Zubair from Faisalabad", item: "Facebook 1k Views" },
-            { name: "Saad from Rawalpindi", item: "TikTok Live" }
+            { name: "Bilal from Islamabad", item: "TIKTOK LIVE Stream" },
+            { name: "Zubair from Faisalabad", item: "TikTok Shop Enable" },
+            { name: "Saad from Rawalpindi", item: "Spin & Win Prize" },
+            { name: "Omer from Multan", item: "TikTok Account Unfreeze" }
         ];
 
         function showOrderToast() {
@@ -931,8 +759,8 @@
             const randomMins = Math.floor(Math.random() * 6) + 1;
 
             document.getElementById('toastUser').innerText = randomOrder.name;
-            document.getElementById('toastProduct').innerText = "Ordered: " + randomOrder.item;
-            document.getElementById('toastTime').innerText = `${randomMins} min ago • Live Verified Order`;
+            document.getElementById('toastProduct').innerText = "🔥 Ordered: " + randomOrder.item;
+            document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Purchase`;
 
             toast.classList.add('show');
             setTimeout(() => {
@@ -952,8 +780,8 @@
                 isAdmin = true;
                 document.getElementById('adminPanel').style.display = 'block';
                 displayProducts();
-                displayAdminSpinRequests();
-                displayAdminSpinItems();
+                displaySpinItemsManager();
+                displayBankManager();
             } else alert("Wrong Password!");
         };
 
@@ -961,6 +789,81 @@
             isAdmin = false;
             document.getElementById('adminPanel').style.display = 'none';
             displayProducts();
+        };
+
+        // BANK ACCOUNTS MANAGEMENT (ADD, EDIT, DELETE)
+        onSnapshot(banksCol, (snapshot) => {
+            banksData = [];
+            snapshot.forEach(d => banksData.push({ id: d.id, ...d.data() }));
+            displayBankDetails();
+            if (isAdmin) displayBankManager();
+        });
+
+        function displayBankDetails() {
+            const container = document.getElementById('bankDisplayGrid');
+            if (banksData.length === 0) {
+                container.innerHTML = `
+                    <p><strong>Account Name:</strong> usmanamjadsanaamanullah</p>
+                    <p><strong>Account Number:</strong> 1591000414530002</p>
+                    <p><strong>Bank Name:</strong> MCB Islamic Bank</p>
+                `;
+                return;
+            }
+            container.innerHTML = '';
+            banksData.forEach(b => {
+                container.innerHTML += `
+                    <p><strong>Bank:</strong> ${b.name}</p>
+                    <p><strong>Account Title:</strong> ${b.title}</p>
+                    <p><strong>Account Number:</strong> ${b.number}</p>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 6px 0;">
+                `;
+            });
+        }
+
+        window.saveBank = async function(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editBankId').value;
+            const name = document.getElementById('bName').value.trim();
+            const title = document.getElementById('bTitle').value.trim();
+            const number = document.getElementById('bNumber').value.trim();
+
+            try {
+                if (editId) {
+                    await updateDoc(doc(db, "banks", editId), { name, title, number });
+                    alert("Bank account updated!");
+                } else {
+                    await addDoc(banksCol, { name, title, number });
+                    alert("Bank account added!");
+                }
+                document.getElementById('bankForm').reset();
+                document.getElementById('editBankId').value = '';
+            } catch(e) { alert(e.message); }
+        };
+
+        window.displayBankManager = function() {
+            const container = document.getElementById('bankManageList');
+            container.innerHTML = '';
+            banksData.forEach(b => {
+                const item = document.createElement('div');
+                item.style.cssText = "background: #0b0f19; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--mcb-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;";
+                item.innerHTML = `<span><b>${b.name}</b> - ${b.number} (${b.title})</span> 
+                    <div>
+                        <button onclick="editBank('${b.id}', '${b.name}', '${b.title}', '${b.number}')" style="background:#f59e0b; color:#000; border:none; padding:3px 8px; border-radius:4px; cursor:pointer; font-weight:bold; margin-right:5px;">Edit</button>
+                        <button onclick="deleteBank('${b.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 8px; border-radius:4px; cursor:pointer; font-weight:bold;">X</button>
+                    </div>`;
+                container.appendChild(item);
+            });
+        };
+
+        window.editBank = function(id, name, title, number) {
+            document.getElementById('editBankId').value = id;
+            document.getElementById('bName').value = name;
+            document.getElementById('bTitle').value = title;
+            document.getElementById('bNumber').value = number;
+        };
+
+        window.deleteBank = async function(id) {
+            if (confirm("Delete this bank account?")) await deleteDoc(doc(db, "banks", id));
         };
 
         // PRODUCTS EDIT, SAVE & DELETE
@@ -1002,6 +905,72 @@
             }
         };
 
+        // SPIN ITEMS MANAGEMENT
+        onSnapshot(spinItemsCol, (snapshot) => {
+            spinItemsData = [];
+            snapshot.forEach(docSnap => spinItemsData.push({ id: docSnap.id, ...docSnap.data() }));
+            renderWheel(spinItemsData);
+            if (isAdmin) displaySpinItemsManager();
+        });
+
+        window.saveSpinItem = async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('sItemName').value.trim();
+            const editId = document.getElementById('editSpinId').value;
+
+            try {
+                if (editId) {
+                    await updateDoc(doc(db, "spinItems", editId), { name });
+                    alert("Spin item updated!");
+                } else {
+                    await addDoc(spinItemsCol, { name });
+                    alert("Spin item saved!");
+                }
+                document.getElementById('spinItemForm').reset();
+                document.getElementById('editSpinId').value = '';
+            } catch(e) { alert(e.message); }
+        };
+
+        window.displaySpinItemsManager = function() {
+            const container = document.getElementById('spinItemsManageList');
+            container.innerHTML = '';
+            spinItemsData.forEach(item => {
+                const chip = document.createElement('div');
+                chip.style.cssText = "background: #0b0f19; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--gold-glow); display: flex; align-items: center; gap: 8px; font-size: 0.85rem;";
+                chip.innerHTML = `<span>${item.name}</span> 
+                    <button onclick="editSpinItem('${item.id}', '${item.name}')" style="background:#f59e0b; color:#000; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Edit</button>
+                    <button onclick="deleteSpinItem('${item.id}')" style="background:#ef4444; color:#fff; border:none; padding:2px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">X</button>`;
+                container.appendChild(chip);
+            });
+        };
+
+        window.editSpinItem = function(id, name) {
+            document.getElementById('editSpinId').value = id;
+            document.getElementById('sItemName').value = name;
+        };
+
+        window.deleteSpinItem = async function(id) {
+            if (confirm("Delete this spin item?")) await deleteDoc(doc(db, "spinItems", id));
+        };
+
+        function renderWheel(items) {
+            const wheel = document.getElementById('spinWheel');
+            wheel.innerHTML = '<div class="wheel-pointer"></div>';
+            if (!items || items.length === 0) {
+                items = [{ name: "TIKTOK UK ACCOUNT" }, { name: "TIKTOK LIVE" }, { name: "TIKTOK USA ACCOUNT" }, { name: "INSTAGRAM 10000 VIEWS" }, { name: "TIKTOK VIEWS" }];
+            }
+            const sliceAngle = 360 / items.length;
+            items.forEach((item, index) => {
+                const slice = document.createElement('div');
+                slice.className = 'wheel-slice';
+                slice.style.transform = `rotate(${index * sliceAngle}deg) skewY(-30deg)`;
+                slice.style.backgroundColor = index % 2 === 0 ? '#151c2c' : '#1e293b';
+                slice.innerHTML = `<span style="transform: skewY(30deg) rotate(${sliceAngle/2}deg); display:block; text-align:center;">${item.name}</span>`;
+                wheel.appendChild(slice);
+            });
+        }
+
+        // PRESET RATING & STOCK TEMPLATES
         const ratingPresets = [
             { rating: "4.9", count: "148 Reviews", sold: 82, remaining: 18 },
             { rating: "5.0", count: "215 Reviews", sold: 94, remaining: 6 },
@@ -1036,6 +1005,7 @@
                         <h3 class="product-title">${p.name}</h3>
                         <div class="product-price">${p.price}</div>
                         
+                        <!-- RATING BOX -->
                         <div class="product-rating-box">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -1046,6 +1016,7 @@
                             <span class="product-rating-count">(${preset.count})</span>
                         </div>
 
+                        <!-- STOCK BAR -->
                         <div class="stock-tracker-box">
                             <div class="stock-text-info">
                                 <span style="color: #25d366;"><i class="fa-solid fa-check-circle"></i> ${preset.sold} Sold Out</span>
@@ -1057,7 +1028,7 @@
                         </div>
 
                         <p class="product-desc">${p.desc}</p>
-                        <button onclick="openProductCheckout('${p.name}')" class="buy-btn ripple-btn">
+                        <button onclick="openCheckoutModal('${p.name}')" class="buy-btn ripple-btn">
                             <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
                         </button>
                         <div class="admin-actions" style="display: ${isAdmin ? 'flex' : 'none'};">
@@ -1069,12 +1040,24 @@
             });
         };
 
-        window.openProductCheckout = function(pName) {
-            window.open(`https://wa.me/923028372072?text=Hello, I want to buy: ${pName}`, '_blank');
+        window.openCheckoutModal = function(pName) {
+            document.getElementById('checkoutModalTitle').innerText = `Order: ${pName}`;
+            document.getElementById('checkoutModal').style.display = 'flex';
         };
-        
-        window.closeCheckoutModal = function() { 
-            document.getElementById('checkoutModal').style.display = 'none'; 
+        window.closeCheckoutModal = function() { document.getElementById('checkoutModal').style.display = 'none'; };
+        window.triggerSpinPayment = function() { openCheckoutModal("Spin & Win (Rs. 50)"); };
+
+        window.submitOrderToWhatsApp = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            window.open(`https://wa.me/923028372072?text=New Order: ${name} (${phone}) - MCB Islamic Bank Payment Done`, '_blank');
+            closeCheckoutModal();
+        };
+
+        window.skipAndOrderWhatsApp = function() {
+            window.open(`https://wa.me/923028372072?text=Order Payment Pending (Skipped)`, '_blank');
+            closeCheckoutModal();
         };
     </script>
 </body>
