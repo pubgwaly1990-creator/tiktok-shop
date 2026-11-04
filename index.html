@@ -12,6 +12,7 @@
             --bg-card: #151c2c;
             --primary-glow: #00f2fe;
             --accent-pink: #ff0050;
+            --gold-glow: #ffd700;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
@@ -21,35 +22,113 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; position: relative; }
+
+        /* 1. MOUSE MOVE GLOW CIRCLE EFFECT */
+        #cursorGlow {
+            pointer-events: none;
+            position: fixed;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(255, 0, 80, 0.15) 50%, transparent 80%);
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            z-index: 99999;
+        }
+
+        /* 2. RIPPLE ANIMATION ON CLICK */
+        .ripple-btn { position: relative; overflow: hidden; }
+        .ripple {
+            position: absolute;
+            background: rgba(0, 242, 254, 0.6);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes rippleEffect {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* 3. LIGHTNING FLASH EFFECT (بجلی چمکنے والا ایفیکٹ) */
+        @keyframes lightningStrike {
+            0%, 90%, 94%, 98%, 100% { opacity: 0; filter: brightness(1); }
+            92% { opacity: 0.15; filter: brightness(1.8); background-color: #ffffff; }
+            96% { opacity: 0.22; filter: brightness(2.2); background-color: #00f2fe; }
+        }
+        #lightningOverlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            animation: lightningStrike 7s infinite;
+        }
+
+        /* 4. GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
+        @keyframes goldFlicker {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
+        }
+        @keyframes goldShimmer {
+            0% { transform: translateX(-150%) rotate(45deg); }
+            100% { transform: translateX(150%) rotate(45deg); }
+        }
+        .golden-glow-card {
+            animation: goldFlicker 3s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .golden-glow-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255, 215, 0, 0.25), transparent);
+            transform: rotate(45deg);
+            animation: goldShimmer 4s infinite;
+            pointer-events: none;
+        }
+
+        /* GENERAL GLOWING SHINING EFFECTS */
+        .glowing-title {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(0, 242, 254, 0.3);
+        }
+        .glowing-gold-text {
+            color: #ffd700 !important;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+        }
 
         .top-social-bar {
             background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; flex-wrap: wrap; gap: 10px;
         }
         .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
         .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-weight: 600; transition: 0.3s; font-size: 0.85rem; }
-        .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); }
-        .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
-        .social-btn.daraz { background: rgba(255, 107, 0, 0.15); color: var(--daraz-color); border: 1px solid var(--daraz-color); }
+        .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); box-shadow: 0 0 8px rgba(0,242,254,0.3); }
+        .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); box-shadow: 0 0 8px rgba(37,211,102,0.3); }
+        .social-btn.daraz { background: rgba(255, 107, 0, 0.15); color: var(--daraz-color); border: 1px solid var(--daraz-color); box-shadow: 0 0 8px rgba(255,107,0,0.3); }
         .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
         header {
             background: rgba(21, 28, 44, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
         }
         .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--accent-pink); }
+        .logo span { color: var(--accent-pink); text-shadow: 0 0 10px var(--accent-pink); }
 
         .rating-badge {
-            background: #282828; color: #ffd700; padding: 4px 12px; border-radius: 20px; font-weight: bold; border: 1px solid #333; font-size: 0.85rem;
+            background: #282828; color: #ffd700; padding: 4px 12px; border-radius: 20px; font-weight: bold; border: 1px solid #ffd700; font-size: 0.85rem; box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
         }
 
         .btn-admin {
-            background: rgba(0, 242, 254, 0.1); color: var(--primary-glow); border: 1px solid var(--primary-glow); padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+            background: rgba(0, 242, 254, 0.1); color: var(--primary-glow); border: 1px solid var(--primary-glow); padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; box-shadow: 0 0 10px rgba(0,242,254,0.3); transition: 0.3s;
         }
+        .btn-admin:hover { box-shadow: 0 0 20px var(--primary-glow); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 5%; }
         .hero { padding: 2rem 5% 1rem; text-align: center; max-width: 900px; margin: 0 auto; }
-        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--primary-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
         /* PROMOTIONAL VIDEO CONTAINER */
@@ -59,7 +138,7 @@
             border-radius: 20px;
             padding: 1.5rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
             text-align: center;
         }
         .promo-video-container h3 {
@@ -78,8 +157,9 @@
             margin: 0 auto;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--primary-glow);
             background: #000;
+            box-shadow: 0 0 15px rgba(0,242,254,0.2);
         }
         .video-wrapper video {
             width: 100%;
@@ -94,7 +174,7 @@
             left: 20px;
             background: rgba(21, 28, 44, 0.95);
             border: 1px solid var(--primary-glow);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
             border-radius: 12px;
             padding: 12px 16px;
             display: flex;
@@ -110,7 +190,7 @@
             transform: translateY(0);
         }
         .toast-icon {
-            background: rgba(37, 211, 102, 0.15);
+            background: rgba(37, 211, 102, 0.2);
             color: var(--whatsapp-color);
             width: 40px;
             height: 40px;
@@ -120,6 +200,7 @@
             justify-content: center;
             font-size: 1.2rem;
             flex-shrink: 0;
+            box-shadow: 0 0 10px var(--whatsapp-color);
         }
         .toast-info h5 {
             color: #fff;
@@ -139,7 +220,7 @@
 
         /* Daraz Official Store Box */
         .daraz-banner-box {
-            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(21, 28, 44, 0.9));
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(21, 28, 44, 0.9));
             border: 1px solid var(--daraz-color);
             border-radius: 16px;
             padding: 1.5rem;
@@ -149,9 +230,9 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
-            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.15);
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
         }
-        .daraz-banner-info h3 { color: var(--daraz-color); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .daraz-banner-info h3 { color: var(--daraz-color); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; text-shadow: 0 0 8px rgba(255,107,0,0.5); }
         .daraz-banner-info p { color: var(--text-muted); font-size: 0.85rem; margin-top: 4px; }
         .daraz-link-btn {
             background: var(--daraz-color);
@@ -164,8 +245,9 @@
             align-items: center;
             gap: 8px;
             transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
         }
-        .daraz-link-btn:hover { background: #e05e00; transform: translateY(-2px); }
+        .daraz-link-btn:hover { background: #e05e00; transform: translateY(-2px); box-shadow: 0 0 25px rgba(255, 107, 0, 0.8); }
 
         /* Bank Details Box Styling */
         .bank-details-container {
@@ -174,7 +256,7 @@
             border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.1);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
         }
         .bank-grid {
             display: grid;
@@ -191,16 +273,17 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
         }
         .bank-card h4 { color: var(--primary-glow); font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
         .bank-card p { font-size: 0.9rem; color: var(--text-main); margin-bottom: 4px; }
         .bank-card span { color: var(--text-muted); font-size: 0.8rem; }
 
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
-        .section-title i { color: var(--primary-glow); }
+        .section-title i { color: var(--gold-glow); text-shadow: 0 0 10px var(--gold-glow); }
 
         #adminPanel {
-            display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem;
+            display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,242,254,0.3);
         }
         .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 2rem; }
         .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 12px; text-align: center; }
@@ -212,46 +295,53 @@
             width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
         }
         .admin-form button {
-            background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer;
+            background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px var(--primary-glow);
         }
 
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
-        .product-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+        .product-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
         .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; }
         .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .product-details { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
-        .product-price { font-size: 1.2rem; font-weight: 800; color: var(--primary-glow); margin-bottom: 10px; }
+        .product-details { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; z-index: 2; }
+        .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
+        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 10px; }
         .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; max-height: 150px; overflow-y: auto; }
 
-        .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; }
+        .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; box-shadow: 0 0 12px rgba(37, 211, 102, 0.4); transition: 0.3s; }
+        .buy-btn:hover { box-shadow: 0 0 22px rgba(37, 211, 102, 0.8); transform: scale(1.02); }
         .admin-actions { display: none; gap: 8px; margin-top: 10px; }
         .btn-edit { background: #f59e0b; color: #000; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
         .btn-delete { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
 
         footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 2.5rem 5%; margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
-        .creator-badge { display: inline-block; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--primary-glow); padding: 6px 16px; border-radius: 20px; color: var(--primary-glow); font-weight: 700; margin-top: 10px; }
+        .creator-badge { display: inline-block; background: rgba(0, 242, 254, 0.08); border: 1px solid var(--primary-glow); padding: 6px 16px; border-radius: 20px; color: var(--primary-glow); font-weight: 700; margin-top: 10px; box-shadow: 0 0 10px rgba(0, 242, 254, 0.3); }
         .loading-text { text-align: center; width: 100%; color: var(--primary-glow); font-weight: bold; padding: 2rem; }
     </style>
 </head>
 <body>
 
+    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT -->
+    <div id="cursorGlow"></div>
+
+    <!-- LIGHTNING FLASH OVERLAY (بجلی چمکنے والا ایفیکٹ) -->
+    <div id="lightningOverlay"></div>
+
     <div class="top-social-bar">
         <span><i class="fa-solid fa-headset"></i> Official Customer Support: <strong>0302-8372072</strong></span>
         <div class="social-links">
-            <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Support</a>
-            <a href="https://www.daraz.pk/shop/tiktok-uk-accounts" target="_blank" class="social-btn daraz"><i class="fa-solid fa-bag-shopping"></i> Visit Daraz Store</a>
+            <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa ripple-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp Support</a>
+            <a href="https://www.daraz.pk/shop/tiktok-uk-accounts" target="_blank" class="social-btn daraz ripple-btn"><i class="fa-solid fa-bag-shopping"></i> Visit Daraz Store</a>
         </div>
     </div>
 
     <header>
         <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
         <div class="rating-badge">⭐ Rating: 5.5 / 5.0</div>
-        <button class="btn-admin" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin & Analytics</button>
+        <button class="btn-admin ripple-btn" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin & Analytics</button>
     </header>
 
     <section class="hero">
-        <h1>TikTok Shop Pakistan - Buy Viral TikTok Products & Accounts</h1>
+        <h1 class="glowing-title">TikTok Shop Pakistan - Buy Viral TikTok Products & Accounts</h1>
         <p>Verified TikTok UK/USA Monetized Accounts, Followers, Views & Ads Services.</p>
     </section>
 
@@ -273,7 +363,7 @@
                 <h3><i class="fa-solid fa-store"></i> Shop Directly On Our Daraz Store</h3>
                 <p>Aap humare verified Daraz seller store se bhi official products direct order aur buy kar sakte hain.</p>
             </div>
-            <a href="https://www.daraz.pk/shop/tiktok-uk-accounts" target="_blank" class="daraz-link-btn">
+            <a href="https://www.daraz.pk/shop/tiktok-uk-accounts" target="_blank" class="daraz-link-btn ripple-btn">
                 <i class="fa-solid fa-cart-shopping"></i> Visit Daraz Store
             </a>
         </div>
@@ -291,14 +381,14 @@
         </div>
 
         <!-- PERMANENT LIVE COMMENTS SECTION -->
-        <div style="background: var(--bg-card); border: 1px solid var(--primary-glow); border-radius: 16px; padding: 1.5rem; margin-bottom: 2.5rem; box-shadow: 0 4px 20px rgba(0, 242, 254, 0.1);">
+        <div style="background: var(--bg-card); border: 1px solid var(--primary-glow); border-radius: 16px; padding: 1.5rem; margin-bottom: 2.5rem; box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);">
             <h3 style="color: var(--primary-glow); font-size: 1.2rem; margin-bottom: 10px; text-align: center;"><i class="fa-solid fa-comments"></i> Customer Reviews & Public Comments</h3>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; text-align: center;">Yahan apna review likhein. Sabhi visitors ko aapka message permanently show hoga!</p>
             
             <form id="commentForm" onsubmit="savePublicComment(event)" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                 <input type="text" id="visitorName" placeholder="Aap Ka Naam" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: #0b0f19; color: #fff; outline: none;">
                 <textarea id="visitorMsg" placeholder="Apna message ya review yahan likhein..." rows="3" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: #0b0f19; color: #fff; outline: none; resize: none;"></textarea>
-                <button type="submit" style="padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer;">Post Comment</button>
+                <button type="submit" class="ripple-btn" style="padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px rgba(37,211,102,0.4);">Post Comment</button>
             </form>
 
             <div id="commentsDisplayArea" style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
@@ -310,7 +400,7 @@
         <section id="adminPanel">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                 <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Realtime Admin & Product Manager</h2>
-                <button onclick="closeAdmin()" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-weight: 700;">Logout Admin</button>
+                <button onclick="closeAdmin()" class="ripple-btn" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-weight: 700;">Logout Admin</button>
             </div>
 
             <div class="analytics-grid">
@@ -320,7 +410,7 @@
                 </div>
                 <div class="stat-card">
                     <h4>DATABASE STATUS</h4>
-                    <div class="value" style="font-size:1.2rem; color:#25D366;">Connected ⚡</div>
+                    <div class="value" style="font-size:1.2rem; color:#25D366; text-shadow: 0 0 8px #25D366;">Connected ⚡</div>
                 </div>
             </div>
 
@@ -332,7 +422,7 @@
                     <input type="text" id="bName" placeholder="Bank / Wallet Name (e.g. EasyPaisa / JazzCash / SadaPay)" required>
                     <input type="text" id="bTitle" placeholder="Account Title (e.g. Usman Amjad)" required>
                     <input type="text" id="bNumber" placeholder="Account Number (e.g. 0302-8372072)" required>
-                    <button type="submit" id="saveBankBtn">Save Bank to Cloud</button>
+                    <button type="submit" id="saveBankBtn" class="ripple-btn">Save Bank to Cloud</button>
                 </form>
             </div>
 
@@ -345,13 +435,13 @@
                     <input type="text" id="pPrice" placeholder="Price (e.g. Rs. 3500)" required>
                     <input type="url" id="pImg" placeholder="Image Link URL">
                     <textarea id="pDesc" rows="3" placeholder="Description & Details..." required></textarea>
-                    <button type="submit" id="saveBtn">Save Product to Cloud</button>
+                    <button type="submit" id="saveBtn" class="ripple-btn">Save Product to Cloud</button>
                 </form>
             </div>
         </section>
 
         <!-- Product Display Area -->
-        <h2 class="section-title"><i class="fa-solid fa-fire"></i> Available Products & Special Offers</h2>
+        <h2 class="section-title"><i class="fa-solid fa-bolt glowing-gold-text"></i> Available Products & Special Offers</h2>
         <div class="products-grid" id="productsDisplay">
             <div class="loading-text">Loading Products from Cloud...</div>
         </div>
@@ -378,6 +468,38 @@
             <span class="creator-badge"><i class="fa-solid fa-code"></i> Developed & Managed by Usman Butt</span>
         </div>
     </footer>
+
+    <!-- MOUSE GLOW & RIPPLE SCRIPT -->
+    <script>
+        // Mouse Move Glow Follower
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Click Ripple Effect Handler
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('.ripple-btn');
+            if (target) {
+                const circle = document.createElement('span');
+                const diameter = Math.max(target.clientWidth, target.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${e.clientX - target.getBoundingClientRect().left - radius}px`;
+                circle.style.top = `${e.clientY - target.getBoundingClientRect().top - radius}px`;
+                circle.classList.add('ripple');
+                
+                const existingRipple = target.getElementsByClassName('ripple')[0];
+                if (existingRipple) existingRipple.remove();
+                
+                target.appendChild(circle);
+            }
+        });
+    </script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -447,7 +569,7 @@
 
             comments.forEach(c => {
                 const box = document.createElement('div');
-                box.style.cssText = "background: #0b0f19; padding: 10px 14px; border-radius: 8px; border-left: 4px solid var(--whatsapp-color);";
+                box.style.cssText = "background: #0b0f19; padding: 10px 14px; border-radius: 8px; border-left: 4px solid var(--whatsapp-color); box-shadow: 0 0 10px rgba(37,211,102,0.2);";
                 box.innerHTML = `<strong style="color: var(--whatsapp-color); font-size: 0.9rem;">${c.name}</strong><p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 4px;">${c.msg}</p>`;
                 container.appendChild(box);
             });
@@ -523,7 +645,7 @@
             displayBanks();
         });
 
-        // Display Products Function
+        // Display Products Function with GOLDEN GLOWING CARDS
         window.displayProducts = function() {
             const grid = document.getElementById('productsDisplay');
             grid.innerHTML = '';
@@ -535,7 +657,7 @@
 
             productsData.forEach(p => {
                 const card = document.createElement('div');
-                card.className = 'product-card';
+                card.className = 'product-card golden-glow-card';
                 
                 let imgSrc = p.img ? p.img : 'https://via.placeholder.com/300x180?text=TikTok+Shop';
                 let waText = encodeURIComponent(`Hi, I want to buy this product: ${p.name} - Price: ${p.price}`);
@@ -548,12 +670,12 @@
                         <h3 class="product-title">${p.name}</h3>
                         <div class="product-price">${p.price}</div>
                         <p class="product-desc">${p.desc}</p>
-                        <a href="https://wa.me/923028372072?text=${waText}" target="_blank" class="buy-btn">
+                        <a href="https://wa.me/923028372072?text=${waText}" target="_blank" class="buy-btn ripple-btn">
                             <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
                         </a>
                         <div class="admin-actions" style="display: ${isAdmin ? 'flex' : 'none'};">
-                            <button class="btn-edit" onclick="editProduct('${p.id}')">Edit</button>
-                            <button class="btn-delete" onclick="deleteProduct('${p.id}')">Delete</button>
+                            <button class="btn-edit ripple-btn" onclick="editProduct('${p.id}')">Edit</button>
+                            <button class="btn-delete ripple-btn" onclick="deleteProduct('${p.id}')">Delete</button>
                         </div>
                     </div>
                 `;
@@ -645,8 +767,8 @@
                         <p><strong>Account #:</strong> ${b.number}</p>
                     </div>
                     <div class="admin-actions" style="display:${isAdmin ? 'flex' : 'none'}; margin-top: 10px;">
-                        <button class="btn-edit" onclick="editBank('${b.id}')">Edit</button>
-                        <button class="btn-delete" onclick="deleteBank('${b.id}')">Delete</button>
+                        <button class="btn-edit ripple-btn" onclick="editBank('${b.id}')">Edit</button>
+                        <button class="btn-delete ripple-btn" onclick="deleteBank('${b.id}')">Delete</button>
                     </div>
                 `;
                 grid.appendChild(card);
