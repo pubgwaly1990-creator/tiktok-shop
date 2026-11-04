@@ -35,7 +35,7 @@
             position: relative; 
         }
 
-        /* CINEMATIC / SHUTTER OPENING INTRO WINDOW WITH FIRE EFFECTS */
+        /* CINEMATIC / SHUTTER OPENING INTRO WINDOW WITH WELCOME TEXT AND FIRE BUTTON */
         #cinematicOverlay {
             position: fixed;
             inset: 0;
@@ -54,29 +54,41 @@
         }
         .shutter-content {
             text-align: center;
-            animation: firePulse 2s infinite ease-in-out;
             padding: 20px;
         }
-        @keyframes firePulse {
-            0%, 100% { text-shadow: 0 0 20px #ff4500, 0 0 40px #ff8c00; }
-            50% { text-shadow: 0 0 35px #ff0050, 0 0 60px #ffd700; }
+        .shutter-welcome-text {
+            font-size: 1.8rem;
+            color: var(--gold-glow);
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            letter-spacing: 1px;
+            animation: fadeInWelcome 1.5s ease-in-out;
+        }
+        @keyframes fadeInWelcome {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         .shutter-enter-btn {
             background: linear-gradient(135deg, #ff4500, #ff0050);
             color: #fff;
             border: 2px solid #ffd700;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 16px 45px;
+            font-size: 1.25rem;
             font-weight: 800;
-            border-radius: 35px;
+            border-radius: 40px;
             cursor: pointer;
-            box-shadow: 0 0 30px #ff4500;
+            box-shadow: 0 0 35px #ff4500, 0 0 15px #ffd700;
             transition: 0.3s;
-            margin-top: 25px;
+            animation: firePulse 2s infinite ease-in-out;
+        }
+        @keyframes firePulse {
+            0%, 100% { box-shadow: 0 0 25px #ff4500, 0 0 50px #ff8c00; transform: scale(1); }
+            50% { box-shadow: 0 0 40px #ff0050, 0 0 70px #ffd700; transform: scale(1.04); }
         }
         .shutter-enter-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 50px #ffd700;
+            box-shadow: 0 0 60px #ffd700;
         }
 
         /* MOUSE MOVE GLOW CIRCLE EFFECT[cite: 2] */
@@ -431,13 +443,12 @@
 </head>
 <body>
 
-    <!-- CINEMATIC / SHUTTER OPENING INTRO WINDOW WITH FIRE EFFECTS -->
+    <!-- CINEMATIC OPENING INTRO WITH WELCOME TO TIKTOK SHOP PAKISTAN & BUTTON -->
     <div id="cinematicOverlay">
         <div class="shutter-content">
-            <h1 style="font-size: 2.5rem; color: #fff; margin-bottom: 10px;" class="glowing-title">🔥 TikTok Shop Pakistan 🔥</h1>
-            <p style="color: var(--gold-glow); font-size: 1.1rem; margin-bottom: 20px;">Verified Digital Marketplace & Gaming Hub</p>
+            <h2 class="shutter-welcome-text">Welcome to TikTok Shop Pakistan</h2>
             <button class="shutter-enter-btn ripple-btn" onclick="openWebsiteShutter()">
-                <i class="fa-solid fa-door-open"></i> Open Shop (Cinematic Shutter)
+                <i class="fa-solid fa-door-open"></i> Open Shop
             </button>
         </div>
     </div>
@@ -959,7 +970,7 @@
             });
         }
 
-        // PRESET RATING & STOCK TEMPLATES (FROM INDEX_2)[cite: 2]
+        // PRESET RATING & STOCK TEMPLATES
         const ratingPresets = [
             { rating: "4.9", count: "148 Reviews", sold: 82, remaining: 18 },
             { rating: "5.0", count: "215 Reviews", sold: 94, remaining: 6 },
@@ -994,7 +1005,7 @@
                         <h3 class="product-title">${p.name}</h3>
                         <div class="product-price">${p.price}</div>
                         
-                        <!-- RATING BOX[cite: 2] -->
+                        <!-- RATING BOX -->
                         <div class="product-rating-box">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -1005,7 +1016,7 @@
                             <span class="product-rating-count">(${preset.count})</span>
                         </div>
 
-                        <!-- STOCK BAR[cite: 2] -->
+                        <!-- STOCK BAR -->
                         <div class="stock-tracker-box">
                             <div class="stock-text-info">
                                 <span style="color: #25d366;"><i class="fa-solid fa-check-circle"></i> ${preset.sold} Sold Out</span>
