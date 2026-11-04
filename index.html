@@ -13,6 +13,7 @@
             --primary-glow: #00f2fe;
             --accent-pink: #ff0050;
             --gold-glow: #ffd700;
+            --fire-orange: #ff4500;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
@@ -24,7 +25,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; position: relative; }
 
-        /* 1. MOUSE MOVE GLOW CIRCLE EFFECT */
+        /* MOUSE MOVE GLOW CIRCLE EFFECT */
         #cursorGlow {
             pointer-events: none;
             position: fixed;
@@ -37,7 +38,7 @@
             z-index: 99999;
         }
 
-        /* 2. RIPPLE ANIMATION ON CLICK */
+        /* RIPPLE ANIMATION ON CLICK */
         .ripple-btn { position: relative; overflow: hidden; }
         .ripple {
             position: absolute;
@@ -51,7 +52,7 @@
             to { transform: scale(4); opacity: 0; }
         }
 
-        /* 3. LIGHTNING FLASH EFFECT (بجلی چمکنے والا ایفیکٹ) */
+        /* LIGHTNING FLASH EFFECT */
         @keyframes lightningStrike {
             0%, 90%, 94%, 98%, 100% { opacity: 0; filter: brightness(1); }
             92% { opacity: 0.15; filter: brightness(1.8); background-color: #ffffff; }
@@ -65,7 +66,7 @@
             animation: lightningStrike 7s infinite;
         }
 
-        /* 4. GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
+        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
         @keyframes goldFlicker {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
             50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
@@ -78,6 +79,7 @@
             animation: goldFlicker 3s infinite ease-in-out;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.4);
         }
         .golden-glow-card::after {
             content: '';
@@ -92,14 +94,18 @@
             pointer-events: none;
         }
 
-        /* GENERAL GLOWING SHINING EFFECTS */
-        .glowing-title {
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(0, 242, 254, 0.3);
+        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS */
+        @keyframes fireGlow {
+            0%, 100% { box-shadow: 0 0 15px #ff4500, 0 0 30px #ff8c00, inset 0 0 10px #ff0000; border-color: #ff4500; }
+            50% { box-shadow: 0 0 25px #ff8c00, 0 0 50px #ff4500, inset 0 0 20px #ffe600; border-color: #ffe600; }
         }
-        .glowing-gold-text {
-            color: #ffd700 !important;
-            text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+        .fire-card {
+            animation: fireGlow 1.8s infinite ease-in-out;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(21, 28, 44, 0.98)) !important;
         }
+
+        .glowing-title { text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(0, 242, 254, 0.3); }
+        .glowing-gold-text { color: #ffd700 !important; text-shadow: 0 0 12px rgba(255, 215, 0, 0.8); }
 
         .top-social-bar {
             background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; flex-wrap: wrap; gap: 10px;
@@ -161,20 +167,13 @@
             background: #000;
             box-shadow: 0 0 15px rgba(0,242,254,0.2);
         }
-        .video-wrapper video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .video-wrapper video { width: 100%; height: auto; display: block; }
 
-        /* LIVE ORDER NOTIFICATION POPUP STYLES */
+        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT */
         .order-toast {
             position: fixed;
             bottom: 25px;
             left: 20px;
-            background: rgba(21, 28, 44, 0.95);
-            border: 1px solid var(--primary-glow);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
             border-radius: 12px;
             padding: 12px 16px;
             display: flex;
@@ -183,40 +182,27 @@
             z-index: 9999;
             transform: translateY(120%);
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 320px;
+            max-width: 330px;
             backdrop-filter: blur(8px);
+            border: 2px solid #ff4500;
         }
-        .order-toast.show {
-            transform: translateY(0);
-        }
+        .order-toast.show { transform: translateY(0); }
         .toast-icon {
-            background: rgba(37, 211, 102, 0.2);
-            color: var(--whatsapp-color);
-            width: 40px;
-            height: 40px;
+            background: rgba(255, 69, 0, 0.3);
+            color: #ff4500;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             flex-shrink: 0;
-            box-shadow: 0 0 10px var(--whatsapp-color);
+            box-shadow: 0 0 12px #ff4500;
         }
-        .toast-info h5 {
-            color: #fff;
-            font-size: 0.85rem;
-            margin-bottom: 2px;
-        }
-        .toast-info p {
-            color: var(--primary-glow);
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        .toast-info span {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            display: block;
-        }
+        .toast-info h5 { color: #fff; font-size: 0.85rem; margin-bottom: 2px; }
+        .toast-info p { color: #ffe600; font-size: 0.82rem; font-weight: 700; text-shadow: 0 0 5px rgba(255, 230, 0, 0.5); }
+        .toast-info span { color: #ffd700; font-size: 0.7rem; display: block; }
 
         /* Daraz Official Store Box */
         .daraz-banner-box {
@@ -277,7 +263,6 @@
         }
         .bank-card h4 { color: var(--primary-glow); font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
         .bank-card p { font-size: 0.9rem; color: var(--text-main); margin-bottom: 4px; }
-        .bank-card span { color: var(--text-muted); font-size: 0.8rem; }
 
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
         .section-title i { color: var(--gold-glow); text-shadow: 0 0 10px var(--gold-glow); }
@@ -298,14 +283,60 @@
             background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px var(--primary-glow);
         }
 
+        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
         .product-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
-        .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; }
+        .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; position: relative; }
         .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         .product-details { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; z-index: 2; }
         .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
-        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 10px; }
-        .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; max-height: 150px; overflow-y: auto; }
+        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 6px; }
+
+        /* Dynamic Product Rating Stars Box */
+        .product-rating-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+            background: rgba(255, 215, 0, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            width: fit-content;
+        }
+        .product-rating-box i { color: #ffd700; font-size: 0.85rem; }
+        .product-rating-score { color: #fff; font-size: 0.8rem; font-weight: 800; }
+        .product-rating-count { color: var(--text-muted); font-size: 0.72rem; }
+
+        /* Dynamic Product Stock Bar Box */
+        .stock-tracker-box {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 8px 10px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .stock-text-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .stock-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .stock-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4500, #25d366);
+            border-radius: 10px;
+        }
+
+        .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; max-height: 120px; overflow-y: auto; }
 
         .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; box-shadow: 0 0 12px rgba(37, 211, 102, 0.4); transition: 0.3s; }
         .buy-btn:hover { box-shadow: 0 0 22px rgba(37, 211, 102, 0.8); transform: scale(1.02); }
@@ -323,7 +354,7 @@
     <!-- MOUSE MOVE GLOW CIRCLE ELEMENT -->
     <div id="cursorGlow"></div>
 
-    <!-- LIGHTNING FLASH OVERLAY (بجلی چمکنے والا ایفیکٹ) -->
+    <!-- LIGHTNING FLASH OVERLAY -->
     <div id="lightningOverlay"></div>
 
     <div class="top-social-bar">
@@ -336,7 +367,7 @@
 
     <header>
         <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
-        <div class="rating-badge">⭐ Rating: 5.5 / 5.0</div>
+        <div class="rating-badge">⭐ Overall Client Rating: 4.95 / 5.0</div>
         <button class="btn-admin ripple-btn" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin & Analytics</button>
     </header>
 
@@ -448,17 +479,20 @@
 
     </main>
 
-    <!-- LIVE POPUP ORDER TOAST CONTAINER -->
-    <div id="orderToast" class="order-toast">
+    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT -->
+    <div id="orderToast" class="order-toast fire-card">
         <div class="toast-icon">
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fa-solid fa-fire-flame-curved"></i>
         </div>
         <div class="toast-info">
             <h5 id="toastUser">Ali from Lahore</h5>
-            <p id="toastProduct">Purchased TikTok UK Account</p>
-            <span id="toastTime">Just now • Verified Order</span>
+            <p id="toastProduct">🔥 Purchased TikTok UK Account</p>
+            <span id="toastTime">Just now • Live Verified Order</span>
         </div>
     </div>
+
+    <!-- NOTIFICATION AUDIO SYNTHESIZER -->
+    <audio id="orderNotificationSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
 
     <footer>
         <p>&copy; 2026 TikTok Shop Pakistan. All Rights Reserved.</p>
@@ -595,30 +629,40 @@
             }
         };
 
-        // LIVE ORDERS POPUP SIMULATOR LOGIC
+        // LIVE ORDERS POPUP SIMULATOR LOGIC WITH SOUND & FIRE EFFECT
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
-            { name: "Bilal from Islamabad", item: "TIKTOK LIVE" },
-            { name: "Zubair from Faisalabad", item: "TikTok Shope Enable" },
-            { name: "Saad from Rawalpindi", item: "GTA Vice City4 For Android" },
+            { name: "Bilal from Islamabad", item: "TIKTOK LIVE Stream" },
+            { name: "Zubair from Faisalabad", item: "TikTok Shop Enable" },
+            { name: "Saad from Rawalpindi", item: "GTA Vice City 4 Android" },
             { name: "Omer from Multan", item: "TikTok Account Unfreeze" },
-            { name: "Farhan from Peshawar", item: "TIKTOK USA ACCOUNTS BUS" }
+            { name: "Farhan from Peshawar", item: "TikTok USA Accounts Monitised" }
         ];
 
         function showOrderToast() {
             const toast = document.getElementById('orderToast');
+            const notifySound = document.getElementById('orderNotificationSound');
+            
+            // Play notification audio
+            if (notifySound) {
+                notifySound.currentTime = 0;
+                notifySound.play().catch(e => {
+                    console.log("Audio play deferred until user interaction:", e);
+                });
+            }
+
             const randomOrder = sampleOrders[Math.floor(Math.random() * sampleOrders.length)];
-            const randomMins = Math.floor(Math.random() * 8) + 1;
+            const randomMins = Math.floor(Math.random() * 6) + 1;
 
             document.getElementById('toastUser').innerText = randomOrder.name;
-            document.getElementById('toastProduct').innerText = randomOrder.item;
-            document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Order`;
+            document.getElementById('toastProduct').innerText = "🔥 Ordered: " + randomOrder.item;
+            document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Purchase`;
 
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 4500);
+            }, 4800);
         }
 
         setTimeout(() => {
@@ -645,7 +689,16 @@
             displayBanks();
         });
 
-        // Display Products Function with GOLDEN GLOWING CARDS
+        // PRESET DIFFERENT RATING TEMPLATES & STOCK STATS
+        const ratingPresets = [
+            { rating: "4.9", count: "148 Reviews", sold: 82, remaining: 18 },
+            { rating: "5.0", count: "215 Reviews", sold: 94, remaining: 6 },
+            { rating: "4.8", count: "96 Reviews", sold: 73, remaining: 27 },
+            { rating: "4.9", count: "310 Reviews", sold: 88, remaining: 12 },
+            { rating: "5.0", count: "175 Reviews", sold: 91, remaining: 9 }
+        ];
+
+        // Display Products Function
         window.displayProducts = function() {
             const grid = document.getElementById('productsDisplay');
             grid.innerHTML = '';
@@ -655,12 +708,15 @@
                 return;
             }
 
-            productsData.forEach(p => {
+            productsData.forEach((p, index) => {
                 const card = document.createElement('div');
                 card.className = 'product-card golden-glow-card';
                 
                 let imgSrc = p.img ? p.img : 'https://via.placeholder.com/300x180?text=TikTok+Shop';
                 let waText = encodeURIComponent(`Hi, I want to buy this product: ${p.name} - Price: ${p.price}`);
+
+                // Get distinct rating & stock stats per index
+                const preset = ratingPresets[index % ratingPresets.length];
 
                 card.innerHTML = `
                     <div class="product-img-wrapper">
@@ -669,6 +725,29 @@
                     <div class="product-details">
                         <h3 class="product-title">${p.name}</h3>
                         <div class="product-price">${p.price}</div>
+                        
+                        <!-- DYNAMIC CLIENT RATING BOX -->
+                        <div class="product-rating-box">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="product-rating-score">${preset.rating}</span>
+                            <span class="product-rating-count">(${preset.count})</span>
+                        </div>
+
+                        <!-- DYNAMIC QUANTITY & SOLD OUT BAR -->
+                        <div class="stock-tracker-box">
+                            <div class="stock-text-info">
+                                <span style="color: #25d366;"><i class="fa-solid fa-check-circle"></i> ${preset.sold} Sold Out</span>
+                                <span style="color: #ff4500;"><i class="fa-solid fa-fire"></i> Only ${preset.remaining} Left!</span>
+                            </div>
+                            <div class="stock-bar-bg">
+                                <div class="stock-bar-fill" style="width: ${preset.sold}%;"></div>
+                            </div>
+                        </div>
+
                         <p class="product-desc">${p.desc}</p>
                         <a href="https://wa.me/923028372072?text=${waText}" target="_blank" class="buy-btn ripple-btn">
                             <i class="fa-brands fa-whatsapp"></i> Buy via WhatsApp
