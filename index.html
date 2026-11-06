@@ -35,7 +35,7 @@
             position: relative; 
         }
 
-        /* CINEMATIC / SHUTTER OPENING INTRO WINDOW WITH WELCOME TEXT AND FIRE BUTTON */
+        /* CINEMATIC / SHUTTER OPENING INTRO WINDOW */
         #cinematicOverlay {
             position: fixed;
             inset: 0;
@@ -52,87 +52,39 @@
             opacity: 0;
             pointer-events: none;
         }
-        .shutter-content {
-            text-align: center;
-            padding: 20px;
-        }
+        .shutter-content { text-align: center; padding: 20px; }
         .shutter-welcome-text {
-            font-size: 1.8rem;
-            color: var(--gold-glow);
-            margin-bottom: 25px;
-            font-weight: 800;
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-            letter-spacing: 1px;
-            animation: fadeInWelcome 1.5s ease-in-out;
+            font-size: 1.8rem; color: var(--gold-glow); margin-bottom: 25px; font-weight: 800; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); letter-spacing: 1px; animation: fadeInWelcome 1.5s ease-in-out;
         }
         @keyframes fadeInWelcome {
             0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
         .shutter-enter-btn {
-            background: linear-gradient(135deg, #ff4500, #ff0050);
-            color: #fff;
-            border: 2px solid #ffd700;
-            padding: 16px 45px;
-            font-size: 1.25rem;
-            font-weight: 800;
-            border-radius: 40px;
-            cursor: pointer;
-            box-shadow: 0 0 35px #ff4500, 0 0 15px #ffd700;
-            transition: 0.3s;
-            animation: firePulse 2s infinite ease-in-out;
+            background: linear-gradient(135deg, #ff4500, #ff0050); color: #fff; border: 2px solid #ffd700; padding: 16px 45px; font-size: 1.25rem; font-weight: 800; border-radius: 40px; cursor: pointer; box-shadow: 0 0 35px #ff4500, 0 0 15px #ffd700; transition: 0.3s; animation: firePulse 2s infinite ease-in-out;
         }
         @keyframes firePulse {
             0%, 100% { box-shadow: 0 0 25px #ff4500, 0 0 50px #ff8c00; transform: scale(1); }
             50% { box-shadow: 0 0 40px #ff0050, 0 0 70px #ffd700; transform: scale(1.04); }
         }
-        .shutter-enter-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 60px #ffd700;
-        }
 
-        /* MOUSE MOVE GLOW CIRCLE EFFECT */
         #cursorGlow {
-            pointer-events: none;
-            position: fixed;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(255, 0, 80, 0.15) 50%, transparent 80%);
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
-            z-index: 99999;
+            pointer-events: none; position: fixed; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(255, 0, 80, 0.15) 50%, transparent 80%); transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; z-index: 99999;
         }
 
-        /* RIPPLE ANIMATION ON CLICK */
         .ripple-btn { position: relative; overflow: hidden; }
         .ripple {
-            position: absolute;
-            background: rgba(0, 242, 254, 0.6);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: rippleEffect 0.6s linear;
-            pointer-events: none;
+            position: absolute; background: rgba(0, 242, 254, 0.6); border-radius: 50%; transform: scale(0); animation: rippleEffect 0.6s linear; pointer-events: none;
         }
-        @keyframes rippleEffect {
-            to { transform: scale(4); opacity: 0; }
-        }
+        @keyframes rippleEffect { to { transform: scale(4); opacity: 0; } }
 
-        /* LIGHTNING FLASH EFFECT */
         @keyframes lightningStrike {
             0%, 90%, 94%, 98%, 100% { opacity: 0; filter: brightness(1); }
             92% { opacity: 0.15; filter: brightness(1.8); background-color: #ffffff; }
             96% { opacity: 0.22; filter: brightness(2.2); background-color: #00f2fe; }
         }
-        #lightningOverlay {
-            pointer-events: none;
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            animation: lightningStrike 7s infinite;
-        }
+        #lightningOverlay { pointer-events: none; position: fixed; inset: 0; z-index: 999; animation: lightningStrike 7s infinite; }
 
-        /* GOLDEN GLOWING & SHIMMER EFFECT ON PRODUCT CARDS */
         @keyframes goldFlicker {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
             50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
@@ -141,328 +93,108 @@
             0% { transform: translateX(-150%) rotate(45deg); }
             100% { transform: translateX(150%) rotate(45deg); }
         }
-        .golden-glow-card {
-            animation: goldFlicker 3s infinite ease-in-out;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.4);
-        }
-        .golden-glow-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(60deg, transparent, rgba(255, 215, 0, 0.25), transparent);
-            transform: rotate(45deg);
-            animation: goldShimmer 4s infinite;
-            pointer-events: none;
-        }
+        .golden-glow-card { animation: goldFlicker 3s infinite ease-in-out; position: relative; overflow: hidden; border: 1px solid rgba(255, 215, 0, 0.4); }
 
-        /* FIRE FLAME ANIMATION FOR LIVE ORDER NOTIFICATIONS */
         @keyframes fireGlow {
             0%, 100% { box-shadow: 0 0 15px #ff4500, 0 0 30px #ff8c00, inset 0 0 10px #ff0000; border-color: #ff4500; }
             50% { box-shadow: 0 0 25px #ff8c00, 0 0 50px #ff4500, inset 0 0 20px #ffe600; border-color: #ffe600; }
         }
-        .fire-card {
-            animation: fireGlow 1.8s infinite ease-in-out;
-            background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(21, 28, 44, 0.98)) !important;
-        }
+        .fire-card { animation: fireGlow 1.8s infinite ease-in-out; background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(21, 28, 44, 0.98)) !important; }
 
-        /* TIKTOK REWARD POPUP MODAL */
-        #tiktokRewardModal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(12px);
-            z-index: 999999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+        #tiktokRewardModal, #spinPaymentModal, #checkoutModal, #spinWinnerModal {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(12px); z-index: 999999; display: none; align-items: center; justify-content: center; padding: 20px;
         }
-        .reward-box {
-            background: var(--bg-card);
-            border: 2px solid var(--primary-glow);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 420px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.4);
-            position: relative;
+        .reward-box, .checkout-box {
+            background: var(--bg-card); border: 2px solid var(--primary-glow); border-radius: 20px; width: 100%; max-width: 440px; padding: 1.8rem; text-align: center; box-shadow: 0 0 40px rgba(0, 242, 254, 0.4); position: relative;
         }
-        .reward-box h3 { color: var(--gold-glow); font-size: 1.3rem; margin-bottom: 12px; }
-        .reward-box p { color: #fff; font-size: 1.05rem; font-weight: bold; margin-bottom: 20px; line-height: 1.4; }
-        .follow-now-btn {
-            background: linear-gradient(135deg, var(--accent-pink), var(--primary-glow));
-            color: #fff;
-            border: none;
-            padding: 14px 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 0, 80, 0.5);
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-        .follow-now-btn:hover { transform: scale(1.03); }
 
         .glowing-title { text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(0, 242, 254, 0.3); }
         .glowing-gold-text { color: #ffd700 !important; text-shadow: 0 0 12px rgba(255, 215, 0, 0.8); }
 
-        .top-social-bar {
-            background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; flex-wrap: wrap; gap: 10px;
-        }
+        .top-social-bar { background: #060911; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; flex-wrap: wrap; gap: 10px; }
         .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
         .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-weight: 600; transition: 0.3s; font-size: 0.85rem; cursor: pointer; border: none; }
-        .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); box-shadow: 0 0 8px rgba(0,242,254,0.3); }
-        .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); box-shadow: 0 0 8px rgba(37,211,102,0.3); }
+        .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); }
+        .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
         .social-btn.spin-tab-btn { background: rgba(255, 215, 0, 0.15); color: var(--gold-glow); border: 1px solid var(--gold-glow); animation: goldFlicker 2s infinite; }
-        .social-btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
-        header {
-            background: rgba(21, 28, 44, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
-        }
+        header { background: rgba(21, 28, 44, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
         .logo span { color: var(--accent-pink); text-shadow: 0 0 10px var(--accent-pink); }
-
-        .rating-badge {
-            background: #282828; color: #ffd700; padding: 4px 12px; border-radius: 20px; font-weight: bold; border: 1px solid #ffd700; font-size: 0.85rem; box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-        }
-
-        .btn-admin {
-            background: rgba(0, 242, 254, 0.1); color: var(--primary-glow); border: 1px solid var(--primary-glow); padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; box-shadow: 0 0 10px rgba(0,242,254,0.3); transition: 0.3s;
-        }
-        .btn-admin:hover { box-shadow: 0 0 20px var(--primary-glow); }
+        .rating-badge { background: #282828; color: #ffd700; padding: 4px 12px; border-radius: 20px; font-weight: bold; border: 1px solid #ffd700; font-size: 0.85rem; }
+        .btn-admin { background: rgba(0, 242, 254, 0.1); color: var(--primary-glow); border: 1px solid var(--primary-glow); padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem 5%; }
         .hero { padding: 2rem 5% 1rem; text-align: center; max-width: 900px; margin: 0 auto; }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--primary-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
-        /* SPIN & WIN SECTION STYLING */
-        .spin-section-box {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(21, 28, 44, 0.95));
-            border: 2px solid var(--gold-glow);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            box-shadow: 0 0 35px rgba(255, 215, 0, 0.3);
-        }
-        .wheel-container {
-            position: relative;
-            width: 280px;
-            height: 280px;
-            margin: 20px auto;
-            border-radius: 50%;
-            border: 6px solid var(--gold-glow);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            overflow: hidden;
-            background: #0b0f19;
-            transition: transform 4s cubic-bezier(0.15, 0.9, 0.2, 1);
-        }
-        .wheel-pointer {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0; 
-            height: 0; 
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 25px solid var(--accent-pink);
-            z-index: 50;
-            filter: drop-shadow(0 0 8px var(--accent-pink));
-        }
-        .wheel-slice {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            transform-origin: 100% 100%;
-            left: 0;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #fff;
-            padding-left: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .spin-action-btn {
-            background: linear-gradient(135deg, var(--gold-glow), var(--fire-orange));
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-            transition: 0.3s;
-            margin-top: 10px;
-        }
+        .spin-section-box { background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(21, 28, 44, 0.95)); border: 2px solid var(--gold-glow); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; text-align: center; box-shadow: 0 0 35px rgba(255, 215, 0, 0.3); }
+        .wheel-container { position: relative; width: 280px; height: 280px; margin: 20px auto; border-radius: 50%; border: 6px solid var(--gold-glow); box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); overflow: hidden; background: #0b0f19; transition: transform 4s cubic-bezier(0.15, 0.9, 0.2, 1); }
+        .wheel-pointer { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 25px solid var(--accent-pink); z-index: 50; filter: drop-shadow(0 0 8px var(--accent-pink)); }
+        .wheel-slice { position: absolute; width: 50%; height: 50%; transform-origin: 100% 100%; left: 0; top: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: bold; color: #fff; padding-left: 30px; border: 1px solid rgba(255,255,255,0.1); }
+        .spin-action-btn { background: linear-gradient(135deg, var(--gold-glow), var(--fire-orange)); color: #000; border: none; padding: 12px 30px; font-size: 1.1rem; font-weight: 800; border-radius: 30px; cursor: pointer; box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); transition: 0.3s; margin-top: 10px; }
+        .spin-action-btn:disabled { background: #475569; color: #94a3b8; box-shadow: none; cursor: not-allowed; }
 
-        /* Bank Details Box Styling */
-        .bank-details-container {
-            background: var(--bg-card);
-            border: 1px solid var(--mcb-color);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 0 20px rgba(0, 128, 128, 0.3);
-        }
-
+        .bank-details-container { background: var(--bg-card); border: 1px solid var(--mcb-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 2.5rem; box-shadow: 0 0 20px rgba(0, 128, 128, 0.3); }
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
-        .section-title i { color: var(--gold-glow); text-shadow: 0 0 10px var(--gold-glow); }
 
-        #adminPanel {
-            display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,242,254,0.3);
-        }
+        #adminPanel { display: none; background: #0f1626; border: 1px solid var(--primary-glow); border-radius: 16px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 0 30px rgba(0,242,254,0.3); }
         .admin-section-box { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; }
-        .admin-form input, .admin-form textarea {
-            width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
-        }
-        .admin-form button {
-            background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px var(--primary-glow);
-        }
+        .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 10px; margin-bottom: 12px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem; }
+        .admin-form button { background: var(--primary-glow); color: #000; border: none; padding: 10px 20px; font-weight: 700; border-radius: 8px; cursor: pointer; }
 
-        /* PRODUCTS GRID & DYNAMIC PRODUCT RATING / STOCK STYLES */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 25px; }
         .product-card { background: var(--bg-card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
         .product-img-wrapper { width: 100%; height: 180px; background: #111622; overflow: hidden; position: relative; }
         .product-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         .product-details { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; z-index: 2; }
         .product-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
-        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); margin-bottom: 6px; }
+        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--gold-glow); margin-bottom: 6px; }
 
-        /* Dynamic Product Rating Stars Box */
-        .product-rating-box {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 10px;
-            background: rgba(255, 215, 0, 0.08);
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            width: fit-content;
-        }
+        .product-rating-box { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; background: rgba(255, 215, 0, 0.08); padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255, 215, 0, 0.2); width: fit-content; }
         .product-rating-box i { color: #ffd700; font-size: 0.85rem; }
         .product-rating-score { color: #fff; font-size: 0.8rem; font-weight: 800; }
         .product-rating-count { color: var(--text-muted); font-size: 0.72rem; }
 
-        /* Dynamic Product Stock Bar Box */
-        .stock-tracker-box {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            padding: 8px 10px;
-            margin-bottom: 12px;
-            border: 1px solid var(--border-color);
-        }
-        .stock-text-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }
-        .stock-bar-bg {
-            width: 100%;
-            height: 6px;
-            background: #1e293b;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .stock-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff4500, #25d366);
-            border-radius: 10px;
-        }
+        .stock-tracker-box { background: rgba(255, 255, 255, 0.04); border-radius: 8px; padding: 8px 10px; margin-bottom: 12px; border: 1px solid var(--border-color); }
+        .stock-text-info { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 4px; font-weight: 600; }
+        .stock-bar-bg { width: 100%; height: 6px; background: #1e293b; border-radius: 10px; overflow: hidden; }
+        .stock-bar-fill { height: 100%; background: linear-gradient(90deg, #ff4500, #25d366); border-radius: 10px; }
 
         .product-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; max-height: 120px; overflow-y: auto; }
-
-        .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; box-shadow: 0 0 12px rgba(37, 211, 102, 0.4); transition: 0.3s; cursor: pointer; border: none; }
-        .buy-btn:hover { box-shadow: 0 0 22px rgba(37, 211, 102, 0.8); transform: scale(1.02); }
+        .buy-btn { background: linear-gradient(135deg, #25D366, #128C7E); color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; cursor: pointer; border: none; }
         .admin-actions { display: flex; gap: 8px; margin-top: 10px; }
         .btn-edit { background: #f59e0b; color: #000; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
         .btn-delete { background: #ef4444; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; }
 
-        /* LIVE ORDER NOTIFICATION POPUP STYLES WITH FIRE EFFECT */
-        .order-toast {
-            position: fixed;
-            bottom: 25px;
-            left: 20px;
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 9999;
-            transform: translateY(120%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 330px;
-            backdrop-filter: blur(8px);
-            border: 2px solid #ff4500;
-        }
+        .order-toast { position: fixed; bottom: 25px; left: 20px; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; z-index: 9999; transform: translateY(120%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); max-width: 330px; backdrop-filter: blur(8px); border: 2px solid #ff4500; }
         .order-toast.show { transform: translateY(0); }
-        .toast-icon {
-            background: rgba(255, 69, 0, 0.3);
-            color: #ff4500;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            box-shadow: 0 0 12px #ff4500;
-        }
+        .toast-icon { background: rgba(255, 69, 0, 0.3); color: #ff4500; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; box-shadow: 0 0 12px #ff4500; }
         .toast-info h5 { color: #fff; font-size: 0.85rem; margin-bottom: 2px; }
-        .toast-info p { color: #ffe600; font-size: 0.82rem; font-weight: 700; text-shadow: 0 0 5px rgba(255, 230, 0, 0.5); }
+        .toast-info p { color: #ffe600; font-size: 0.82rem; font-weight: 700; }
         .toast-info span { color: #ffd700; font-size: 0.7rem; display: block; }
 
-        /* CHECKOUT / MODAL COMMON STYLES */
-        .checkout-box {
-            background: var(--bg-card);
-            border: 2px solid var(--mcb-color);
-            border-radius: 16px;
-            width: 100%;
-            max-width: 420px;
-            padding: 1.8rem;
-            box-shadow: 0 0 40px rgba(0, 128, 128, 0.4);
-            position: relative;
-        }
-        .checkout-form-group { margin-bottom: 12px; }
+        .checkout-form-group { margin-bottom: 12px; text-align: left; }
         .checkout-form-group label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 5px; }
-        .checkout-form-group input {
-            width: 100%; padding: 10px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem;
-        }
+        .checkout-form-group input, .checkout-form-group select { width: 100%; padding: 10px; background: #0b0f19; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 0.9rem; }
         .checkout-btns { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-pay-whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem;
-        }
-        .btn-skip-whatsapp {
-            background: #334155; color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
-        }
+        .btn-pay-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem; }
+        .btn-skip-whatsapp { background: #334155; color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
 
+        /* Admin Spin Table */
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
+        .admin-table th, .admin-table td { border: 1px solid var(--border-color); padding: 8px; text-align: left; }
+        .admin-table th { background: #0b0f19; color: var(--gold-glow); }
+        .badge-pending { background: #f59e0b; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .badge-verified { background: #25d366; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        
         footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 2.5rem 5%; margin-top: 4rem; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
         .loading-text { text-align: center; width: 100%; color: var(--primary-glow); font-weight: bold; padding: 2rem; }
     </style>
 </head>
 <body>
 
-    <!-- CINEMATIC OPENING INTRO WITH WELCOME TO TIKTOK SHOP PAKISTAN & BUTTON -->
+    <!-- CINEMATIC OPENING INTRO -->
     <div id="cinematicOverlay">
         <div class="shutter-content">
             <h2 class="shutter-welcome-text">Welcome to TikTok Shop Pakistan</h2>
@@ -472,13 +204,10 @@
         </div>
     </div>
 
-    <!-- MOUSE MOVE GLOW CIRCLE ELEMENT -->
     <div id="cursorGlow"></div>
-
-    <!-- LIGHTNING FLASH OVERLAY -->
     <div id="lightningOverlay"></div>
 
-    <!-- SINGLE REWARD POPUP MODAL FOR TIKTOK -->
+    <!-- TIKTOK REWARD MODAL -->
     <div id="tiktokRewardModal">
         <div class="reward-box">
             <h3><i class="fa-brands fa-tiktok"></i> TikTok Exclusive Reward</h3>
@@ -492,13 +221,63 @@
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL -->
-    <div id="checkoutModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px;">
+    <!-- SPIN PAYMENT REQUEST FORM MODAL -->
+    <div id="spinPaymentModal">
+        <div class="checkout-box" style="border-color: var(--gold-glow);">
+            <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-file-invoice-dollar"></i> Spin Payment Verification</h3>
+            <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 15px;">Pehle niche diye gaye MCB Bank me payment transfer karke details upload karein:</p>
+            
+            <div style="background: #0b0f19; padding: 10px; border-radius: 8px; border: 1px solid var(--mcb-color); margin-bottom: 15px; font-size: 0.85rem; text-align: left;">
+                <p style="color: var(--gold-glow); font-weight: bold;"><i class="fa-solid fa-building-columns"></i> MCB Islamic Bank</p>
+                <p><strong>Title:</strong> usmanamjadsanaamanullah</p>
+                <p><strong>Account #:</strong> 1591000414530002</p>
+            </div>
+
+            <form id="spinReqForm" onsubmit="submitSpinPaymentRequest(event)">
+                <div class="checkout-form-group">
+                    <label>Aap Ka Full Name</label>
+                    <input type="text" id="spinUserNaam" placeholder="Full Name" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label>Aap Ka Mobile / WhatsApp Number (ویریفکیشن کے لیے)</label>
+                    <input type="text" id="spinUserNumber" placeholder="03028372072" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label>Aap Ka Bank Name / Account Title</label>
+                    <input type="text" id="spinUserBank" placeholder="e.g. EasyPaisa / MCB Account Title" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label>Kitni Payment Ki Hai?</label>
+                    <select id="spinPayAmount" required>
+                        <option value="50">Rs. 50 (1 Spin)</option>
+                        <option value="100">Rs. 100 (2 Spins)</option>
+                        <option value="150">Rs. 150 (3 Spins)</option>
+                        <option value="200">Rs. 200 (4 Spins)</option>
+                    </select>
+                </div>
+                <div class="checkout-form-group">
+                    <label>Payment Screenshot Attachment</label>
+                    <input type="file" id="spinScreenshot" accept="image/*" style="padding: 6px;" required>
+                </div>
+                <div class="checkout-btns">
+                    <button type="submit" id="spinSubmitBtn" class="btn-pay-whatsapp ripple-btn" style="background: linear-gradient(135deg, var(--gold-glow), var(--fire-orange)); color:#000;">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Payment Request
+                    </button>
+                </div>
+            </form>
+            <div style="text-align: right; margin-top: 15px;">
+                <button onclick="closeSpinPaymentModal()" style="background: transparent; border: none; color: var(--accent-pink); font-size: 0.85rem; cursor: pointer; font-weight: bold;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT CHECKOUT MODAL -->
+    <div id="checkoutModal">
         <div class="checkout-box">
             <h3 id="checkoutModalTitle" style="color: var(--primary-glow); margin-bottom: 10px;"><i class="fa-solid fa-credit-card"></i> Complete Your Payment</h3>
             <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 15px;">Pehle MCB Islamic Bank par payment clear karein:</p>
             
-            <div style="background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid var(--mcb-color); margin-bottom: 15px; font-size: 0.85rem;">
+            <div style="background: #0b0f19; padding: 12px; border-radius: 8px; border: 1px solid var(--mcb-color); margin-bottom: 15px; font-size: 0.85rem; text-align: left;">
                 <p style="color: var(--gold-glow); font-weight: bold;"><i class="fa-solid fa-building-columns"></i> MCB Islamic Bank:</p>
                 <p><strong>Title:</strong> usmanamjadsanaamanullah</p>
                 <p><strong>Account #:</strong> 1591000414530002</p>
@@ -533,7 +312,7 @@
     </div>
 
     <!-- SPIN WINNER MODAL -->
-    <div id="spinWinnerModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 20px;">
+    <div id="spinWinnerModal">
         <div class="checkout-box" style="border-color: var(--gold-glow);">
             <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-trophy"></i> Mubarak Ho! Aap Jeet Gaye Hain</h3>
             <p id="wonItemText" style="color: #fff; font-size: 1rem; font-weight: bold; margin-bottom: 15px;"></p>
@@ -562,7 +341,7 @@
         <span><i class="fa-solid fa-headset"></i> Support: <strong>0302-8372072 (Usman Amjad)</strong></span>
         <div class="social-links">
             <button onclick="openTikTokRewardModal()" class="social-btn tiktok ripple-btn"><i class="fa-brands fa-tiktok"></i> TikTok Account</button>
-            <button onclick="scrollToSpin()" class="social-btn spin-tab-btn ripple-btn"><i class="fa-solid fa-rotate"></i> Spin & Win (Rs. 50)</button>
+            <button onclick="scrollToSpin()" class="social-btn spin-tab-btn ripple-btn"><i class="fa-solid fa-rotate"></i> Spin & Win Hub</button>
             <a href="https://wa.me/923028372072" target="_blank" class="social-btn wa ripple-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
@@ -583,15 +362,21 @@
         <!-- SPIN AND WIN SECTION -->
         <div id="spinAndWinSection" class="spin-section-box">
             <h3 style="color: var(--gold-glow); font-size: 1.5rem; margin-bottom: 5px;"><i class="fa-solid fa-rotate"></i> Daily Spin & Win Hub</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;">Daily 2 spins for <strong>Rs. 50</strong> (MCB Islamic Bank: 1591000414530002).</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px;">Pay & Request Spin: <strong>Rs. 50 = 1 Spin | Rs. 100 = 2 Spins</strong></p>
+            <p id="userSpinStatusText" style="color: var(--primary-glow); font-weight: bold; font-size: 0.95rem; margin-bottom: 10px;">Status: Submit payment details for verification to spin!</p>
             
             <div class="wheel-container" id="spinWheel">
                 <div class="wheel-pointer"></div>
             </div>
 
-            <button class="spin-action-btn ripple-btn" onclick="triggerSpinPayment()">
-                <i class="fa-solid fa-coins"></i> Pay Rs. 50 & Spin Now
-            </button>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button class="spin-action-btn ripple-btn" onclick="openSpinPaymentModal()">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Pay & Request Spin
+                </button>
+                <button id="directSpinBtn" class="spin-action-btn ripple-btn" onclick="handleSpinAttempt()" disabled>
+                    <i class="fa-solid fa-play"></i> Spin Wheel Now (<span id="availSpinsCount">0</span> Available)
+                </button>
+            </div>
         </div>
 
         <!-- BANK DETAILS CONTAINER -->
@@ -611,6 +396,29 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                 <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Admin & Bank/Spin Manager</h2>
                 <button onclick="closeAdmin()" class="ripple-btn" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer;">Logout Admin</button>
+            </div>
+
+            <!-- MANAGE PENDING SPIN REQUESTS BOX -->
+            <div class="admin-section-box">
+                <h3 style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-user-check"></i> Pending Spin Payment Requests (Verifications)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Bank Details</th>
+                                <th>Paid Amount</th>
+                                <th>Screenshot</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="spinRequestsAdminTable">
+                            <tr><td colspan="7" style="text-align: center;">Loading spin requests...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- MANAGE BANK ACCOUNTS BOX -->
@@ -659,11 +467,9 @@
 
     </main>
 
-    <!-- LIVE POPUP ORDER TOAST CONTAINER WITH FIRE EFFECT -->
+    <!-- LIVE POPUP ORDER TOAST CONTAINER -->
     <div id="orderToast" class="order-toast fire-card">
-        <div class="toast-icon">
-            <i class="fa-solid fa-fire-flame-curved"></i>
-        </div>
+        <div class="toast-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
         <div class="toast-info">
             <h5 id="toastUser">Ali from Lahore</h5>
             <p id="toastProduct">Ordered TikTok UK Account</p>
@@ -671,7 +477,6 @@
         </div>
     </div>
 
-    <!-- NOTIFICATION AUDIO SYNTHESIZER -->
     <audio id="orderNotificationSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
 
     <footer>
@@ -685,7 +490,6 @@
             overlay.classList.add('shutter-open');
         }
 
-        // Mouse Move Glow Follower
         const cursorGlow = document.getElementById('cursorGlow');
         window.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
@@ -694,22 +498,18 @@
             }
         });
 
-        // Click Ripple Effect Handler
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.ripple-btn');
             if (target) {
                 const circle = document.createElement('span');
                 const diameter = Math.max(target.clientWidth, target.clientHeight);
                 const radius = diameter / 2;
-                
                 circle.style.width = circle.style.height = `${diameter}px`;
                 circle.style.left = `${e.clientX - target.getBoundingClientRect().left - radius}px`;
                 circle.style.top = `${e.clientY - target.getBoundingClientRect().top - radius}px`;
                 circle.classList.add('ripple');
-                
                 const existingRipple = target.getElementsByClassName('ripple')[0];
                 if (existingRipple) existingRipple.remove();
-                
                 target.appendChild(circle);
             }
         });
@@ -733,30 +533,135 @@
         const productsCol = collection(db, "products");
         const spinItemsCol = collection(db, "spinItems");
         const banksCol = collection(db, "banks");
+        const spinRequestsCol = collection(db, "spinRequests");
 
         const ADMIN_PASS = "6459";
         let isAdmin = false;
         let productsData = [];
         let spinItemsData = [];
         let banksData = [];
+        let spinRequestsData = [];
         let currentWonPrize = "";
         
+        // Active User Session Spins Track
+        let currentUserPhone = localStorage.getItem('user_spin_phone') || "";
+        let availableSpins = parseInt(localStorage.getItem('user_spins_count') || "0");
+
         const TIKTOK_DIRECT_URL = "https://www.tiktok.com/@mahambutt102?is_from_webapp=1&sender_device=pc";
 
-        window.openTikTokRewardModal = function() {
-            document.getElementById('tiktokRewardModal').style.display = 'flex';
+        window.openTikTokRewardModal = function() { document.getElementById('tiktokRewardModal').style.display = 'flex'; };
+        window.openTikTokProfileDirect = function() { window.open(TIKTOK_DIRECT_URL, '_blank'); document.getElementById('tiktokRewardModal').style.display = 'none'; };
+        window.scrollToSpin = function() { document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' }); };
+
+        // SPIN PAYMENT REQUEST MODAL HANDLERS
+        window.openSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'flex'; };
+        window.closeSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'none'; };
+
+        // Convert Screenshot to Base64 String for Cloud Firestore Storage
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        window.submitSpinPaymentRequest = async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('spinSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting Details...";
+
+            const name = document.getElementById('spinUserNaam').value.trim();
+            const phone = document.getElementById('spinUserNumber').value.trim();
+            const bank = document.getElementById('spinUserBank').value.trim();
+            const amount = parseInt(document.getElementById('spinPayAmount').value);
+            const fileInput = document.getElementById('spinScreenshot');
+
+            let screenshotBase64 = "";
+            if (fileInput.files.length > 0) {
+                screenshotBase64 = await fileToBase64(fileInput.files[0]);
+            }
+
+            try {
+                await addDoc(spinRequestsCol, {
+                    name,
+                    phone,
+                    bank,
+                    amount,
+                    screenshot: screenshotBase64,
+                    status: 'pending',
+                    timestamp: Date.now()
+                });
+
+                localStorage.setItem('user_spin_phone', phone);
+                currentUserPhone = phone;
+
+                alert("Aap ki payment detail submit ho gayi hai! Admin verification ke baad aap ke spins enable ho jayenge.");
+                document.getElementById('spinReqForm').reset();
+                closeSpinPaymentModal();
+            } catch(err) {
+                alert("Error submitting request: " + err.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit Payment Request";
+            }
         };
 
-        window.openTikTokProfileDirect = function() {
-            window.open(TIKTOK_DIRECT_URL, '_blank');
-            document.getElementById('tiktokRewardModal').style.display = 'none';
+        // REALTIME LISTENER FOR SPIN REQUESTS (ADMIN & USER SYNC)
+        onSnapshot(spinRequestsCol, (snapshot) => {
+            spinRequestsData = [];
+            snapshot.forEach(docSnap => spinRequestsData.push({ id: docSnap.id, ...docSnap.data() }));
+
+            // Update user spins based on verified requests
+            if (currentUserPhone) {
+                let verifiedUserReqs = spinRequestsData.filter(r => r.phone === currentUserPhone && r.status === 'verified');
+                let totalAllowedSpins = 0;
+                verifiedUserReqs.forEach(r => {
+                    totalAllowedSpins += Math.floor(r.amount / 50); // 50 Rs = 1 spin, 100 Rs = 2 spins
+                });
+
+                let usedSpins = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
+                availableSpins = Math.max(0, totalAllowedSpins - usedSpins);
+
+                localStorage.setItem('user_spins_count', availableSpins.toString());
+                updateUserSpinUI();
+            }
+
+            if (isAdmin) displayAdminSpinRequests();
+        });
+
+        function updateUserSpinUI() {
+            const statusText = document.getElementById('userSpinStatusText');
+            const spinBtn = document.getElementById('directSpinBtn');
+            const availSpan = document.getElementById('availSpinsCount');
+
+            availSpan.innerText = availableSpins;
+
+            if (availableSpins > 0) {
+                statusText.innerText = `Verified! You have ${availableSpins} spin(s) available. Spin now!`;
+                statusText.style.color = "#25d366";
+                spinBtn.disabled = false;
+            } else {
+                statusText.innerText = currentUserPhone ? 
+                    "Status: Waiting for Admin Verification or 0 Spins Left." : 
+                    "Status: Submit payment details for verification to spin!";
+                statusText.style.color = "var(--primary-glow)";
+                spinBtn.disabled = true;
+            }
+        }
+
+        window.handleSpinAttempt = function() {
+            if (availableSpins <= 0) {
+                alert("Aap ke paas koi spins baqi nahi hain. Pehle Pay & Request Spin par click karein!");
+                openSpinPaymentModal();
+                return;
+            }
+            startWheelSpin();
         };
 
-        window.scrollToSpin = function() {
-            document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' });
-        };
-
-        // SPIN WHEEL LOGIC
+        // SPIN WHEEL EXECUTION
         window.startWheelSpin = function() {
             const wheel = document.getElementById('spinWheel');
             const items = spinItemsData.length > 0 ? spinItemsData : [
@@ -769,7 +674,7 @@
 
             const randomSelectedIndex = Math.floor(Math.random() * items.length);
             const sliceAngle = 360 / items.length;
-            const extraSpins = 5; // Full rotations
+            const extraSpins = 5;
             const targetDegree = (extraSpins * 360) + (randomSelectedIndex * sliceAngle) + (sliceAngle / 2);
 
             wheel.style.transition = "transform 4s cubic-bezier(0.15, 0.9, 0.2, 1)";
@@ -777,8 +682,16 @@
 
             currentWonPrize = items[randomSelectedIndex].name;
 
+            // Deduct spin credit
+            if (currentUserPhone) {
+                let used = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
+                localStorage.setItem('used_spins_' + currentUserPhone, (used + 1).toString());
+                availableSpins = Math.max(0, availableSpins - 1);
+                updateUserSpinUI();
+            }
+
             setTimeout(() => {
-                document.getElementById('wonItemText').innerText = `Badhaai Ho! Aapne jeeta hai: ${currentWonPrize}`;
+                document.getElementById('wonItemText').innerText = `Mubarak Ho! Aapne jeeta hai: ${currentWonPrize}`;
                 document.getElementById('spinWinnerModal').style.display = 'flex';
             }, 4200);
         };
@@ -793,7 +706,7 @@
             document.getElementById('spinWinnerModal').style.display = 'none';
         };
 
-        // LIVE ORDERS POPUP SIMULATOR WITH SOUND
+        // LIVE ORDERS POPUP SIMULATOR
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
@@ -820,9 +733,7 @@
             document.getElementById('toastTime').innerText = `${randomMins} min ago • Verified Purchase`;
 
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4800);
+            setTimeout(() => { toast.classList.remove('show'); }, 4800);
         }
 
         setTimeout(() => {
@@ -830,7 +741,7 @@
             setInterval(showOrderToast, 9000);
         }, 3000);
 
-        // ADMIN PANEL LOGIN & LOGOUT
+        // ADMIN PANEL CONTROLS
         window.openAdmin = function() {
             let pass = prompt("Enter Admin Password:");
             if (pass === ADMIN_PASS) {
@@ -839,6 +750,7 @@
                 displayProducts();
                 displaySpinItemsManager();
                 displayBankManager();
+                displayAdminSpinRequests();
             } else alert("Wrong Password!");
         };
 
@@ -848,7 +760,57 @@
             displayProducts();
         };
 
-        // BANK ACCOUNTS MANAGEMENT (ADD, EDIT, DELETE)
+        // ADMIN SPIN REQUEST VERIFICATION CONTROL
+        function displayAdminSpinRequests() {
+            const tbody = document.getElementById('spinRequestsAdminTable');
+            tbody.innerHTML = '';
+
+            if (spinRequestsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No payment requests submitted yet.</td></tr>';
+                return;
+            }
+
+            spinRequestsData.forEach(r => {
+                const tr = document.createElement('tr');
+                const isVerified = r.status === 'verified';
+                const calculatedSpins = Math.floor(r.amount / 50);
+
+                tr.innerHTML = `
+                    <td><b>${r.name}</b></td>
+                    <td>${r.phone}</td>
+                    <td>${r.bank}</td>
+                    <td><b style="color: var(--gold-glow);">Rs. ${r.amount}</b> (${calculatedSpins} Spin/s)</td>
+                    <td>
+                        ${r.screenshot ? `<a href="${r.screenshot}" target="_blank" style="color: var(--primary-glow); font-weight: bold;">View Screenshot</a>` : 'No Image'}
+                    </td>
+                    <td>
+                        <span class="${isVerified ? 'badge-verified' : 'badge-pending'}">${r.status.toUpperCase()}</span>
+                    </td>
+                    <td>
+                        ${!isVerified ? `<button onclick="verifySpinRequest('${r.id}')" style="background:#25d366; color:#000; border:none; padding:4px 8px; border-radius:4px; font-weight:bold; cursor:pointer;">Verify & Enable Spin</button>` : 'Verified'}
+                        <button onclick="deleteSpinRequest('${r.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; font-weight:bold; cursor:pointer; margin-left:4px;">X</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.verifySpinRequest = async function(reqId) {
+            if (confirm("Verify this payment request and enable spin options for customer?")) {
+                try {
+                    await updateDoc(doc(db, "spinRequests", reqId), { status: 'verified' });
+                    alert("Spin payment verified successfully!");
+                } catch(e) { alert("Error: " + e.message); }
+            }
+        };
+
+        window.deleteSpinRequest = async function(reqId) {
+            if (confirm("Delete this request?")) {
+                await deleteDoc(doc(db, "spinRequests", reqId));
+            }
+        };
+
+        // BANK ACCOUNTS MANAGEMENT
         onSnapshot(banksCol, (snapshot) => {
             banksData = [];
             snapshot.forEach(d => banksData.push({ id: d.id, ...d.data() }));
@@ -923,7 +885,7 @@
             if (confirm("Delete this bank account?")) await deleteDoc(doc(db, "banks", id));
         };
 
-        // PRODUCTS EDIT, SAVE & DELETE
+        // PRODUCTS CRUD
         window.saveProduct = async function(e) {
             e.preventDefault();
             const editId = document.getElementById('editDocId').value;
@@ -962,7 +924,7 @@
             }
         };
 
-        // SPIN ITEMS MANAGEMENT
+        // SPIN ITEMS CRUD
         onSnapshot(spinItemsCol, (snapshot) => {
             spinItemsData = [];
             snapshot.forEach(docSnap => spinItemsData.push({ id: docSnap.id, ...docSnap.data() }));
@@ -1027,7 +989,6 @@
             });
         }
 
-        // PRESET RATING & STOCK TEMPLATES
         const ratingPresets = [
             { rating: "4.9", count: "148 Reviews", sold: 82, remaining: 18 },
             { rating: "5.0", count: "215 Reviews", sold: 94, remaining: 6 },
@@ -1062,7 +1023,6 @@
                         <h3 class="product-title">${p.name}</h3>
                         <div class="product-price">${p.price}</div>
                         
-                        <!-- RATING BOX -->
                         <div class="product-rating-box">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -1073,7 +1033,6 @@
                             <span class="product-rating-count">(${preset.count})</span>
                         </div>
 
-                        <!-- STOCK BAR -->
                         <div class="stock-tracker-box">
                             <div class="stock-text-info">
                                 <span style="color: #25d366;"><i class="fa-solid fa-check-circle"></i> ${preset.sold} Sold Out</span>
@@ -1102,12 +1061,6 @@
             document.getElementById('checkoutModal').style.display = 'flex';
         };
         window.closeCheckoutModal = function() { document.getElementById('checkoutModal').style.display = 'none'; };
-        
-        window.triggerSpinPayment = function() { 
-            // Trigger payment popup first, or start wheel spin directly if payment is done
-            openCheckoutModal("Spin & Win (Rs. 50)");
-            // After successful checkout flow, user can also directly trigger startWheelSpin()
-        };
 
         window.submitOrderToWhatsApp = function(e) {
             e.preventDefault();
