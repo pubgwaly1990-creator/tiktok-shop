@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="701ee0ac0948e546" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok Shop PK - Buy Viral TikTok Products & Accounts</title>
@@ -35,7 +36,6 @@
             position: relative; 
         }
 
-        /* CINEMATIC / SHUTTER OPENING INTRO WINDOW */
         #cinematicOverlay {
             position: fixed;
             inset: 0;
@@ -181,7 +181,6 @@
         .btn-pay-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; flex: 1; font-size: 0.85rem; }
         .btn-skip-whatsapp { background: #334155; color: #fff; border: none; padding: 10px 15px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
 
-        /* Admin Spin Table */
         .admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
         .admin-table th, .admin-table td { border: 1px solid var(--border-color); padding: 8px; text-align: left; }
         .admin-table th { background: #0b0f19; color: var(--gold-glow); }
@@ -194,7 +193,6 @@
 </head>
 <body>
 
-    <!-- CINEMATIC OPENING INTRO -->
     <div id="cinematicOverlay">
         <div class="shutter-content">
             <h2 class="shutter-welcome-text">Welcome to TikTok Shop Pakistan</h2>
@@ -207,7 +205,6 @@
     <div id="cursorGlow"></div>
     <div id="lightningOverlay"></div>
 
-    <!-- TIKTOK REWARD MODAL -->
     <div id="tiktokRewardModal">
         <div class="reward-box">
             <h3><i class="fa-brands fa-tiktok"></i> TikTok Exclusive Reward</h3>
@@ -221,7 +218,6 @@
         </div>
     </div>
 
-    <!-- SPIN PAYMENT REQUEST FORM MODAL -->
     <div id="spinPaymentModal">
         <div class="checkout-box" style="border-color: var(--gold-glow);">
             <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-file-invoice-dollar"></i> Spin Payment Verification</h3>
@@ -271,7 +267,6 @@
         </div>
     </div>
 
-    <!-- PRODUCT CHECKOUT MODAL -->
     <div id="checkoutModal">
         <div class="checkout-box">
             <h3 id="checkoutModalTitle" style="color: var(--primary-glow); margin-bottom: 10px;"><i class="fa-solid fa-credit-card"></i> Complete Your Payment</h3>
@@ -311,7 +306,6 @@
         </div>
     </div>
 
-    <!-- SPIN WINNER MODAL -->
     <div id="spinWinnerModal">
         <div class="checkout-box" style="border-color: var(--gold-glow);">
             <h3 style="color: var(--gold-glow); margin-bottom: 10px;"><i class="fa-solid fa-trophy"></i> Mubarak Ho! Aap Jeet Gaye Hain</h3>
@@ -359,7 +353,6 @@
 
     <main class="container">
 
-        <!-- SPIN AND WIN SECTION -->
         <div id="spinAndWinSection" class="spin-section-box">
             <h3 style="color: var(--gold-glow); font-size: 1.5rem; margin-bottom: 5px;"><i class="fa-solid fa-rotate"></i> Daily Spin & Win Hub</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px;">Pay & Request Spin: <strong>Rs. 50 = 1 Spin | Rs. 100 = 2 Spins</strong></p>
@@ -379,7 +372,6 @@
             </div>
         </div>
 
-        <!-- BANK DETAILS CONTAINER -->
         <div class="bank-details-container">
             <h3 style="color: var(--gold-glow); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                 <i class="fa-solid fa-wallet"></i> Official Bank Details (MCB Islamic Bank)
@@ -391,14 +383,12 @@
             </div>
         </div>
 
-        <!-- Admin Portal -->
         <section id="adminPanel">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                 <h2 style="color: var(--primary-glow);"><i class="fa-solid fa-chart-pie"></i> Admin & Bank/Spin Manager</h2>
                 <button onclick="closeAdmin()" class="ripple-btn" style="background: var(--accent-pink); color: #fff; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer;">Logout Admin</button>
             </div>
 
-            <!-- MANAGE PENDING SPIN REQUESTS BOX -->
             <div class="admin-section-box">
                 <h3 style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-user-check"></i> Pending Spin Payment Requests (Verifications)</h3>
                 <div style="overflow-x: auto;">
@@ -421,7 +411,6 @@
                 </div>
             </div>
 
-            <!-- MANAGE BANK ACCOUNTS BOX -->
             <div class="admin-section-box">
                 <h3 id="bankFormTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Bank Account</h3>
                 <form class="admin-form" id="bankForm" onsubmit="saveBank(event)">
@@ -434,7 +423,6 @@
                 <div id="bankManageList" style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
 
-            <!-- MANAGE SPIN ITEMS BOX -->
             <div class="admin-section-box">
                 <h3 id="spinFormTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Spin Items</h3>
                 <form class="admin-form" id="spinItemForm" onsubmit="saveSpinItem(event)">
@@ -445,7 +433,6 @@
                 <div id="spinItemsManageList" style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px;"></div>
             </div>
 
-            <!-- Manage Products Box -->
             <div class="admin-section-box">
                 <h3 id="formTitle" style="margin-bottom: 10px; color: var(--gold-glow);"><i class="fa-solid fa-plus-circle"></i> Add / Edit Product</h3>
                 <form class="admin-form" id="productForm" onsubmit="saveProduct(event)">
@@ -459,7 +446,6 @@
             </div>
         </section>
 
-        <!-- Product Display Area -->
         <h2 class="section-title"><i class="fa-solid fa-bolt glowing-gold-text"></i> Available Products</h2>
         <div class="products-grid" id="productsDisplay">
             <div class="loading-text">Loading Products...</div>
@@ -467,7 +453,6 @@
 
     </main>
 
-    <!-- LIVE POPUP ORDER TOAST CONTAINER -->
     <div id="orderToast" class="order-toast fire-card">
         <div class="toast-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
         <div class="toast-info">
@@ -483,7 +468,6 @@
         <p>&copy; 2026 TikTok Shop Pakistan. Developed by <strong>Usman Amjad (0302-8372072)</strong></p>
     </footer>
 
-    <!-- SCRIPT LOGIC -->
     <script>
         function openWebsiteShutter() {
             const overlay = document.getElementById('cinematicOverlay');
@@ -543,7 +527,6 @@
         let spinRequestsData = [];
         let currentWonPrize = "";
         
-        // Active User Session Spins Track
         let currentUserPhone = localStorage.getItem('user_spin_phone') || "";
         let availableSpins = parseInt(localStorage.getItem('user_spins_count') || "0");
 
@@ -553,11 +536,9 @@
         window.openTikTokProfileDirect = function() { window.open(TIKTOK_DIRECT_URL, '_blank'); document.getElementById('tiktokRewardModal').style.display = 'none'; };
         window.scrollToSpin = function() { document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' }); };
 
-        // SPIN PAYMENT REQUEST MODAL HANDLERS
         window.openSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'flex'; };
         window.closeSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'none'; };
 
-        // Convert Screenshot to Base64 String for Cloud Firestore Storage
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -609,17 +590,15 @@
             }
         };
 
-        // REALTIME LISTENER FOR SPIN REQUESTS (ADMIN & USER SYNC)
         onSnapshot(spinRequestsCol, (snapshot) => {
             spinRequestsData = [];
             snapshot.forEach(docSnap => spinRequestsData.push({ id: docSnap.id, ...docSnap.data() }));
 
-            // Update user spins based on verified requests
             if (currentUserPhone) {
                 let verifiedUserReqs = spinRequestsData.filter(r => r.phone === currentUserPhone && r.status === 'verified');
                 let totalAllowedSpins = 0;
                 verifiedUserReqs.forEach(r => {
-                    totalAllowedSpins += Math.floor(r.amount / 50); // 50 Rs = 1 spin, 100 Rs = 2 spins
+                    totalAllowedSpins += Math.floor(r.amount / 50);
                 });
 
                 let usedSpins = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
@@ -661,7 +640,6 @@
             startWheelSpin();
         };
 
-        // SPIN WHEEL EXECUTION
         window.startWheelSpin = function() {
             const wheel = document.getElementById('spinWheel');
             const items = spinItemsData.length > 0 ? spinItemsData : [
@@ -682,7 +660,6 @@
 
             currentWonPrize = items[randomSelectedIndex].name;
 
-            // Deduct spin credit
             if (currentUserPhone) {
                 let used = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
                 localStorage.setItem('used_spins_' + currentUserPhone, (used + 1).toString());
@@ -706,7 +683,6 @@
             document.getElementById('spinWinnerModal').style.display = 'none';
         };
 
-        // LIVE ORDERS POPUP SIMULATOR
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
@@ -741,7 +717,6 @@
             setInterval(showOrderToast, 9000);
         }, 3000);
 
-        // ADMIN PANEL CONTROLS
         window.openAdmin = function() {
             let pass = prompt("Enter Admin Password:");
             if (pass === ADMIN_PASS) {
@@ -760,7 +735,6 @@
             displayProducts();
         };
 
-        // ADMIN SPIN REQUEST VERIFICATION CONTROL
         function displayAdminSpinRequests() {
             const tbody = document.getElementById('spinRequestsAdminTable');
             tbody.innerHTML = '';
@@ -810,7 +784,6 @@
             }
         };
 
-        // BANK ACCOUNTS MANAGEMENT
         onSnapshot(banksCol, (snapshot) => {
             banksData = [];
             snapshot.forEach(d => banksData.push({ id: d.id, ...d.data() }));
@@ -885,7 +858,6 @@
             if (confirm("Delete this bank account?")) await deleteDoc(doc(db, "banks", id));
         };
 
-        // PRODUCTS CRUD
         window.saveProduct = async function(e) {
             e.preventDefault();
             const editId = document.getElementById('editDocId').value;
@@ -924,7 +896,6 @@
             }
         };
 
-        // SPIN ITEMS CRUD
         onSnapshot(spinItemsCol, (snapshot) => {
             spinItemsData = [];
             snapshot.forEach(docSnap => spinItemsData.push({ id: docSnap.id, ...docSnap.data() }));
