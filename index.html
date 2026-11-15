@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tiktok.vercal.shope - Buy Viral TikTok Products & Accounts</title>
+    <title>TikTok Shop PK - Buy Viral TikTok Products & Accounts</title>
     <meta name="description" content="Buy verified TikTok UK, USA, Monetized accounts, 10k Followers & Ads Services in Pakistan. Developed by Usman Amjad.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-   
+    <style>
         :root {
             --bg-main: #0b0f19;
             --bg-card: #151c2c;
@@ -85,11 +85,21 @@
         }
         #lightningOverlay { pointer-events: none; position: fixed; inset: 0; z-index: 999; animation: lightningStrike 7s infinite; }
 
-        @keyframes fireGlow {
-            0%, 100% { box-shadow: 0 0 18px #ff4500, 0 0 35px rgba(255, 69, 0, 0.4), inset 0 0 12px rgba(255, 0, 80, 0.2); border-color: #ff4500; }
-            50% { box-shadow: 0 0 30px #ff8c00, 0 0 60px rgba(255, 69, 0, 0.7), inset 0 0 22px rgba(255, 215, 0, 0.4); border-color: #ff8c00; }
+        @keyframes goldFlicker {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.35), 0 0 30px rgba(255, 107, 0, 0.2); border-color: rgba(255, 215, 0, 0.6); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 45px rgba(255, 215, 0, 0.4); border-color: #ffd700; }
         }
-        .fire-card { animation: fireGlow 1.8s infinite ease-in-out; background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(21, 28, 44, 0.98)) !important; border: 2px solid #ff4500; }
+        @keyframes goldShimmer {
+            0% { transform: translateX(-150%) rotate(45deg); }
+            100% { transform: translateX(150%) rotate(45deg); }
+        }
+        .golden-glow-card { animation: goldFlicker 3s infinite ease-in-out; position: relative; overflow: hidden; border: 1px solid rgba(255, 215, 0, 0.4); }
+
+        @keyframes fireGlow {
+            0%, 100% { box-shadow: 0 0 15px #ff4500, 0 0 30px #ff8c00, inset 0 0 10px #ff0000; border-color: #ff4500; }
+            50% { box-shadow: 0 0 25px #ff8c00, 0 0 50px #ff4500, inset 0 0 20px #ffe600; border-color: #ffe600; }
+        }
+        .fire-card { animation: fireGlow 1.8s infinite ease-in-out; background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(21, 28, 44, 0.98)) !important; }
 
         #tiktokRewardModal, #spinPaymentModal, #checkoutModal, #spinWinnerModal {
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(12px); z-index: 999999; display: none; align-items: center; justify-content: center; padding: 20px;
@@ -106,7 +116,7 @@
         .social-btn { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 12px; font-weight: 600; transition: 0.3s; font-size: 0.85rem; cursor: pointer; border: none; }
         .social-btn.tiktok { background: rgba(0, 242, 254, 0.15); color: var(--tiktok-color); border: 1px solid var(--tiktok-color); }
         .social-btn.wa { background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-color); border: 1px solid var(--whatsapp-color); }
-        .social-btn.spin-tab-btn { background: rgba(255, 215, 0, 0.15); color: var(--gold-glow); border: 1px solid var(--gold-glow); }
+        .social-btn.spin-tab-btn { background: rgba(255, 215, 0, 0.15); color: var(--gold-glow); border: 1px solid var(--gold-glow); animation: goldFlicker 2s infinite; }
 
         header { background: rgba(21, 28, 44, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
@@ -187,7 +197,7 @@
     <!-- CINEMATIC OPENING INTRO -->
     <div id="cinematicOverlay">
         <div class="shutter-content">
-            <h2 class="shutter-welcome-text">Welcome to tiktok.vercal.shope</h2>
+            <h2 class="shutter-welcome-text">Welcome to TikTok Shop Pakistan</h2>
             <button class="shutter-enter-btn ripple-btn" onclick="openWebsiteShutter()">
                 <i class="fa-solid fa-door-open"></i> Open Shop
             </button>
@@ -337,13 +347,13 @@
     </div>
 
     <header>
-        <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> tiktok.vercal.shope</a>
+        <a href="#" class="logo"><i class="fa-brands fa-tiktok"></i> TikTok Shop <span>PK</span></a>
         <div class="rating-badge">Overall Client Rating: 4.95 / 5.0</div>
         <button class="btn-admin ripple-btn" onclick="openAdmin()"><i class="fa-solid fa-lock"></i> Admin Panel</button>
     </header>
 
     <section class="hero">
-        <h1 class="glowing-title">tiktok.vercal.shope - Buy Viral Accounts & Services</h1>
+        <h1 class="glowing-title">TikTok Shop Pakistan - Buy Viral Accounts & Services</h1>
         <p>Verified TikTok UK/USA Monetized Accounts, MCB Islamic Bank Payment System.</p>
     </section>
 
@@ -467,8 +477,10 @@
         </div>
     </div>
 
+    <audio id="orderNotificationSound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
     <footer>
-        <p>&copy; 2026 tiktok.vercal.shope. Developed by <strong>Usman Amjad (0302-8372072)</strong></p>
+        <p>&copy; 2026 TikTok Shop Pakistan. Developed by <strong>Usman Amjad (0302-8372072)</strong></p>
     </footer>
 
     <!-- SCRIPT LOGIC -->
@@ -531,6 +543,7 @@
         let spinRequestsData = [];
         let currentWonPrize = "";
         
+        // Active User Session Spins Track
         let currentUserPhone = localStorage.getItem('user_spin_phone') || "";
         let availableSpins = parseInt(localStorage.getItem('user_spins_count') || "0");
 
@@ -540,9 +553,11 @@
         window.openTikTokProfileDirect = function() { window.open(TIKTOK_DIRECT_URL, '_blank'); document.getElementById('tiktokRewardModal').style.display = 'none'; };
         window.scrollToSpin = function() { document.getElementById('spinAndWinSection').scrollIntoView({ behavior: 'smooth' }); };
 
+        // SPIN PAYMENT REQUEST MODAL HANDLERS
         window.openSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'flex'; };
         window.closeSpinPaymentModal = function() { document.getElementById('spinPaymentModal').style.display = 'none'; };
 
+        // Convert Screenshot to Base64 String for Cloud Firestore Storage
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -594,15 +609,17 @@
             }
         };
 
+        // REALTIME LISTENER FOR SPIN REQUESTS (ADMIN & USER SYNC)
         onSnapshot(spinRequestsCol, (snapshot) => {
             spinRequestsData = [];
             snapshot.forEach(docSnap => spinRequestsData.push({ id: docSnap.id, ...docSnap.data() }));
 
+            // Update user spins based on verified requests
             if (currentUserPhone) {
                 let verifiedUserReqs = spinRequestsData.filter(r => r.phone === currentUserPhone && r.status === 'verified');
                 let totalAllowedSpins = 0;
                 verifiedUserReqs.forEach(r => {
-                    totalAllowedSpins += Math.floor(r.amount / 50);
+                    totalAllowedSpins += Math.floor(r.amount / 50); // 50 Rs = 1 spin, 100 Rs = 2 spins
                 });
 
                 let usedSpins = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
@@ -644,6 +661,7 @@
             startWheelSpin();
         };
 
+        // SPIN WHEEL EXECUTION
         window.startWheelSpin = function() {
             const wheel = document.getElementById('spinWheel');
             const items = spinItemsData.length > 0 ? spinItemsData : [
@@ -664,6 +682,7 @@
 
             currentWonPrize = items[randomSelectedIndex].name;
 
+            // Deduct spin credit
             if (currentUserPhone) {
                 let used = parseInt(localStorage.getItem('used_spins_' + currentUserPhone) || "0");
                 localStorage.setItem('used_spins_' + currentUserPhone, (used + 1).toString());
@@ -687,6 +706,7 @@
             document.getElementById('spinWinnerModal').style.display = 'none';
         };
 
+        // LIVE ORDERS POPUP SIMULATOR
         const sampleOrders = [
             { name: "Usman from Lahore", item: "TikTok UK Account" },
             { name: "Hamza from Karachi", item: "TikTok USA Account" },
@@ -696,9 +716,15 @@
             { name: "Omer from Multan", item: "TikTok Account Unfreeze" }
         ];
 
-        // Sound removed completely as requested
         function showOrderToast() {
             const toast = document.getElementById('orderToast');
+            const notifySound = document.getElementById('orderNotificationSound');
+            
+            if (notifySound) {
+                notifySound.currentTime = 0;
+                notifySound.play().catch(e => { console.log(e); });
+            }
+
             const randomOrder = sampleOrders[Math.floor(Math.random() * sampleOrders.length)];
             const randomMins = Math.floor(Math.random() * 6) + 1;
 
@@ -715,6 +741,7 @@
             setInterval(showOrderToast, 9000);
         }, 3000);
 
+        // ADMIN PANEL CONTROLS
         window.openAdmin = function() {
             let pass = prompt("Enter Admin Password:");
             if (pass === ADMIN_PASS) {
@@ -733,6 +760,7 @@
             displayProducts();
         };
 
+        // ADMIN SPIN REQUEST VERIFICATION CONTROL
         function displayAdminSpinRequests() {
             const tbody = document.getElementById('spinRequestsAdminTable');
             tbody.innerHTML = '';
@@ -782,6 +810,7 @@
             }
         };
 
+        // BANK ACCOUNTS MANAGEMENT
         onSnapshot(banksCol, (snapshot) => {
             banksData = [];
             snapshot.forEach(d => banksData.push({ id: d.id, ...d.data() }));
@@ -856,6 +885,7 @@
             if (confirm("Delete this bank account?")) await deleteDoc(doc(db, "banks", id));
         };
 
+        // PRODUCTS CRUD
         window.saveProduct = async function(e) {
             e.preventDefault();
             const editId = document.getElementById('editDocId').value;
@@ -894,6 +924,7 @@
             }
         };
 
+        // SPIN ITEMS CRUD
         onSnapshot(spinItemsCol, (snapshot) => {
             spinItemsData = [];
             snapshot.forEach(docSnap => spinItemsData.push({ id: docSnap.id, ...docSnap.data() }));
@@ -983,8 +1014,7 @@
 
             productsData.forEach((p, index) => {
                 const card = document.createElement('div');
-                // Added fire-card class here so ALL products get the fire/glow effect
-                card.className = 'product-card fire-card';
+                card.className = 'product-card golden-glow-card';
                 const preset = ratingPresets[index % ratingPresets.length];
 
                 card.innerHTML = `
